@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building } from 'lucide-react';
+import { Award, ShieldCheck, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building, ArrowDown } from 'lucide-react';
 import { SEO, SectionTitle, AnimatedHeading, PrimaryButton, SecondaryButton, Card, StatItem } from '../../components/shared/UI.jsx';
 import { PRODUCTS, CERTIFICATIONS, NEWS } from '../../data/mockData.js';
 
@@ -23,61 +23,98 @@ export default function Home() {
         description="Welcome to CHK Medicus Care Private Limited, a premier pharmaceutical manufacturing company in Amravati, Maharashtra. We deliver high-grade generic and proprietary formulations."
       />
 
-      {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-primary text-white py-24 md:py-36 px-4 bg-grid-pattern">
-        {/* Soft glowing background blobs */}
-        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-accent/20 rounded-full blur-[80px] pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-medical/15 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* 1. Redesigned Hero Section with ImageKit Background & Max 3xl Fonts */}
+      {/* 1. Hero Section — full 100vh, three-band layout */}
+      <section
+        className="relative h-[100dvh] min-h-[640px] bg-white overflow-hidden flex flex-col bg-cover bg-center"
+        style={{ backgroundImage: "url('https://ik.imagekit.io/clickinv/CHK-MEDICUS/CHK-HeroBg.png')" }}
+      >
+        {/* faint clinical grid backdrop for texture */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-accent border border-white/10"
-            >
-              <Award size={14} /> WHO-GMP Certified Manufacturer
-            </motion.div>
-            <AnimatedHeading className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
-              Precision Formulations for <br />
-              <span className="text-accent">Global Healthcare</span>
+
+        {/* ---- Band 1: micro nav ---- */}
+        <div className="relative z-20 flex items-center justify-between px-6 md:px-12 pt-28 md:pt-32 lg:pt-36 shrink-0">
+          <div className="hidden xl:flex flex-col gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            {/* {['Intro', 'Expertise', 'Technology', 'Products', 'Contact'].map((item, i) => (
+              <div
+                key={item}
+                className={`flex items-center gap-2 transition-colors cursor-pointer ${i === 0 ? 'text-slate-900' : 'hover:text-slate-900 pl-3.5'
+                  }`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${i === 0 ? 'bg-slate-900' : 'bg-transparent'}`} />
+                {item}
+              </div>
+            ))} */}
+          </div>
+
+        </div>
+
+        {/* ---- Band 2: main content (fills remaining space) ---- */}
+        <div className="relative z-10 flex-1 min-h-0 max-w-7xl mx-auto w-full px-4 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left: headline */}
+          <div className="lg:col-span-7 space-y-5 lg:pr-12 text-left">
+            <AnimatedHeading className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-primary leading-[1.05] font-sans">
+              Detailed research
+              <br />
+              &amp; formulation of
+              <br />
+              healthcare
             </AnimatedHeading>
+
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/70 text-sm md:text-base leading-relaxed max-w-xl font-sans"
+              className="text-slate-500 text-xs md:text-sm leading-relaxed max-w-md font-sans"
             >
-              CHK Medicus Care Private Limited (Estd. 2024, Amravati, Maharashtra) designs, manufactures, and exports affordable, premium pharmaceutical medicines under international safety benchmarks.
+              Health is the most important thing. So we don't put it off for later. We manufacture
+              high-potency antibiotics, analgesics, and dietary supplements today.
             </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-4"
+              className="pt-1"
             >
-              <PrimaryButton to="/products">Explore Formulations</PrimaryButton>
-              <SecondaryButton to="/contact" className="!bg-transparent !text-white hover:!bg-white/10 border-white/30">
-                Partner With Us
-              </SecondaryButton>
+              <NavLink
+                to="/products"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-slate-200 hover:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-800 hover:text-slate-950 bg-white/70 backdrop-blur-sm transition-all hover:scale-105 active:scale-95 shadow-sm"
+              >
+                Explore Formulations
+              </NavLink>
             </motion.div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block relative"
-          >
-            <div className="w-full h-[400px] rounded-2xl overflow-hidden glassmorphism p-2 shadow-2xl relative">
-              <img
-                src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop"
-                alt="CHK Medicus Plant operations"
-                className="w-full h-full object-cover rounded-xl grayscale-[15%] hover:grayscale-0 transition-all duration-750"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent pointer-events-none rounded-xl"></div>
+
+          {/* Right: DNA canvas + floating Certificate-of-Analysis card (signature element) */}
+
+        </div>
+
+        {/* ---- Band 3: bottom bar (pinned, no scroll) ---- */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full border-t border-slate-100 px-4 md:px-12 py-6 shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div className="lg:col-span-6 flex items-start gap-5">
+            <div className="font-sans text-4xl md:text-5xl font-bold text-slate-900 tracking-tighter leading-none">
+              01
             </div>
-          </motion.div>
+            <div className="space-y-1">
+              <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                ESTD. 2024-10-12
+              </span>
+              <h3 className="font-sans text-xs md:text-sm font-bold text-primary">
+                First-rate Facility in Formulation Discovery
+              </h3>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs">
+            <p className="text-slate-500 text-[11px] leading-relaxed max-w-sm">
+              CHK Medicus Care is a WHO-GMP certified clinical research and formulation developer,
+              utilizing Class 10,000 cleanrooms and high-speed rotary presses to deliver affordable
+              healthcare.
+            </p>
+
+          </div>
         </div>
       </section>
 

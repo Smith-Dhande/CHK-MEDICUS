@@ -72,8 +72,8 @@ export default function Layout({ children }) {
       {/* Global Navigation */}
       <Header />
 
-      {/* Spacer to push content down because navbar is fixed */}
-      <div className="h-[76px] lg:h-[116px]"></div>
+      {/* Spacer to push content down because navbar is fixed (omitted on Home route for transparent background overlay) */}
+      {pathname !== '/' && <div className="h-[76px] lg:h-[116px]"></div>}
 
       {/* Main Pages Container with Motion Page transitions */}
       <main className="flex-grow">
