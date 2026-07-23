@@ -1020,20 +1020,51 @@ export default function Home() {
       </section>
 
       {/* 11. Certifications Preview */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Compliance Certificates" title="Accredited Standards" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CERTIFICATIONS.map((cert) => (
-              <Card key={cert.id} className="!p-6 border-l-4 hover:border-l-medical border-slate-200">
-                <h3 className="font-bold text-primary text-sm mb-1">{cert.title}</h3>
-                <span className="block text-[9px] text-slate-400 tracking-wider mb-2 font-mono uppercase">{cert.code}</span>
-                <p className="text-slate-500 text-xs leading-relaxed mb-4">{cert.issuer}</p>
-                <NavLink to="/certifications" className="text-[10px] text-medical font-bold hover:underline">
-                  Download Certificate PDF
-                </NavLink>
-              </Card>
-            ))}
+            {CERTIFICATIONS.map((cert, idx) => {
+              const boxColors = [
+                "border-l-emerald-500",
+                "border-l-sky-500",
+                "border-l-amber-500",
+                "border-l-rose-500"
+              ];
+              const boxColor = boxColors[idx % boxColors.length];
+
+              return (
+                <Card 
+                  key={cert.id} 
+                  delay={idx * 0.05}
+                  className={`!p-6 !bg-white border border-slate-200/50 border-l-4 ${boxColor} transition-all duration-300 rounded-lg flex flex-col justify-between h-full`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3.5">
+                      <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-sm">
+                        REG: {cert.code}
+                      </span>
+                      <span className="text-[8px] font-mono uppercase text-medical font-bold tracking-wider">
+                        ACTIVE
+                      </span>
+                    </div>
+                    <h3 className="font-serif font-bold text-primary text-sm mb-1.5 leading-snug">
+                      {cert.title}
+                    </h3>
+                    <p className="text-slate-500 text-[11px] leading-relaxed mb-4">
+                      Issued by: {cert.issuer}
+                    </p>
+                  </div>
+                  
+                  <NavLink 
+                    to="/certifications" 
+                    className="inline-flex items-center gap-1 text-[10px] text-medical font-bold hover:underline mt-2 pt-2.5 border-t border-dashed border-slate-200"
+                  >
+                    Download Certificate PDF →
+                  </NavLink>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
