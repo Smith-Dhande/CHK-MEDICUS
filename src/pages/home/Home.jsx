@@ -79,7 +79,54 @@ export default function Home() {
       }
     ];
     const theme = themes[idx % themes.length];
+    {
+      [
+        {
+          label: "Raw Material Verification",
+          desc: "100% assay analysis of active pharmaceutical ingredients (APIs).",
+          tilt: "-rotate-2",
+          tape: "bg-rose-400/30 border-rose-400/20",
+          border: "border-rose-400",
+          text: "text-rose-500",
+        },
+        {
+          label: "In-Process Controls",
+          desc: "Hourly tablet thickness, hardness, and dissolution tests.",
+          tilt: "rotate-1",
+          tape: "bg-amber-400/30 border-amber-400/20",
+          border: "border-amber-400",
+          text: "text-amber-500",
+        },
+        {
+          label: "Sterility Assurance",
+          desc: "Systematic particulate counters operating across Class 100 laminars.",
+          tilt: "-rotate-1",
+          tape: "bg-emerald-400/30 border-emerald-400/20",
+          border: "border-emerald-400",
+          text: "text-emerald-500",
+        },
+        {
+          label: "BMR Retention",
+          desc: "Traceable batch records preserved digitally for up to 5 years.",
+          tilt: "rotate-2",
+          tape: "bg-sky-400/30 border-sky-400/20",
+          border: "border-sky-400",
+          text: "text-sky-500",
+        },
+      ].map((qa, idx) => (
+        <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300`}>
+          <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 border shadow-sm ${qa.tape}`} />
 
+          <div className={`bg-white border-t-4 ${qa.border} border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
+            <span className={`text-[10px] font-bold uppercase tracking-widest block mb-2 ${qa.text}`}>
+              Stage 0{idx + 1}
+            </span>
+            <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
+            <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+          </div>
+        </div>
+      ))
+    }
     // Spec abbreviations or text to display on labeled tape
     const tapeLabels = ["LINE A", "LINE B", "LINE C", "LINE D"];
     const tapeLabel = tapeLabels[idx % tapeLabels.length];
@@ -589,70 +636,109 @@ export default function Home() {
       </section>
 
       {/* 5. Manufacturing Excellence Preview */}
-      <section className="py-24 bg-white text-primary px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-5">
-                <span className="text-[10px] font-bold text-medical uppercase tracking-widest">Manufacturing Excellence</span>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight">
-                  Class 10,000 Cleanrooms &amp; Sophisticated HVAC Architecture
-                </h2>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Our formulation lines in Amravati operate within sterile ambient parameters. Sophisticated HVAC HEPA-filter networks preserve room air pressures, checking particulates and moisture levels to lock-in absolute batch stability.
-                </p>
+      <section className="relative h-screen bg-white text-primary overflow-hidden flex flex-col justify-between px-4">
+
+        {/* 10% — navigation bar spacer */}
+        <div className="hidden md:block h-[10vh] shrink-0 w-full" />
+
+        {/* 80% of remaining space (72vh) — component body */}
+        <div className="h-auto md:h-[72vh] flex-grow flex flex-col justify-center max-w-7xl mx-auto w-full relative z-10 min-h-0 gap-8 md:gap-10 py-2">
+
+          {/* Upper: title-block copy + cleanroom viewport */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-20 items-center">
+
+            <div>
+              <div className="flex items-center justify-between border-b border-slate-200 pb-2.5 mb-5">
+                <span className="text-[10px] font-bold text-medical uppercase tracking-widest">
+                  Manufacturing Excellence
+                </span>
+                <span className="text-[9px] font-mono uppercase tracking-widest text-slate-300">
+                  Dwg. No. AMR-CR-01
+                </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {[
-                  { title: 'Class 10,000', desc: 'ISO-grade particulate control across all suites' },
-                  { title: 'HVAC Segregation', desc: 'Positive-pressure airlocks and directional airflow' },
-                  { title: 'Purified Water System', desc: 'USP-grade multi-effect distillation loops' },
-                  { title: 'Zero Liquid Discharge', desc: 'Double-stage neutralizers and RO recycling' },
-                ].map((item, i) => (
-                  <div key={i} className="p-5 border border-slate-200 bg-white group hover:border-medical/30 transition-colors">
-                    <h4 className="text-[11px] font-bold text-primary uppercase tracking-tight mb-2">{item.title}</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight max-w-lg">
+                Class 10,000 Cleanrooms &amp; Sophisticated HVAC Architecture
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed max-w-md mt-5">
+                Our Amravati lines run under sterile ambient parameters — HEPA-filtered
+                HVAC networks hold pressure, particulate, and moisture within absolute
+                batch-stability limits.
+              </p>
 
-              <div className="flex flex-wrap items-center gap-6">
-                <NavLink to="/manufacturing" className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-hover transition-all active:scale-95">
-                  Inside the Facility <ArrowRight size={14} className="ml-2" />
+              <div className="flex flex-wrap items-center gap-6 pt-7">
+                <NavLink
+                  to="/manufacturing"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-hover transition-all active:scale-95"
+                >
+                  Inside the Facility
                 </NavLink>
-                <span className="text-slate-400 text-[10px] font-mono uppercase tracking-widest">Explore Plant</span>
+                <span className="text-slate-400 text-[10px] font-mono uppercase tracking-widest">
+                  Explore Plant
+                </span>
               </div>
             </div>
 
-            <div className="space-y-5">
-              <div className="relative rounded-xl overflow-hidden border border-slate-100 shadow-sm">
+            {/* Facility image — fades out of white, merging into the text column instead of sitting in a hard frame */}
+            <div className="relative h-[260px] md:h-[320px] lg:h-[380px] lg:-ml-20">
+              <div
+                className="absolute inset-0"
+                style={{
+                  maskImage: "linear-gradient(to right, transparent 0%, black 42%)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 42%)",
+                }}
+              >
                 <img
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
                   alt="Cleanroom manufacturing machinery"
-                  className="w-full h-[360px] object-cover"
+                  className="w-full h-full object-cover"
+                  style={{ filter: "grayscale(0.2) contrast(1.05)" }}
                 />
-                <div className="absolute top-4 right-4 bg-white border border-slate-200 px-3 py-1.5 shadow-sm">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Certified</span>
-                  <span className="text-sm font-bold text-primary">WHO-GMP</span>
-                </div>
               </div>
+              {/* soft white wash top and bottom so the photo settles into the page rather than reading as a pasted rectangle */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white/70 pointer-events-none" />
 
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { num: '10M+', label: 'Units / Mo' },
-                  { num: '100%', label: 'cGMP Score' },
-                  { num: '0', label: 'Cross-contam.' },
-                ].map((stat, i) => (
-                  <div key={i} className="text-center p-4 border border-slate-100 bg-slate-50/50">
-                    <div className="font-serif text-[1.3rem] font-bold text-primary leading-none mb-1.5">{stat.num}</div>
-                    <div className="text-[9px] text-slate-400 uppercase tracking-wider font-bold">{stat.label}</div>
-                  </div>
-                ))}
+              {/* certification stamp */}
+              <div className="absolute bottom-5 right-5 w-[74px] h-[74px] rounded-full bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-center text-center leading-none">
+                <span className="text-[6.5px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  Certified
+                </span>
+                <span className="text-[11px] font-bold text-primary">WHO</span>
+                <span className="text-[11px] font-bold text-primary">GMP</span>
               </div>
             </div>
           </div>
+
+          {/* Lower: facility nameplate */}
+          <div className="border-t border-l border-slate-200">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
+              {[
+                { value: "Class 10,000", label: "Particulate control" },
+                { value: "HVAC", label: "Positive-pressure airlocks" },
+                { value: "USP", label: "Water distillation" },
+                { value: "Zero", label: "Liquid discharge" },
+                { value: "10M+", label: "Units / month" },
+                { value: "100%", label: "cGMP score" },
+                { value: "0", label: "Cross-contamination" },
+              ].map((spec) => (
+                <div
+                  key={spec.label}
+                  className="border-r border-b border-slate-200 px-4 py-4 md:py-5"
+                >
+                  <div className="font-serif font-bold text-primary text-sm md:text-base leading-tight">
+                    {spec.value}
+                  </div>
+                  <div className="text-[9px] md:text-[10px] text-slate-400 uppercase tracking-wider font-semibold mt-1.5">
+                    {spec.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* remaining 18% distributed as bottom breathing space */}
+        <div className="hidden md:block h-[18vh] shrink-0 w-full" />
       </section>
 
       {/* 6. Research & Innovation Preview */}
@@ -712,54 +798,66 @@ export default function Home() {
       <section className="py-16 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Zero Defects Policy" title="Quality Assurance Standards" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 mt-4">
             {[
-              { label: 'Raw Material Verification', desc: '100% assay analysis of active pharmaceutical ingredients (APIs).' },
-              { label: 'In-Process Controls', desc: 'Hourly tablet thickness, hardness, and dissolution tests.' },
-              { label: 'Sterility Assurance', desc: 'Systematic particulate counters operating across Class 100 laminars.' },
-              { label: 'BMR Retention', desc: 'Traceable batch records preserved digitally for up to 5 years.' }
+              {
+                label: "Raw Material Verification",
+                desc: "100% assay analysis of active pharmaceutical ingredients (APIs).",
+                tilt: "-rotate-2",
+                color: "rose",
+              },
+              {
+                label: "In-Process Controls",
+                desc: "Hourly tablet thickness, hardness, and dissolution tests.",
+                tilt: "rotate-1",
+                color: "amber",
+              },
+              {
+                label: "Sterility Assurance",
+                desc: "Systematic particulate counters operating across Class 100 laminars.",
+                tilt: "-rotate-1",
+                color: "emerald",
+              },
+              {
+                label: "BMR Retention",
+                desc: "Traceable batch records preserved digitally for up to 5 years.",
+                tilt: "rotate-2",
+                color: "sky",
+              },
             ].map((qa, idx) => (
-              <div key={idx} className="bg-white border border-slate-100 p-6 rounded-xl hover:shadow-md transition-shadow">
-                <span className="text-[10px] font-bold text-medical uppercase tracking-widest block mb-2">Stage 0{idx + 1}</span>
-                <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300`}>
+                {/* washi tape */}
+                <div
+                  className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`}
+                />
+
+                <div
+                  className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}
+                >
+                  <span
+                    className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}
+                  >
+                    Stage 0{idx + 1}
+                  </span>
+                  <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+                </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
+
+          <div className="text-center mt-14">
             <SecondaryButton to="/quality-assurance">Read Quality Manual</SecondaryButton>
           </div>
         </div>
       </section>
 
       {/* 8. Company Statistics */}
-      <section className="py-16 bg-primary text-white px-4 relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
-          <StatItem number="10" suffix="M+" label="Monthly Dosage Capacity" />
-          <StatItem number="100" suffix="%" label="cGMP Inspection Score" />
-          <StatItem number="500" suffix="+" label="Distributor Partners" />
-          <StatItem number="2024" label="Year Established" />
-        </div>
-      </section>
+
 
       {/* 9. Business Values */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto text-center space-y-12">
-          <SectionTitle subtitle="Values" title="Driven by Care, Cure & Compassion" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { v: 'Care', d: 'Promoting healthy outcomes for the patients using our products through strict chemical safety.' },
-              { v: 'Cure', d: 'Fostering disease eradication through stable, high-potency molecules and therapeutic aids.' },
-              { v: 'Compassion', d: 'Maintaining low margins to ensure necessary antibiotics and gels remain affordable.' }
-            ].map((val, idx) => (
-              <div key={idx} className="p-8 bg-slate-50 rounded-xl hover:bg-white hover:shadow-lg border border-slate-100 transition-all">
-                <h3 className="font-serif text-2xl font-bold text-primary mb-3">{val.v}</h3>
-                <p className="text-slate-600 text-xs leading-relaxed max-w-xs mx-auto">{val.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* 10. Why Choose CHK Medicus */}
       <section className="py-20 bg-slate-50 px-4">
@@ -790,19 +888,87 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-6">
-            <h3 className="font-serif text-lg font-bold text-primary text-center">Request Distributor Exclusivity</h3>
-            <form onSubmit={(e) => { e.preventDefault(); alert('Inquiry sent successfully!'); e.target.reset(); }} className="space-y-4 text-xs">
-              <div className="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="Your Name" required className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded focus:border-medical outline-none" />
-                <input type="email" placeholder="Email Address" required className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded focus:border-medical outline-none" />
-              </div>
-              <input type="text" placeholder="Company / Drug License Number" required className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded focus:border-medical outline-none" />
-              <textarea placeholder="Tell us about your distribution reach" required rows="3" className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded focus:border-medical outline-none resize-none"></textarea>
-              <button type="submit" className="w-full py-2.5 bg-medical text-white font-bold tracking-wider uppercase rounded hover:bg-medical-hover transition-colors text-[10px] cursor-pointer">
-                Submit Inquiry
-              </button>
-            </form>
+
+          {/* Paper sheet form */}
+          <div className="relative rotate-1 hover:rotate-0 transition-transform duration-500">
+            {/* pin/tack */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 h-5 w-5 rounded-full bg-medical shadow-md border-2 border-white" />
+
+            {/* stacked paper shadow sheets behind */}
+            <div className="absolute inset-0 bg-white rotate-2 translate-x-2 translate-y-2 shadow-md" />
+            <div className="absolute inset-0 bg-white -rotate-1 -translate-x-1 translate-y-1 shadow-md" />
+
+            {/* main paper sheet */}
+            <div
+              className="relative p-8 pt-10 shadow-xl space-y-6"
+              style={{
+                backgroundColor: "#fffdf8",
+                backgroundImage:
+                  "repeating-linear-gradient(#fffdf8, #fffdf8 27px, #e7e2d3 28px)",
+                boxShadow:
+                  "0 20px 40px -12px rgba(0,0,0,0.25), inset 0 0 60px rgba(0,0,0,0.03)",
+              }}
+            >
+              {/* torn top edge */}
+              <div
+                className="absolute -top-[1px] left-0 right-0 h-3"
+                style={{
+                  backgroundColor: "#fffdf8",
+                  clipPath:
+                    "polygon(0% 100%, 2% 30%, 5% 90%, 8% 20%, 11% 80%, 14% 10%, 17% 70%, 20% 25%, 23% 95%, 26% 15%, 29% 75%, 32% 30%, 35% 90%, 38% 20%, 41% 80%, 44% 10%, 47% 70%, 50% 25%, 53% 95%, 56% 15%, 59% 75%, 62% 30%, 65% 90%, 68% 20%, 71% 80%, 74% 10%, 77% 70%, 80% 25%, 83% 95%, 86% 15%, 89% 75%, 92% 30%, 95% 90%, 98% 20%, 100% 100%)",
+                }}
+              />
+
+              {/* red margin line like ruled notepad */}
+              <div className="absolute top-0 bottom-0 left-10 w-px bg-rose-300/50 hidden md:block" />
+
+              <h3 className="font-serif text-lg font-bold text-primary text-center">
+                Request Distributor Exclusivity
+              </h3>
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Inquiry sent successfully!");
+                  e.target.reset();
+                }}
+                className="space-y-5 text-xs relative"
+              >
+                <div className="grid grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                    className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                    className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
+                  />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Company / Drug License Number"
+                  required
+                  className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
+                />
+                <textarea
+                  placeholder="Tell us about your distribution reach"
+                  required
+                  rows="3"
+                  className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none resize-none placeholder:text-slate-400 font-serif"
+                ></textarea>
+
+                <button
+                  type="submit"
+                  className="w-full py-2.5 bg-medical text-white font-bold tracking-wider uppercase hover:bg-medical-hover transition-colors text-[10px] cursor-pointer shadow-sm"
+                >
+                  Submit Inquiry
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
