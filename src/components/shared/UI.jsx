@@ -65,7 +65,7 @@ export const SectionTitle = ({ subtitle, title, alignment = 'center', light = fa
     >
       {subtitle && (
         <span className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 px-3 py-1 rounded-full ${
-          light ? 'bg-white/10 text-accent' : 'bg-primary/5 text-primary'
+          light ? 'bg-white/10 text-accent' : 'bg-primary/6 text-primary'
         }`}>
           {subtitle}
         </span>
@@ -115,7 +115,7 @@ export const PrimaryButton = ({ children, onClick, to, className = '', ...props 
 // Secondary Animated Button
 export const SecondaryButton = ({ children, onClick, to, className = '', ...props }) => {
   const Component = to ? 'a' : 'button';
-  const baseClasses = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-sans font-semibold text-sm transition-all duration-300 bg-white text-primary border border-primary/20 hover:border-primary hover:bg-slate-50 hover:shadow-sm active:scale-95 cursor-pointer';
+  const baseClasses = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-sans font-semibold text-sm transition-all duration-300 bg-white text-primary border border-primary/20 hover:border-medical hover:bg-slate-50 hover:shadow-sm active:scale-95 cursor-pointer';
 
   return (
     <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="inline-block">
@@ -130,7 +130,7 @@ export const SecondaryButton = ({ children, onClick, to, className = '', ...prop
 export const Card = ({ children, className = '', delay = 0 }) => {
   return (
     <motion.div
-      className={`bg-white rounded-xl border border-slate-100 p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:border-accent/20 ${className}`}
+      className={`bg-white rounded-xl border border-slate-100 p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:border-medical/20 ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -146,7 +146,7 @@ export const Card = ({ children, className = '', delay = 0 }) => {
 export const StatItem = ({ number, label, suffix = '', delay = 0 }) => {
   return (
     <motion.div
-      className="text-center p-6 bg-slate-50/50 rounded-xl border border-slate-100 hover:border-accent/10 transition-colors"
+      className="text-center p-6 bg-slate-50/50 rounded-xl border border-slate-100 hover:border-medical/10 transition-colors"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}

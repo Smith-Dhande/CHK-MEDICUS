@@ -23,12 +23,21 @@ export default function Home() {
         description="Welcome to CHK Medicus Care Private Limited, a premier pharmaceutical manufacturing company in Amravati, Maharashtra. We deliver high-grade generic and proprietary formulations."
       />
 
-      {/* 1. Redesigned Hero Section with ImageKit Background & Max 3xl Fonts */}
       {/* 1. Hero Section — full 100vh, three-band layout */}
       <section
-        className="relative h-[100dvh] min-h-[640px] bg-white overflow-hidden flex flex-col bg-cover bg-center"
-        style={{ backgroundImage: "url('https://ik.imagekit.io/clickinv/CHK-MEDICUS/CHK-HeroBg.png')" }}
+        className="relative h-[100dvh] min-h-[640px] bg-white overflow-hidden flex flex-col"
       >
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://ik.imagekit.io/clickinv/CHK-MEDICUS/HerobgVDO.mp4"
+        >
+          <source src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/HerobgVDO.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-900/30 to-transparent" />
         {/* faint clinical grid backdrop for texture */}
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.04] pointer-events-none" />
 
@@ -54,19 +63,19 @@ export default function Home() {
         <div className="relative z-10 flex-1 min-h-0 max-w-7xl mx-auto w-full px-4 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left: headline */}
           <div className="lg:col-span-7 space-y-5 lg:pr-12 text-left">
-            <AnimatedHeading className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-primary leading-[1.05] font-sans">
+            <AnimatedHeading className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.05] font-sans">
               Detailed research
               <br />
               &amp; formulation of
               <br />
-              healthcare
+              <span className="text-medical text-7xl inline-block text-[#8FF3B8] text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">healthcare</span>
             </AnimatedHeading>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-500 text-xs md:text-sm leading-relaxed max-w-md font-sans"
+              className="text-white/80 text-xs md:text-sm leading-relaxed max-w-md font-sans"
             >
               Health is the most important thing. So we don't put it off for later. We manufacture
               high-potency antibiotics, analgesics, and dietary supplements today.
@@ -80,41 +89,40 @@ export default function Home() {
             >
               <NavLink
                 to="/products"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-slate-200 hover:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-800 hover:text-slate-950 bg-white/70 backdrop-blur-sm transition-all hover:scale-105 active:scale-95 shadow-sm"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white/30 hover:border-medical text-[10px] font-bold uppercase tracking-wider text-white hover:text-white bg-white/10 backdrop-blur-sm transition-all hover:scale-105 active:scale-95 shadow-sm"
               >
                 Explore Formulations
               </NavLink>
             </motion.div>
           </div>
 
-          {/* Right: DNA canvas + floating Certificate-of-Analysis card (signature element) */}
 
         </div>
 
         {/* ---- Band 3: bottom bar (pinned, no scroll) ---- */}
         <div className="relative z-10 max-w-7xl mx-auto w-full border-t border-slate-100 px-4 md:px-12 py-6 shrink-0 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-6 flex items-start gap-5">
-            <div className="font-sans text-4xl md:text-5xl font-bold text-slate-900 tracking-tighter leading-none">
+            {/* <div className="font-sans text-4xl md:text-5xl font-bold text-slate-900 tracking-tighter leading-none">
               01
-            </div>
-            <div className="space-y-1">
+            </div> */}
+            {/* <div className="space-y-1">
               <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest">
                 ESTD. 2024-10-12
               </span>
               <h3 className="font-sans text-xs md:text-sm font-bold text-primary">
                 First-rate Facility in Formulation Discovery
               </h3>
-            </div>
+            </div> */}
           </div>
 
-          <div className="lg:col-span-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs">
+          {/* <div className="lg:col-span-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs">
             <p className="text-slate-500 text-[11px] leading-relaxed max-w-sm">
               CHK Medicus Care is a WHO-GMP certified clinical research and formulation developer,
               utilizing Class 10,000 cleanrooms and high-speed rotary presses to deliver affordable
               healthcare.
             </p>
 
-          </div>
+          </div> */}
         </div>
       </section>
 

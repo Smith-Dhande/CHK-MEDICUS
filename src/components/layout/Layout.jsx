@@ -43,7 +43,7 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-bg-light text-slate-800 relative selection:bg-primary selection:text-white">
+    <div className="flex flex-col min-h-screen bg-bg-light text-slate-800 relative selection:bg-medical selection:text-white">
       {/* Dynamic Route Loading overlay */}
       <AnimatePresence>
         {loading && (
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
             className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center pointer-events-none"
           >
             <div className="flex items-center space-x-2 mb-3">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-serif font-bold text-xl animate-pulse">
+              <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-primary to-medical flex items-center justify-center text-white font-serif font-bold text-xl animate-pulse">
                 C
               </div>
               <div className="text-left">
@@ -100,7 +100,7 @@ export default function Layout({ children }) {
           href="https://wa.me/917122345678" // Replace with corporate WhatsApp
           target="_blank"
           rel="noopener noreferrer"
-          className="h-12 w-12 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-lg hover:bg-emerald-600 hover:scale-105 active:scale-95 transition-all group relative"
+              className="h-12 w-12 rounded-full bg-medical text-white flex items-center justify-center shadow-lg hover:bg-medical-hover hover:scale-105 active:scale-95 transition-all group relative"
           aria-label="Contact on WhatsApp"
           whileHover={{ y: -2 }}
         >

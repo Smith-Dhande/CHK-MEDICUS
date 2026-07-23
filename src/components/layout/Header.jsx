@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Mail, Phone, MapPin, Award, Building, Activity, ShieldCheck, HeartPulse } from 'lucide-react';
+import { Menu, X, ChevronDown, Mail, Phone, MapPin, Award, Building, Activity, ShieldCheck, HeartPulse, Search } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,11 +59,11 @@ export default function Header() {
   return (
     <>
       {/* Top Banner (Info bar) */}
-      <div className="w-full bg-primary text-white/80 py-2 px-4 border-b border-white/10 text-xs hidden lg:block font-sans">
+      <div className="w-full bg-primary text-white/90 py-2 px-4 border-b border-medical/25 text-xs hidden lg:block font-sans">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-accent" />
+              <MapPin size={13} className="text-medical" />
               Amravati, Maharashtra, India
             </span>
             <span className="flex items-center gap-1.5">
@@ -72,52 +72,72 @@ export default function Header() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="font-semibold tracking-wider text-[10px] bg-medical px-2.5 py-0.5 rounded-full text-white">
+            <span className="font-semibold tracking-wider text-[10px] bg-medical px-2.5 py-0.5 rounded-full text-white shadow-sm shadow-medical/20">
               ESTD. 2024
             </span>
-            <span>Care • Cure • Compassion</span>
+            <span className="text-white/85">Care • Cure • Compassion</span>
           </div>
         </div>
       </div>
 
       {/* Main Navbar */}
       <header
-        className={`fixed top-0 lg:top-[33px] left-0 w-full z-40 transition-all duration-300 ${
-          scrolled
+        className={`fixed top-0 lg:top-[33px] left-0 w-full z-40 transition-all duration-300 ${scrolled
             ? 'bg-white/95 backdrop-blur-md shadow-md py-3 lg:top-0'
-            : 'bg-white/80 backdrop-blur-sm border-b border-slate-100 py-5'
-        }`}
+            : 'bg-white/82 backdrop-blur-sm border-b border-slate-100 py-5'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 flex justify-between items-center">
           {/* Logo Brand */}
-          <NavLink to="/" className="flex items-center space-x-2 group">
-            <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-serif font-bold text-xl shadow-inner group-hover:scale-105 transition-transform duration-300">
-              C
-            </div>
-            <div>
-              <span className="font-serif text-lg md:text-xl font-bold tracking-tight text-primary flex items-center gap-1">
-                CHK MEDICUS
-              </span>
-              <span className="block text-[9px] tracking-[0.2em] font-sans font-semibold uppercase text-slate-500 -mt-1">
-                CARE • CURE • COMPASSION
-              </span>
+          <NavLink to="/" className="flex items-center group">
+            <img
+              src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/NavLogo.png?updatedAt=1784730190233"
+              alt="CHK Medicus"
+              className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                if (e.target.nextSibling) {
+                  e.target.nextSibling.style.display = 'flex';
+                }
+              }}
+            />
+            <div className="hidden items-center space-x-2" style={{ display: 'none' }}>
+              <div className="h-10 w-10 rounded-lg bg-gradient-to-tr from-primary to-medical flex items-center justify-center text-white font-serif font-bold text-xl shadow-inner group-hover:scale-105 transition-transform duration-300">
+                C
+              </div>
+              <div>
+                <span className="font-serif text-lg md:text-xl font-bold tracking-tight text-primary flex items-center gap-1">
+                  CHK MEDICUS
+                </span>
+                <span className="block text-[9px] tracking-[0.2em] font-sans font-semibold uppercase text-medical -mt-1">
+                  CARE • CURE • COMPASSION
+                </span>
+              </div>
             </div>
           </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center">
             {navLinks.map((link) => {
               if (link.mega) {
+                const hasActiveSub = link.items.some(item => location.pathname === item.path);
                 return (
                   <div
                     key={link.name}
-                    className="relative px-3 py-2"
+                    className="relative flex flex-col items-center pt-6 pb-5 px-4 group cursor-pointer"
                     onMouseEnter={() => setActiveMega(link.id)}
                     onMouseLeave={() => setActiveMega(null)}
                   >
-                    <button className="flex items-center gap-1 text-sm font-semibold text-slate-600 hover:text-primary transition-colors cursor-pointer">
+                    {/* Top line indicator */}
+                    <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${
+                      hasActiveSub ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
+                    }`} />
+                    
+                    <button className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                      hasActiveSub ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
+                    }`}>
                       {link.name}
-                      <ChevronDown size={14} className={`transition-transform duration-200 ${activeMega === link.id ? 'rotate-180' : ''}`} />
+                      <ChevronDown size={12} className={`transition-transform duration-200 ${activeMega === link.id ? 'rotate-180' : ''}`} />
                     </button>
 
                     {/* Mega Menu Dropdown */}
@@ -128,20 +148,19 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-slate-100 p-4 z-50"
+                          className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-80 bg-white rounded-b-xl shadow-xl border border-slate-100 p-4 z-50"
                         >
-                          <div className="grid gap-2">
+                          <div className="grid gap-2 text-left">
                             {link.items.map((subItem) => {
                               const Icon = subItem.icon;
                               return (
                                 <NavLink
                                   key={subItem.name}
                                   to={subItem.path}
-                                  className={({ isActive }) => `flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors ${
-                                    isActive ? 'bg-slate-50/80 border-l-2 border-medical' : ''
-                                  }`}
+                                  className={({ isActive }) => `flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors ${isActive ? 'bg-slate-50/80 border-l-2 border-medical' : ''
+                                    }`}
                                 >
-                                  <div className="p-2 rounded bg-primary/5 text-primary">
+                                    <div className="p-2 rounded bg-medical/5 text-medical">
                                     <Icon size={18} />
                                   </div>
                                   <div>
@@ -163,20 +182,32 @@ export default function Header() {
                 <NavLink
                   key={link.name}
                   to={link.path}
-                  className={({ isActive }) => `px-4 py-2 text-sm font-semibold rounded-md transition-colors ${
-                    isActive
-                      ? 'text-white bg-primary'
-                      : 'text-slate-600 hover:text-primary hover:bg-slate-50'
-                  }`}
+                  className="relative flex flex-col items-center pt-6 pb-5 px-4 group cursor-pointer"
                 >
-                  {link.name}
+                  {({ isActive }) => (
+                    <>
+                      {/* Top line indicator */}
+                      <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${
+                        isActive ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
+                      }`} />
+                      
+                      <span className={`text-[11px] font-bold uppercase tracking-wider transition-colors ${
+                        isActive ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
+                      }`}>
+                        {link.name}
+                      </span>
+                    </>
+                  )}
                 </NavLink>
               );
             })}
           </nav>
 
-          {/* Quick Inquiry CTA button */}
-          <div className="hidden lg:block">
+          {/* Quick Inquiry CTA button & Search Icon */}
+          <div className="hidden lg:flex items-center space-x-3">
+            <div className="h-9 w-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-600 hover:text-medical hover:border-medical transition-colors cursor-pointer">
+              <Search size={14} />
+            </div>
             <NavLink
               to="/contact"
               className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-medical rounded-md hover:bg-medical-hover shadow-sm hover:shadow-md transition-all active:scale-95"
@@ -219,9 +250,8 @@ export default function Header() {
                           <NavLink
                             key={subItem.name}
                             to={subItem.path}
-                            className={({ isActive }) => `block px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
-                              isActive ? 'bg-primary/5 text-primary' : 'text-slate-600 hover:text-primary hover:bg-slate-50'
-                            }`}
+                            className={({ isActive }) => `block px-3 py-2 rounded-md text-sm font-semibold transition-colors ${isActive ? 'bg-primary/5 text-primary' : 'text-slate-600 hover:text-primary hover:bg-slate-50'
+                              }`}
                           >
                             {subItem.name}
                           </NavLink>
@@ -235,9 +265,8 @@ export default function Header() {
                   <NavLink
                     key={link.name}
                     to={link.path}
-                    className={({ isActive }) => `block px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
-                      isActive ? 'bg-primary/5 text-primary' : 'text-slate-600 hover:text-primary hover:bg-slate-50'
-                    }`}
+                    className={({ isActive }) => `block px-3 py-2 rounded-md text-sm font-semibold transition-colors ${isActive ? 'bg-primary/5 text-primary' : 'text-slate-600 hover:text-primary hover:bg-slate-50'
+                      }`}
                   >
                     {link.name}
                   </NavLink>

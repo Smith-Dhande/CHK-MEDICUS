@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0B3C5D; /* Corporate Deep Indigo Blue */
-  --color-primary-hover: #072a42;
-  --color-medical: #1D7A46; /* Scientific Emerald Green */
-  --color-medical-hover: #145932;
-  --color-accent: #328CC1; /* Medical Light Azure Blue */
-  --color-bg-light: #F9F9FB; /* Ultra Clean Light Grey */
-  --color-glass-border: rgba(255, 255, 255, 0.4);
+  --color-primary: #08324f; /* Deep clinical blue */
+  --color-primary-hover: #06263d;
+  --color-medical: #1f8a55; /* Brand green */
+  --color-medical-hover: #166342;
+  --color-accent: #2fa0cf; /* Clean medical cyan */
+  --color-bg-light: #f3f8fb; /* Soft hospital white */
+  --color-glass-border: rgba(255, 255, 255, 0.45);
   
   --font-serif: "Lora", "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -103,14 +103,14 @@
 
 /* Premium Utilities */
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .dark-glassmorphism {
-  background: rgba(11, 60, 93, 0.85);
+  background: rgba(8, 50, 79, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -149,8 +149,8 @@
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(11, 60, 93, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 60, 93, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(8, 50, 79, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 138, 85, 0.04) 1px, transparent 1px);
 }
 
 /* Stagger delay classes helper */
