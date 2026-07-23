@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building, ArrowDown } from 'lucide-react';
+import { Award, ShieldCheck, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building, ArrowDown, Check } from 'lucide-react';
 import { SEO, SectionTitle, AnimatedHeading, PrimaryButton, SecondaryButton, Card, StatItem } from '../../components/shared/UI.jsx';
 import { PRODUCTS, CERTIFICATIONS, NEWS } from '../../data/mockData.js';
 
@@ -45,16 +45,7 @@ export default function Home() {
         {/* ---- Band 1: micro nav ---- */}
         <div className="relative z-20 flex items-center justify-between px-6 md:px-12 pt-28 md:pt-32 lg:pt-36 shrink-0">
           <div className="hidden xl:flex flex-col gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-            {/* {['Intro', 'Expertise', 'Technology', 'Products', 'Contact'].map((item, i) => (
-              <div
-                key={item}
-                className={`flex items-center gap-2 transition-colors cursor-pointer ${i === 0 ? 'text-slate-900' : 'hover:text-slate-900 pl-3.5'
-                  }`}
-              >
-                <span className={`h-1.5 w-1.5 rounded-full ${i === 0 ? 'bg-slate-900' : 'bg-transparent'}`} />
-                {item}
-              </div>
-            ))} */}
+
           </div>
 
         </div>
@@ -115,20 +106,15 @@ export default function Home() {
             </div> */}
           </div>
 
-          {/* <div className="lg:col-span-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs">
-            <p className="text-slate-500 text-[11px] leading-relaxed max-w-sm">
-              CHK Medicus Care is a WHO-GMP certified clinical research and formulation developer,
-              utilizing Class 10,000 cleanrooms and high-speed rotary presses to deliver affordable
-              healthcare.
-            </p>
 
-          </div> */}
         </div>
       </section>
 
       {/* 2. About Preview */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* Left: Story */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -136,44 +122,131 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="space-y-6"
           >
-            <span className="text-xs font-bold tracking-wider text-medical uppercase">Corporate Profile</span>
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold tracking-wider text-medical uppercase whitespace-nowrap">
+                Corporate Profile
+              </span>
+              <span className="h-px flex-1 bg-slate-200" />
+              <span className="font-mono text-[10px] text-slate-400 whitespace-nowrap">
+                EST. 2024 · AMRAVATI, MH
+              </span>
+            </div>
+
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary">
               Committed to Safe, Affordable & Innovative Care
             </h2>
+
             <p className="text-slate-600 text-sm leading-relaxed">
-              Established in 2024 at Amravati, Maharashtra, CHK Medicus Care Private Limited is dedicated to producing high-grade generic medicines, pain gels, supplements, and tablets. We emphasize clinical standards and strict regulatory compliance above all else.
+              Established in 2024 at Amravati, Maharashtra, CHK Medicus Care Private Limited is dedicated to
+              producing high-grade generic medicines, pain gels, supplements, and tablets. We emphasize clinical
+              standards and strict regulatory compliance above all else.
             </p>
-            <p className="text-slate-500 text-xs italic">
-              "We believe quality healthcare should not be a luxury. Through scientific optimization and local manufacturing excellence, we bring world-class therapeutics to every community."
-            </p>
+
+            <blockquote className="border-l-2 border-medical/40 pl-4">
+              <p className="text-slate-500 text-xs italic leading-relaxed">
+                "We believe quality healthcare should not be a luxury. Through scientific optimization and local
+                manufacturing excellence, we bring world-class therapeutics to every community."
+              </p>
+            </blockquote>
+
             <div>
-              <NavLink to="/about" className="inline-flex items-center text-sm font-bold text-medical hover:text-medical-hover gap-1 hover:underline">
+              <NavLink
+                to="/about"
+                className="inline-flex items-center text-sm font-bold text-medical hover:text-medical-hover gap-1 hover:underline"
+              >
                 Read Our Story <ArrowRight size={16} />
               </NavLink>
             </div>
           </motion.div>
-          <div className="grid grid-cols-2 gap-6">
-            <Card className="!p-6 text-center">
-              <Building className="mx-auto text-medical mb-3" size={32} />
-              <h3 className="font-bold text-primary text-sm mb-1">State-of-the-Art Plant</h3>
-              <p className="text-slate-500 text-xs">Engineered to eliminate contamination risks.</p>
-            </Card>
-            <Card className="!p-6 text-center" delay={0.1}>
-              <ShieldCheck className="mx-auto text-accent mb-3" size={32} />
-              <h3 className="font-bold text-primary text-sm mb-1">Strict QA Protocols</h3>
-              <p className="text-slate-500 text-xs">WHO-GMP aligned documentation workflows.</p>
-            </Card>
-            <Card className="!p-6 text-center" delay={0.2}>
-              <HeartPulse className="mx-auto text-red-500 mb-3" size={32} />
-              <h3 className="font-bold text-primary text-sm mb-1">Pure Ingredients</h3>
-              <p className="text-slate-500 text-xs">Sourced from USFDA approved suppliers.</p>
-            </Card>
-            <Card className="!p-6 text-center" delay={0.3}>
-              <Globe className="mx-auto text-primary mb-3" size={32} />
-              <h3 className="font-bold text-primary text-sm mb-1">Distribution Ready</h3>
-              <p className="text-slate-500 text-xs">Serving bulk institutional orders nationwide.</p>
-            </Card>
-          </div>
+
+          {/* Right: QA Record card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            {/* ambient glow */}
+            <div className="absolute -inset-6 bg-medical/5 rounded-full blur-3xl -z-10" />
+
+            <div className="bg-white border border-slate-200 rounded-sm shadow-xl overflow-hidden">
+              {/* Letterhead */}
+              <div className="flex items-center justify-between px-6 py-4 bg-primary">
+                <div>
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-white/50">
+                    Quality Assurance Record
+                  </p>
+                  <p className="font-serif text-sm font-bold text-white">CHK Medicus Care Pvt. Ltd.</p>
+                </div>
+                <p className="font-mono text-[10px] text-white/60">REC/CORP/2024</p>
+              </div>
+
+              {/* Perforation */}
+              <div
+                className="h-3 w-full"
+                style={{
+                  backgroundImage: "radial-gradient(circle, #e2e8f0 1.5px, transparent 1.5px)",
+                  backgroundSize: "10px 10px",
+                  backgroundPosition: "center",
+                }}
+              />
+
+              {/* Checklist */}
+              <div className="divide-y divide-slate-100">
+                {[
+                  { icon: Building, color: "text-medical", border: "border-medical/30", title: "State-of-the-Art Plant", desc: "Positive-pressure design engineered to eliminate contamination risk." },
+                  { icon: ShieldCheck, color: "text-accent", border: "border-accent/30", title: "Strict QA Protocols", desc: "WHO-GMP aligned documentation at every stage of production." },
+                  { icon: HeartPulse, color: "text-red-500", border: "border-red-500/30", title: "Pure Ingredients", desc: "Raw materials sourced exclusively from USFDA approved suppliers." },
+                  { icon: Globe, color: "text-primary", border: "border-primary/30", title: "Distribution Ready", desc: "Equipped for bulk institutional orders across India." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.15 * i }}
+                    className="flex items-start gap-4 px-6 py-4"
+                  >
+                    <div className={`mt-0.5 flex-shrink-0 w-8 h-8 rounded-full border-2 ${item.border} flex items-center justify-center`}>
+                      <item.icon size={15} className={item.color} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-primary text-sm">{item.title}</p>
+                      <p className="text-slate-500 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
+                    </div>
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: 0.15 * i + 0.35 }}
+                      className={`mt-1 flex items-center gap-1 text-[10px] font-bold ${item.color} whitespace-nowrap`}
+                    >
+                      <Check size={13} strokeWidth={3} /> PASS
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Seal + sign-off */}
+              <div className="flex items-center justify-between px-6 py-4 bg-slate-50 border-t border-slate-100">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-full border-2 border-dashed border-medical/40 flex items-center justify-center -rotate-6">
+                    <ShieldCheck size={17} className="text-medical" />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-[10px] font-bold text-primary uppercase tracking-wide">GMP Verified</p>
+                    <p className="text-[10px] text-slate-400">Amravati, Maharashtra</p>
+                  </div>
+                </div>
+                <div className="text-right leading-tight">
+                  <p className="font-serif italic text-sm text-slate-400">Q.A. Dept.</p>
+                  <p className="text-[10px] text-slate-400 font-mono">Signed &amp; Verified</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

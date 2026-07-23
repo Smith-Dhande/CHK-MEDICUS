@@ -45,20 +45,20 @@ export default function Footer() {
             </div>
             <div>
               <span className="font-serif text-base font-bold tracking-tight block text-white">CHK MEDICUS</span>
-              <span className="block text-[8px] tracking-[0.2em] font-semibold text-white/50 -mt-1">CARE • CURE • COMPASSION</span>
+              <span className="block text-[8px] tracking-[0.2em] font-semibold text-medical/60 -mt-1">CARE • CURE • COMPASSION</span>
             </div>
           </div>
           <p className="text-white/70 text-xs leading-relaxed">
             CHK Medicus Care Private Limited is a premium manufacturing and healthcare company based in Maharashtra, delivering certified, high-grade generic and proprietary formulations.
           </p>
           <div className="flex space-x-3 pt-2">
-            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-accent transition-colors" aria-label="LinkedIn Profile">
+            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-medical transition-colors" aria-label="LinkedIn Profile">
               <Linkedin size={15} />
             </a>
-            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-accent transition-colors" aria-label="Facebook Page">
+            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-medical transition-colors" aria-label="Facebook Page">
               <Facebook size={15} />
             </a>
-            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-accent transition-colors" aria-label="Twitter Feed">
+            <a href="#" className="h-8 w-8 rounded bg-white/5 flex items-center justify-center hover:bg-white/15 hover:text-medical transition-colors" aria-label="Twitter Feed">
               <Twitter size={15} />
             </a>
           </div>
@@ -66,7 +66,7 @@ export default function Footer() {
 
         {/* Corporate Links */}
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-wider text-accent mb-5">Corporate Operations</h4>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-medical mb-5">Corporate Operations</h4>
           <ul className="space-y-2.5 text-xs text-white/75">
             <li>
               <NavLink to="/about" className="hover:text-white hover:underline transition-all">Company Profile</NavLink>
@@ -113,10 +113,10 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div className="space-y-4">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-accent mb-5">Registered Office</h4>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-medical mb-5">Registered Office</h4>
           <ul className="space-y-3 text-xs text-white/75">
             <li className="flex items-start gap-2.5">
-              <MapPin size={16} className="text-accent shrink-0 mt-0.5" />
+              <MapPin size={16} className="text-medical shrink-0 mt-0.5" />
               <span>
                 Amravati, Maharashtra,<br />
                 India - 444601

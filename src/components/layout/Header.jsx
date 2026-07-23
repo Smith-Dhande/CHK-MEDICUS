@@ -59,8 +59,8 @@ export default function Header() {
   return (
     <>
       {/* Top Banner (Info bar) */}
-      <div className="w-full bg-primary text-white/90 py-2 px-4 border-b border-medical/25 text-xs hidden lg:block font-sans">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="w-full h-8 bg-primary text-white/90 px-4 border-b border-medical/25 text-xs hidden lg:block font-sans">
+        <div className="max-w-7xl mx-auto h-full flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="flex items-center gap-1.5">
               <MapPin size={13} className="text-medical" />
@@ -82,9 +82,9 @@ export default function Header() {
 
       {/* Main Navbar */}
       <header
-        className={`fixed top-0 lg:top-[33px] left-0 w-full z-40 transition-all duration-300 ${scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 lg:top-0'
-            : 'bg-white/82 backdrop-blur-sm border-b border-slate-100 py-5'
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-md py-3 lg:top-0'
+          : 'bg-white/82 backdrop-blur-sm border-b border-slate-100 py-5 lg:top-8 '
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 flex justify-between items-center">
@@ -129,13 +129,11 @@ export default function Header() {
                     onMouseLeave={() => setActiveMega(null)}
                   >
                     {/* Top line indicator */}
-                    <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${
-                      hasActiveSub ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
-                    }`} />
-                    
-                    <button className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                      hasActiveSub ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
-                    }`}>
+                    <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${hasActiveSub ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
+                      }`} />
+
+                    <button className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider transition-colors cursor-pointer ${hasActiveSub ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
+                      }`}>
                       {link.name}
                       <ChevronDown size={12} className={`transition-transform duration-200 ${activeMega === link.id ? 'rotate-180' : ''}`} />
                     </button>
@@ -160,7 +158,7 @@ export default function Header() {
                                   className={({ isActive }) => `flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors ${isActive ? 'bg-slate-50/80 border-l-2 border-medical' : ''
                                     }`}
                                 >
-                                    <div className="p-2 rounded bg-medical/5 text-medical">
+                                  <div className="p-2 rounded bg-medical/5 text-medical">
                                     <Icon size={18} />
                                   </div>
                                   <div>
@@ -187,13 +185,11 @@ export default function Header() {
                   {({ isActive }) => (
                     <>
                       {/* Top line indicator */}
-                      <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${
-                        isActive ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
-                      }`} />
-                      
-                      <span className={`text-[11px] font-bold uppercase tracking-wider transition-colors ${
-                        isActive ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
-                      }`}>
+                      <div className={`absolute top-0 left-4 right-4 h-[2px] transition-all duration-300 ${isActive ? 'bg-medical' : 'bg-slate-200 group-hover:bg-medical/50'
+                        }`} />
+
+                      <span className={`text-[11px] font-bold uppercase tracking-wider transition-colors ${isActive ? 'text-medical' : 'text-slate-500 group-hover:text-medical'
+                        }`}>
                         {link.name}
                       </span>
                     </>
