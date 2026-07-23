@@ -159,3 +159,14 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Increase horizontal margins/padding by 5% on each side (10% total) for layout containers,
+   excluding the navigation bar (header), footer, and hero-section. */
+.max-w-7xl:not(header *):not(footer *):not(.hero-section *),
+.max-w-6xl:not(header *):not(footer *):not(.hero-section *),
+.max-w-5xl:not(header *):not(footer *):not(.hero-section *),
+.max-w-4xl:not(header *):not(footer *):not(.hero-section *),
+.max-w-3xl:not(header *):not(footer *):not(.hero-section *) {
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+}
