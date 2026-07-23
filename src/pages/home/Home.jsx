@@ -240,26 +240,184 @@ export default function Home() {
       </section>
 
       {/* 3. Company Highlights */}
-      <section className="py-16 bg-slate-50 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 bg-slate-50/70 px-4 relative overflow-hidden">
+        {/* Ambient glowing medical backdrops */}
+        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-medical/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <SectionTitle subtitle="Core Pillars" title="Pillars of CHK Medicus Care" />
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: 'Scientific Rigor', desc: 'Every formulation undergoes physical-chemical assays, dissolution audits, and packaging integrity checks before line dispatch.', icon: Activity },
-              { title: 'GMP Compliance', desc: 'Our plant architecture separates HVAC air loops, preventing cross-contamination between solid and liquid processing segments.', icon: ShieldCheck },
-              { title: 'Affordable Innovation', desc: 'By streamlining operations in Amravati, we lower manufacturing costs, passing value directly to public health.', icon: Heart }
-            ].map((pillar, idx) => {
-              const Icon = pillar.icon;
-              return (
-                <div key={idx} className="bg-white border border-slate-100 p-6 rounded-xl relative overflow-hidden group hover:shadow-lg transition-all duration-300">
-                  <div className="h-10 w-10 bg-primary/5 rounded flex items-center justify-center text-primary mb-4">
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="font-serif text-lg font-bold text-primary mb-2">{pillar.title}</h3>
-                  <p className="text-slate-600 text-xs leading-relaxed">{pillar.desc}</p>
+
+            {/* Card 1 — Scientific Rigor (red/yellow swoosh, mirrors CHKMOX-375) */}
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+              <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
+                {/* diagonal swoosh */}
+                <div className="absolute -top-12 -left-20 w-72 h-72 rotate-[-38deg] pointer-events-none">
+                  <div className="w-full h-9 bg-[#eab308]" />
+                  <div className="w-full h-20 mt-1 bg-[#b91c1c]" />
                 </div>
-              );
-            })}
+
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="font-serif italic font-bold text-slate-700 text-sm">Rx</span>
+                  <span className="font-mono text-[8px] font-bold text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded uppercase tracking-wider">
+                    REF: SR-01
+                  </span>
+                </div>
+
+                <div className="relative z-10 my-auto space-y-3">
+                  <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug uppercase">
+                    Formulation Science &amp; Assay Protocols
+                  </p>
+                  <div>
+                    <h3 className="text-2xl font-black tracking-wide leading-none text-[#b91c1c]">
+                      Scientific Rigor
+                    </h3>
+                    <span className="text-[8px] font-bold text-slate-500 block mt-1.5 font-mono uppercase">
+                      Standard: IP / BP / USP
+                    </span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    Every formulation undergoes physical-chemical assays, dissolution audits, and packaging
+                    integrity checks before dispatch.
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center justify-between border-t border-slate-100 pt-3">
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-[#b91c1c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4" strokeLinecap="round" />
+                      <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                    </svg>
+                    <div className="leading-none">
+                      <span className="text-[7px] font-extrabold text-slate-700 tracking-wide block">CHK MEDICUS</span>
+                      <span className="text-[5px] font-bold text-slate-400 tracking-widest uppercase block mt-0.5">Care · Cure · Compassion</span>
+                    </div>
+                  </div>
+                  <div className="text-[9px] font-bold text-slate-800 font-mono">IP / BP / USP</div>
+                </div>
+              </div>
+
+              {/* side panel — mimics the folded box edge with tiny print */}
+              <div className="w-9 shrink-0 bg-slate-50 border-l border-slate-200 flex items-center justify-center py-4">
+                <p className="text-[6.5px] font-mono text-slate-400 tracking-wide [writing-mode:vertical-rl] whitespace-nowrap">
+                  R&amp;D LAB · DISSOLUTION AUDIT · PACKAGING INTEGRITY · PHARMACOPOEIAL STD.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 — GMP Compliance (blue/slate swoosh, mirrors CHKMOX-625) */}
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+              <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
+                <div className="absolute -top-12 -left-20 w-72 h-72 rotate-[-38deg] pointer-events-none">
+                  <div className="w-full h-9 bg-slate-400" />
+                  <div className="w-full h-20 mt-1 bg-[#1e3a8a]" />
+                </div>
+
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="font-serif italic font-bold text-slate-700 text-sm">Rx</span>
+                  <span className="font-mono text-[8px] font-bold text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded uppercase tracking-wider">
+                    REF: GC-02
+                  </span>
+                </div>
+
+                <div className="relative z-10 my-auto space-y-3">
+                  <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug uppercase">
+                    Facility Design &amp; Regulatory Alignment
+                  </p>
+                  <div>
+                    <h3 className="text-2xl font-black tracking-wide leading-none text-[#1e3a8a]">
+                      GMP Compliance
+                    </h3>
+                    <div className="w-16 h-0.5 bg-red-600 mt-1.5" />
+                    <span className="text-[8px] font-bold text-slate-500 block mt-1.5 font-mono uppercase">
+                      Zoning: HVAC Segregated
+                    </span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    Our plant architecture separates HVAC air loops, preventing cross-contamination between
+                    solid and liquid processing segments.
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center justify-between border-t border-slate-100 pt-3">
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-[#1e3a8a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4" strokeLinecap="round" />
+                      <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                    </svg>
+                    <div className="leading-none">
+                      <span className="text-[7px] font-extrabold text-slate-700 tracking-wide block">CHK MEDICUS</span>
+                      <span className="text-[5px] font-bold text-slate-400 tracking-widest uppercase block mt-0.5">Care · Cure · Compassion</span>
+                    </div>
+                  </div>
+                  <div className="text-[9px] font-bold text-slate-800 font-mono">WHO-GMP</div>
+                </div>
+              </div>
+
+              <div className="w-9 shrink-0 bg-slate-50 border-l border-slate-200 flex items-center justify-center py-4">
+                <p className="text-[6.5px] font-mono text-slate-400 tracking-wide [writing-mode:vertical-rl] whitespace-nowrap">
+                  HVAC SEGREGATION · SOLID/LIQUID SPLIT · THIRD-PARTY AUDIT · WHO-GMP CERTIFIED
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 — Affordable Innovation (maroon wave, mirrors Pantacus-DSR) */}
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+              <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
+                <svg className="absolute bottom-0 left-0 w-full h-20 pointer-events-none" viewBox="0 0 300 70" preserveAspectRatio="none">
+                  <path d="M0,35 C60,15 100,55 150,35 C200,15 250,55 300,30 L300,70 L0,70 Z" fill="#7f1d1d" />
+                  <path d="M0,45 C60,30 100,60 150,45 C200,30 250,60 300,42 L300,70 L0,70 Z" fill="#991b1b" opacity="0.7" />
+                </svg>
+
+                <div className="relative z-10 flex items-start justify-between">
+                  <span className="font-serif italic font-bold text-slate-700 text-sm">Rx</span>
+                  <span className="font-mono text-[8px] font-bold text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded uppercase tracking-wider">
+                    REF: AI-03
+                  </span>
+                </div>
+
+                <div className="relative z-10 my-auto space-y-3">
+                  <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug uppercase">
+                    Local Manufacturing, National Access
+                  </p>
+                  <div>
+                    <h3 className="text-2xl font-black tracking-wide leading-none text-[#7f1d1d]">
+                      Affordable Innovation
+                    </h3>
+                    <span className="text-[8px] font-bold text-slate-500 block mt-1.5 font-mono uppercase">
+                      Model: Local-First Mfg.
+                    </span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    By streamlining operations in Amravati, we lower manufacturing costs, passing value
+                    directly to public health.
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-3">
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-[#7f1d1d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4" strokeLinecap="round" />
+                      <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                    </svg>
+                    <div className="leading-none">
+                      <span className="text-[7px] font-extrabold text-slate-700 tracking-wide block">CHK MEDICUS</span>
+                      <span className="text-[5px] font-bold text-slate-400 tracking-widest uppercase block mt-0.5">Care · Cure · Compassion</span>
+                    </div>
+                  </div>
+                  <div className="text-[9px] font-bold text-slate-800 font-mono">AMRAVATI, MH</div>
+                </div>
+              </div>
+
+              <div className="w-9 shrink-0 bg-slate-50 border-l border-slate-200 flex items-center justify-center py-4">
+                <p className="text-[6.5px] font-mono text-slate-400 tracking-wide [writing-mode:vertical-rl] whitespace-nowrap">
+                  EST. 2024 · AMRAVATI, MH · LOCAL MFG. · LOWER COST FOR PUBLIC HEALTH
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -486,27 +644,158 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Featured Formulations" title="High-Demand Products" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {PRODUCTS.slice(0, 3).map((prod) => (
-              <Card key={prod.id} className="overflow-hidden flex flex-col justify-between !p-0">
-                <div className="h-44 w-full bg-slate-100 overflow-hidden relative">
-                  <img src={prod.imageUrl} alt={prod.brandName} className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all" />
-                  <span className="absolute top-3 right-3 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                    {prod.dosageForm}
-                  </span>
+            {/* Box Card 1: CHKMOX-375 */}
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative">
+              {/* Hover overlay for Tech Specs */}
+              <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
+                <NavLink
+                  to="/products"
+                  className="px-6 py-2.5 bg-white text-primary hover:bg-medical hover:text-white rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg transition-all transform translate-y-4 group-hover:translate-y-0 duration-300"
+                >
+                  Technical Specifications
+                </NavLink>
+              </div>
+
+              {/* Geometric header */}
+              <div className="h-4.5 w-full shrink-0" style={{ background: 'linear-gradient(115deg, #eab308 0%, #eab308 30%, #b91c1c 30%, #b91c1c 100%)' }} />
+
+              {/* Flat Content */}
+              <div className="flex-grow p-6 flex flex-col justify-between">
+                <div className="flex justify-between items-start w-full">
+                  <span className="text-[14px] font-serif italic text-slate-700 font-bold block">Rx</span>
+                  <span className="font-mono text-[9px] font-bold text-slate-500">CHKMOX-375</span>
                 </div>
-                <div className="p-6 space-y-2">
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">{prod.category}</span>
-                  <h3 className="font-serif text-lg font-bold text-primary">{prod.brandName}</h3>
-                  <p className="text-slate-600 text-xs italic">{prod.genericName}</p>
-                  <p className="text-slate-500 text-xs line-clamp-2">{prod.description}</p>
+
+                <div className="my-auto space-y-3">
+                  <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug">
+                    Amoxycillin &amp; Potassium Clavulanate Tablets IP
+                  </p>
+                  <div>
+                    <h3 className="text-2xl font-black text-[#991b1b] tracking-wider leading-none">CHKMOX-375</h3>
+                    <span className="text-[8px] font-semibold text-slate-500 block mt-1 font-sans">चेकमॉक्स-375 <span className="text-[7px]">Tablets</span></span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    A broad-spectrum antibiotic indicated for the treatment of bacterial infections of the respiratory tract, skin, and soft tissue.
+                  </p>
                 </div>
-                <div className="p-6 pt-0 border-t border-slate-50">
-                  <NavLink to={`/products/${prod.slug}`} className="block w-full py-2 bg-slate-50 border border-slate-200 text-center text-xs font-semibold text-primary rounded hover:bg-slate-100 transition-colors">
-                    Technical Specifications
-                  </NavLink>
+
+                <div className="flex items-center justify-between w-full border-t border-slate-100 pt-3">
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-5 h-5 text-medical" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4m4 8a3 3 0 0 1 3-3m-3 3a3 3 0 0 0-3-3" strokeLinecap="round" />
+                      <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                    </svg>
+                    <span className="text-[7.5px] font-bold text-slate-400 font-sans tracking-widest uppercase">CHK MEDICUS</span>
+                  </div>
+
+                  <div className="text-[9px] font-bold text-slate-800 font-mono">10 x 6 Tablets</div>
                 </div>
-              </Card>
-            ))}
+              </div>
+
+              {/* Geometric footer */}
+              <div className="h-3 w-full shrink-0" style={{ background: 'linear-gradient(115deg, #b91c1c 0%, #b91c1c 82%, #eab308 82%, #eab308 100%)' }} />
+            </div>
+
+            {/* Box Card 2: CHKMOX-625 */}
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative">
+              {/* Hover overlay for Tech Specs */}
+              <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
+                <NavLink
+                  to="/products"
+                  className="px-6 py-2.5 bg-white text-primary hover:bg-medical hover:text-white rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg transition-all transform translate-y-4 group-hover:translate-y-0 duration-300"
+                >
+                  Technical Specifications
+                </NavLink>
+              </div>
+
+              {/* Geometric header */}
+              <div className="h-4.5 w-full shrink-0" style={{ background: 'linear-gradient(115deg, #2563eb 0%, #2563eb 35%, #0f172a 35%, #0f172a 100%)' }} />
+
+              {/* Flat Content */}
+              <div className="flex-grow p-6 flex flex-col justify-between">
+                <div className="flex justify-between items-start w-full">
+                  <span className="text-[14px] font-serif italic text-slate-700 font-bold block">Rx</span>
+                  <span className="font-mono text-[9px] font-bold text-slate-500">CHKMOX-625</span>
+                </div>
+
+                <div className="my-auto space-y-3">
+                  <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug">
+                    Amoxycillin &amp; Potassium Clavulanate Tablets IP
+                  </p>
+                  <div className="flex items-baseline gap-1">
+                    <h3 className="text-2xl font-black text-[#1e3a8a] tracking-wider leading-none">CHKMOX</h3>
+                    <span className="bg-[#b91c1c] text-white px-1.5 py-0.5 text-xs font-bold rounded font-mono leading-none">625</span>
+                  </div>
+                  <p className="text-slate-600 text-[11px] leading-relaxed">
+                    A high-potency antibiotic formulation engineered for maximum bioavailability and rapid absorption against infections.
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between w-full border-t border-slate-100 pt-3">
+                  <div className="flex items-center gap-1.5">
+                    <svg className="w-5 h-5 text-medical" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4m4 8a3 3 0 0 1 3-3m-3 3a3 3 0 0 0-3-3" strokeLinecap="round" />
+                      <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                    </svg>
+                    <span className="text-[7.5px] font-bold text-slate-400 font-sans tracking-widest uppercase">CHK MEDICUS</span>
+                  </div>
+
+                  <div className="text-[9px] font-bold text-slate-800 font-mono">10 x 6 Tablets</div>
+                </div>
+              </div>
+
+              {/* Blue swoop footer */}
+              <div className="h-3.5 w-full shrink-0 relative overflow-hidden bg-[#1e40af]">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-900" />
+                <div className="absolute -top-3 left-0 right-0 h-6 bg-white rounded-t-full opacity-10" />
+              </div>
+            </div>
+
+            {/* Box Card 3: Cefokus-200 */}
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative p-6">
+              {/* Hover overlay for Tech Specs */}
+              <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
+                <NavLink
+                  to="/products"
+                  className="px-6 py-2.5 bg-white text-primary hover:bg-medical hover:text-white rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg transition-all transform translate-y-4 group-hover:translate-y-0 duration-300"
+                >
+                  Technical Specifications
+                </NavLink>
+              </div>
+
+              {/* Bottom swoop wedge decoration */}
+              <div className="absolute bottom-0 left-0 right-0 h-4 bg-[#0f3263] relative overflow-hidden shrink-0 -mx-6 -mb-6">
+                <div className="absolute inset-x-0 bottom-0 h-3 bg-[#1e40af] transform skew-y-2" />
+              </div>
+
+              <div className="flex justify-between items-start w-full">
+                <span className="text-[14px] font-serif italic text-slate-700 font-bold block">Rx</span>
+                <span className="bg-[#1e40af] text-white text-[7px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider font-mono">10 x 10 Tablets</span>
+              </div>
+
+              <div className="my-auto space-y-3">
+                <p className="text-[10px] font-bold text-slate-700 tracking-tight leading-snug">
+                  Cefpodoxime Proxetil Tablets I.P. 200 mg
+                </p>
+                <div>
+                  <h3 className="text-xl font-extrabold text-[#1f8a55] tracking-tight leading-none">Cefokus-200</h3>
+                  <div className="w-16 h-0.5 bg-emerald-500 mt-1.5" />
+                  <span className="text-[8px] font-bold text-slate-500 block mt-1.5 font-mono uppercase">Tablets</span>
+                </div>
+                <p className="text-slate-600 text-[11px] leading-relaxed">
+                  Third-generation cephalosporin antibiotic tablet indicated for severe respiratory tract and urinary tract infections.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center border-t border-slate-5 pt-3 pb-4">
+                <svg className="w-4 h-4 text-medical" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 20v-8m0 0a4 4 0 0 1 4-4m-4 4a4 4 0 0 0-4-4" />
+                  <circle cx="12" cy="6" r="1.5" fill="currentColor" />
+                </svg>
+                <span className="text-[6.5px] font-extrabold text-slate-700 tracking-wide mt-0.5 leading-none">CHK MEDICUS</span>
+                <span className="text-[5px] font-bold text-slate-400 tracking-widest uppercase leading-none mt-0.5">CARE CURE COMPASSION</span>
+              </div>
+            </div>
           </div>
           <div className="text-center mt-10">
             <PrimaryButton to="/products">Browse Whole Catalog</PrimaryButton>
