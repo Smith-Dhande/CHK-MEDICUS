@@ -927,39 +927,18 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Paper sheet form */}
-          <div className="relative rotate-1 hover:rotate-0 transition-transform duration-500">
-            {/* pin/tack */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 h-5 w-5 rounded-full bg-medical shadow-md border-2 border-white" />
-
-            {/* stacked paper shadow sheets behind */}
-            <div className="absolute inset-0 bg-white rotate-2 translate-x-2 translate-y-2 shadow-md" />
-            <div className="absolute inset-0 bg-white -rotate-1 -translate-x-1 translate-y-1 shadow-md" />
-
-            {/* main paper sheet */}
-            <div
-              className="relative p-8 pt-10 shadow-xl space-y-6"
+          {/* Stacked Paper Container */}
+          <div className="relative">
+            {/* Draft paper sheet rotated at 12 degrees behind the form */}
+            <div 
+              className="absolute inset-0 bg-[#fffdf9] border border-slate-200/80 shadow-md rounded-sm rotate-[12deg] scale-[1.01] translate-x-2 translate-y-3 z-0"
               style={{
-                backgroundColor: "#fffdf8",
-                backgroundImage:
-                  "repeating-linear-gradient(#fffdf8, #fffdf8 27px, #e7e2d3 28px)",
-                boxShadow:
-                  "0 20px 40px -12px rgba(0,0,0,0.25), inset 0 0 60px rgba(0,0,0,0.03)",
+                backgroundImage: "repeating-linear-gradient(#fffdf9, #fffdf9 27px, #e8e3d3 28px)",
               }}
-            >
-              {/* torn top edge */}
-              <div
-                className="absolute -top-[1px] left-0 right-0 h-3"
-                style={{
-                  backgroundColor: "#fffdf8",
-                  clipPath:
-                    "polygon(0% 100%, 2% 30%, 5% 90%, 8% 20%, 11% 80%, 14% 10%, 17% 70%, 20% 25%, 23% 95%, 26% 15%, 29% 75%, 32% 30%, 35% 90%, 38% 20%, 41% 80%, 44% 10%, 47% 70%, 50% 25%, 53% 95%, 56% 15%, 59% 75%, 62% 30%, 65% 90%, 68% 20%, 71% 80%, 74% 10%, 77% 70%, 80% 25%, 83% 95%, 86% 15%, 89% 75%, 92% 30%, 95% 90%, 98% 20%, 100% 100%)",
-                }}
-              />
+            />
 
-              {/* red margin line like ruled notepad */}
-              <div className="absolute top-0 bottom-0 left-10 w-px bg-rose-300/50 hidden md:block" />
-
+            {/* Modern Contact Form Card (Matching Reference Image) */}
+            <div className="relative bg-white p-8 md:p-10 border border-slate-100 rounded-sm shadow-xl space-y-6 z-10">
               <h3 className="font-serif text-lg font-bold text-primary text-center">
                 Request Distributor Exclusivity
               </h3>
@@ -970,41 +949,70 @@ export default function Home() {
                   alert("Inquiry sent successfully!");
                   e.target.reset();
                 }}
-                className="space-y-5 text-xs relative"
+                className="space-y-6 text-xs"
               >
-                <div className="grid grid-cols-2 gap-6">
+                {/* Row 1: Name & Email */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="How should we address you?"
+                      required
+                      className="w-full pb-2 bg-transparent border-0 border-b border-slate-200 focus:border-primary focus:ring-0 outline-none text-slate-700 text-sm placeholder:text-slate-400 transition-colors"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Where should we reach you?"
+                      required
+                      className="w-full pb-2 bg-transparent border-0 border-b border-slate-200 focus:border-primary focus:ring-0 outline-none text-slate-700 text-sm placeholder:text-slate-400 transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 2: Phone Number */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    Phone Number
+                  </label>
                   <input
-                    type="text"
-                    placeholder="Your Name"
+                    type="tel"
+                    placeholder="A number to connect over"
                     required
-                    className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    required
-                    className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
+                    className="w-full pb-2 bg-transparent border-0 border-b border-slate-200 focus:border-primary focus:ring-0 outline-none text-slate-700 text-sm placeholder:text-slate-400 transition-colors"
                   />
                 </div>
-                <input
-                  type="text"
-                  placeholder="Company / Drug License Number"
-                  required
-                  className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none placeholder:text-slate-400 font-serif"
-                />
-                <textarea
-                  placeholder="Tell us about your distribution reach"
-                  required
-                  rows="3"
-                  className="w-full p-1.5 bg-transparent border-0 border-b border-dashed border-slate-400 focus:border-medical outline-none resize-none placeholder:text-slate-400 font-serif"
-                ></textarea>
 
-                <button
-                  type="submit"
-                  className="w-full py-2.5 bg-medical text-white font-bold tracking-wider uppercase hover:bg-medical-hover transition-colors text-[10px] cursor-pointer shadow-sm"
-                >
-                  Submit Inquiry
-                </button>
+                {/* Row 3: Message */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    Message
+                  </label>
+                  <textarea
+                    placeholder="What's the vision? We're listening..."
+                    required
+                    rows="4"
+                    className="w-full pb-2 bg-transparent border-0 border-b border-slate-200 focus:border-primary focus:ring-0 outline-none text-slate-700 text-sm placeholder:text-slate-400 resize-none transition-colors"
+                  ></textarea>
+                </div>
+
+                {/* Row 4: Submit Button */}
+                <div className="pt-4 flex justify-start">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#1c1917] hover:bg-[#292524] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300 shadow-md cursor-pointer"
+                  >
+                    Send Message
+                    <Send size={12} className="text-white/90" />
+                  </button>
+                </div>
               </form>
             </div>
           </div>

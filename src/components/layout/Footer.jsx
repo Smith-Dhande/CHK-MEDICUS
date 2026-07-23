@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-primary text-white font-sans mt-auto">
       {/* Newsletter / CTA Pre-Footer */}
-      <div className="border-b border-white/10 py-12 px-4 lg:px-8">
+      {/* <div className="border-b border-white/10 py-12 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
           <div className="max-w-xl text-center lg:text-left">
             <h3 className="font-serif text-2xl font-bold tracking-tight mb-2">Subscribe to Scientific Bulletins</h3>
@@ -33,21 +33,34 @@ export default function Footer() {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
 
       {/* Main Footer Links */}
       <div className="py-16 px-4 lg:px-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         {/* Info Column */}
         <div className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <div className="h-9 w-9 rounded bg-white text-primary flex items-center justify-center font-serif font-bold text-lg">
-              C
+          <NavLink to="/" className="flex items-center group w-fit">
+            <img
+              src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/NavLogo.png?updatedAt=1784730190233"
+              alt="CHK Medicus"
+              className="h-11 w-auto object-contain bg-white p-1 rounded transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                if (e.target.nextSibling) {
+                  e.target.nextSibling.style.display = 'flex';
+                }
+              }}
+            />
+            <div className="hidden items-center space-x-2" style={{ display: 'none' }}>
+              <div className="h-9 w-9 rounded bg-white text-primary flex items-center justify-center font-serif font-bold text-lg">
+                C
+              </div>
+              <div>
+                <span className="font-serif text-base font-bold tracking-tight block text-white">CHK MEDICUS</span>
+                <span className="block text-[8px] tracking-[0.2em] font-semibold text-medical/60 -mt-1">CARE • CURE • COMPASSION</span>
+              </div>
             </div>
-            <div>
-              <span className="font-serif text-base font-bold tracking-tight block text-white">CHK MEDICUS</span>
-              <span className="block text-[8px] tracking-[0.2em] font-semibold text-medical/60 -mt-1">CARE • CURE • COMPASSION</span>
-            </div>
-          </div>
+          </NavLink>
           <p className="text-white/70 text-xs leading-relaxed">
             CHK Medicus Care Private Limited is a premium manufacturing and healthcare company based in Maharashtra, delivering certified, high-grade generic and proprietary formulations.
           </p>
@@ -142,8 +155,22 @@ export default function Footer() {
 
       {/* Copyright Footer */}
       <div className="border-t border-white/10 py-6 px-4 text-center text-white/50 text-[10px] tracking-wider uppercase font-medium">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-          <span>&copy; {new Date().getFullYear()} CHK Medicus Care Private Limited. All Rights Reserved.</span>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+            <span>&copy; {new Date().getFullYear()} CHK Medicus Care Private Limited. All Rights Reserved.</span>
+            <span className="hidden md:inline text-white/20">|</span>
+            <span>
+              Designed by{' '}
+              <a
+                href="https://clickinnovate.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-white hover:underline transition-colors lowercase"
+              >
+                clickinnovate
+              </a>
+            </span>
+          </div>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>•</span>

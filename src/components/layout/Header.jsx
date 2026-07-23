@@ -201,9 +201,7 @@ export default function Header() {
 
           {/* Quick Inquiry CTA button & Search Icon */}
           <div className="hidden lg:flex items-center space-x-3">
-            <div className="h-9 w-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-600 hover:text-medical hover:border-medical transition-colors cursor-pointer">
-              <Search size={14} />
-            </div>
+
             <NavLink
               to="/contact"
               className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-medical rounded-md hover:bg-medical-hover shadow-sm hover:shadow-md transition-all active:scale-95"

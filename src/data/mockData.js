@@ -210,13 +210,13 @@ export const LEADERSHIP = [
     imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop'
   },
   {
-    name: 'Mr. Rajesh Dhande',
+    name: 'Mr. Shivam Sharma',
     role: 'Managing Director & Operations Head',
     bio: 'An expert in manufacturing logistics and supply chain optimization. Oversees the Amravati facility operations ensuring high capacity utilization under strict safety benchmarks.',
     imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop'
   },
   {
-    name: 'Mrs. Smita Dhande',
+    name: 'Mrs. Amruta Sain',
     role: 'Director - Quality & Regulatory Affairs',
     bio: 'Holds a Masters in Pharmacy and coordinates with CDSCO and state regulators to maintain compliance. Drives the quality assurance frameworks at CHK Medicus.',
     imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop'
