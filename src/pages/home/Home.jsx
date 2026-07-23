@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building, ArrowDown, Check, FlaskConical, Truck } from 'lucide-react';
+import { Award, ShieldCheck, Building2, BadgeCheck, ChevronLeft, ChevronRight, Heart, Users, CheckCircle, Database, HelpCircle, Activity, HeartPulse, Send, Globe, Star, ArrowRight, Building, ArrowDown, Check, FlaskConical, Truck, Headset } from 'lucide-react';
 import { SEO, SectionTitle, AnimatedHeading, PrimaryButton, SecondaryButton, Card, StatItem } from '../../components/shared/UI.jsx';
 import { PRODUCTS, CERTIFICATIONS, NEWS } from '../../data/mockData.js';
+import Testimonials from './Testimonials';
 
 export default function Home() {
   const CATEGORIES = [
@@ -860,30 +861,67 @@ export default function Home() {
 
 
       {/* 10. Why Choose CHK Medicus */}
-      <section className="py-20 bg-slate-50 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <span className="text-xs font-bold text-medical uppercase tracking-wider">Strategic Partnering</span>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary">
-              Why Doctors, Pharmacies & Distributors Trust Us
+      <section className="py-20 bg-slate-50 px-4 relative overflow-hidden">
+        {/* decorative background blob */}
+        <div className="absolute -left-32 top-10 w-72 h-72 bg-medical/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute left-20 bottom-0 w-40 h-40 bg-medical/5 rounded-full blur-2xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative">
+          <div className="space-y-8 relative">
+            {/* eyebrow with accent line */}
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-medical" />
+              <span className="text-xs font-bold text-medical uppercase tracking-wider">
+                Strategic Partnering
+              </span>
+            </div>
+
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary leading-tight">
+              Why Doctors, Pharmacies &{" "}
+              <span className="relative inline-block">
+                Distributors
+                <svg
+                  className="absolute -bottom-1 left-0 w-full h-2 text-medical/40"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M0,5 Q25,0 50,5 T100,5" stroke="currentColor" strokeWidth="4" fill="none" />
+                </svg>
+              </span>{" "}
+              Trust Us
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              We operate with standard raw materials, fast transit cycles, and complete documentation. Our distribution channels enjoy strict geographical exclusivity rights.
-            </p>
-            <div className="space-y-4">
+
+
+
+            {/* numbered list, no icons/cards */}
+            <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
               {[
-                { title: 'Geographic Exclusivity', desc: 'Protects ethical distribution channels from price competition.' },
-                { title: 'Robust Supply Continuity', desc: 'Guarantees regular batch replenishments from our warehouse.' },
-                { title: 'Responsive Support Teams', desc: 'Direct access to chemical dossiers, testing sheets, and marketing brochures.' }
+                { title: 'Territorial Exclusivity', desc: "Safeguards our partners' markets from internal price undercutting and channel conflict." },
+                { title: 'Uninterrupted Supply Chain', desc: 'Consistent, on-schedule batch replenishment backed by dedicated warehousing.' },
+                { title: 'Dedicated Partner Support', desc: 'Direct access to drug master files, certificates of analysis, and marketing collateral.' }
               ].map((item, idx) => (
-                <div key={idx} className="flex gap-3">
-                  <div className="h-6 w-6 rounded-full bg-medical/15 text-medical flex items-center justify-center shrink-0">
-                    <CheckCircle size={14} />
-                  </div>
+                <div key={idx} className="group flex gap-5 py-5">
+                  <span className="font-serif text-2xl font-bold text-medical/30 group-hover:text-medical transition-colors duration-300 leading-none w-8 shrink-0">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <div>
-                    <h3 className="text-xs font-bold text-primary">{item.title}</h3>
-                    <p className="text-slate-500 text-[10px]">{item.desc}</p>
+                    <h3 className="text-sm font-bold text-primary mb-1">{item.title}</h3>
+                    <p className="text-slate-500 text-xs leading-relaxed max-w-md">{item.desc}</p>
                   </div>
+                </div>
+              ))}
+            </div>
+
+            {/* trust stat strip */}
+            <div className="flex items-center gap-8">
+              {[
+                { value: "15+", label: "Countries Served" },
+                { value: "500+", label: "Active Partners" },
+                { value: "24/7", label: "Partner Support" },
+              ].map((stat, idx) => (
+                <div key={idx}>
+                  <p className="font-serif text-xl font-bold text-primary">{stat.value}</p>
+                  <p className="text-slate-500 text-[10px] uppercase tracking-wide">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -1170,28 +1208,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 14. Testimonials */}
-      <section className="py-20 bg-slate-50 px-4">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Client Audits" title="Distributor Feedback" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { client: 'Apex Distribution, Pune', text: 'CHK Medicus delivers consistent tablet batches with flawless Alu-Alu seal packaging. The shelf-life stability has been highly appreciated by our retailers.' },
-              { client: 'Med-Plus Enterprises, Nagpur', text: 'Their Diclofenac pain relief gel spreads excellently and has zero separation issues during hot seasons. Excellent customer support for license papers.' },
-              { client: 'Saraswati Pharmaceuticals, Mumbai', text: 'PCD franchise terms with CHK Medicus are transparent. The geographical exclusivity is strictly enforced, helping us grow steadily.' }
-            ].map((test, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm relative space-y-4">
-                <div className="flex text-amber-400 gap-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
-                </div>
-                <p className="text-slate-600 text-xs italic">"{test.text}"</p>
-                <div className="text-[10px] font-bold text-primary uppercase tracking-wider">— {test.client}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* 14.Testimonials Section*/}
+      <Testimonials />
       {/* 15. Latest News Preview */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
