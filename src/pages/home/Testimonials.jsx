@@ -42,7 +42,7 @@ const testimonials = [
             "Their transparent documentation, product consistency and responsive support have significantly improved our distribution efficiency. We confidently recommend CHK Medicus for long-term pharmaceutical partnerships.",
 
         image:
-            "https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottel1.png",
+            "https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottle2.png",
     },
 
     {
@@ -58,7 +58,7 @@ const testimonials = [
             "Working with CHK Medicus has been an outstanding experience. Their quality assurance, reliable dispatch schedule and premium packaging standards have helped strengthen our business across multiple regions.",
 
         image:
-            "https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottel1.png",
+            "https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottle3.png",
     },
 ];
 
@@ -257,11 +257,10 @@ export default function Testimonials() {
                                                     <button
                                                         key={item.id}
                                                         onClick={() => setCurrent(index)}
-                                                        className={`h-2 rounded-full transition-all duration-300 ${
-                                                            current === index
-                                                                ? "w-8 bg-primary"
-                                                                : "w-2 bg-slate-300 hover:bg-slate-400"
-                                                        }`}
+                                                        className={`h-2 rounded-full transition-all duration-300 ${current === index
+                                                            ? "w-8 bg-primary"
+                                                            : "w-2 bg-slate-300 hover:bg-slate-400"
+                                                            }`}
                                                     />
                                                 ))}
                                             </div>
