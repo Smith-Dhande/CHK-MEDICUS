@@ -745,12 +745,12 @@ export default function Home() {
       {/* 6. Research & Innovation Preview */}
       <section className="relative h-[70vh] bg-[#08324F] overflow-hidden">
 
-        {/* Right-side image — ~30% width, fading smoothly into the navy */}
+        {/* Right-side image — 50% width, fading smoothly into the navy */}
         <div
-          className="absolute right-0 top-0 h-full w-full md:w-[34%]"
+          className="absolute right-0 top-0 h-full w-full md:w-1/2"
           style={{
-            maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+            maskImage: "linear-gradient(to right, transparent 0%, black 50%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 50%)",
           }}
         >
           <img
