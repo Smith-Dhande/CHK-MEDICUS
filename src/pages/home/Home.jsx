@@ -54,7 +54,7 @@ export default function Home() {
       "rotate-[-0.8deg] hover:rotate-0 hover:-translate-y-0.5"
     ];
     const rotation = rotations[idx % rotations.length];
-    
+
     // Colorful themes for the sticky notes (darkened slightly for contrast)
     const themes = [
       {
@@ -79,13 +79,13 @@ export default function Home() {
       }
     ];
     const theme = themes[idx % themes.length];
-    
+
     // Spec abbreviations or text to display on labeled tape
     const tapeLabels = ["LINE A", "LINE B", "LINE C", "LINE D"];
     const tapeLabel = tapeLabels[idx % tapeLabels.length];
 
     return (
-      <div 
+      <div
         className={`relative border p-3.5 md:p-4 rounded-sm shadow-md hover:shadow-xl transition-all duration-550 flex flex-col justify-between h-full min-h-0 select-none ${theme.bg} ${rotation}`}
       >
         {/* Matte Labeled Tape strip holding the card */}
@@ -113,7 +113,7 @@ export default function Home() {
               {cat.name.charAt(0)}
             </span>
           </div>
-          
+
           {/* Text Column */}
           <div className="flex-grow min-w-0 flex flex-col justify-center">
             <div className="flex items-baseline flex-wrap gap-x-2">
@@ -589,78 +589,125 @@ export default function Home() {
       </section>
 
       {/* 5. Manufacturing Excellence Preview */}
-      <section className="py-20 bg-primary text-white px-4 relative overflow-hidden bg-grid-pattern">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <span className="text-xs font-bold text-accent uppercase tracking-wider">Manufacturing Excellence</span>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight">
-              Class 10,000 Cleanrooms & Sophisticated HVAC Architecture
-            </h2>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Our formulation lines in Amravati operate within sterile ambient parameters. Sophisticated HVAC HEPA-filter networks preserve room air pressures, checking particulates and moisture levels to lock-in absolute batch stability.
-            </p>
-            <ul className="space-y-3.5 text-xs text-white/80">
-              <li className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-medical" /> Separated material and personnel transit locks
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-medical" /> High-speed blister and strip packaging machinery
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-medical" /> Zero liquid discharge (ZLD) environmental loops
-              </li>
-            </ul>
-            <div>
-              <NavLink to="/manufacturing" className="inline-flex items-center text-sm font-bold text-accent hover:underline gap-1">
-                Inside the Facility <ArrowRight size={16} />
-              </NavLink>
+      <section className="py-24 bg-white text-primary px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-5">
+                <span className="text-[10px] font-bold text-medical uppercase tracking-widest">Manufacturing Excellence</span>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight">
+                  Class 10,000 Cleanrooms &amp; Sophisticated HVAC Architecture
+                </h2>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Our formulation lines in Amravati operate within sterile ambient parameters. Sophisticated HVAC HEPA-filter networks preserve room air pressures, checking particulates and moisture levels to lock-in absolute batch stability.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {[
+                  { title: 'Class 10,000', desc: 'ISO-grade particulate control across all suites' },
+                  { title: 'HVAC Segregation', desc: 'Positive-pressure airlocks and directional airflow' },
+                  { title: 'Purified Water System', desc: 'USP-grade multi-effect distillation loops' },
+                  { title: 'Zero Liquid Discharge', desc: 'Double-stage neutralizers and RO recycling' },
+                ].map((item, i) => (
+                  <div key={i} className="p-5 border border-slate-200 bg-white group hover:border-medical/30 transition-colors">
+                    <h4 className="text-[11px] font-bold text-primary uppercase tracking-tight mb-2">{item.title}</h4>
+                    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-6">
+                <NavLink to="/manufacturing" className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-bold text-xs uppercase tracking-wider hover:bg-primary-hover transition-all active:scale-95">
+                  Inside the Facility <ArrowRight size={14} className="ml-2" />
+                </NavLink>
+                <span className="text-slate-400 text-[10px] font-mono uppercase tracking-widest">Explore Plant</span>
+              </div>
             </div>
-          </div>
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-white/10">
-            <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
-              alt="Cleanroom manufacturing machinery"
-              className="w-full h-[320px] object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-500"
-            />
+
+            <div className="space-y-5">
+              <div className="relative rounded-xl overflow-hidden border border-slate-100 shadow-sm">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
+                  alt="Cleanroom manufacturing machinery"
+                  className="w-full h-[360px] object-cover"
+                />
+                <div className="absolute top-4 right-4 bg-white border border-slate-200 px-3 py-1.5 shadow-sm">
+                  <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Certified</span>
+                  <span className="text-sm font-bold text-primary">WHO-GMP</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { num: '10M+', label: 'Units / Mo' },
+                  { num: '100%', label: 'cGMP Score' },
+                  { num: '0', label: 'Cross-contam.' },
+                ].map((stat, i) => (
+                  <div key={i} className="text-center p-4 border border-slate-100 bg-slate-50/50">
+                    <div className="font-serif text-[1.3rem] font-bold text-primary leading-none mb-1.5">{stat.num}</div>
+                    <div className="text-[9px] text-slate-400 uppercase tracking-wider font-bold">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 6. Research & Innovation Preview */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 rounded-xl overflow-hidden shadow-lg border border-slate-100">
-            <img
-              src="https://images.unsplash.com/photo-1579684389782-64d84b5e905d?q=80&w=600&auto=format&fit=crop"
-              alt="R&D Lab trials"
-              className="w-full h-[320px] object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2 space-y-6">
-            <span className="text-xs font-bold text-medical uppercase tracking-wider">Research & Discovery</span>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary">
-              Innovative Solid Oral & Topical Dispersions
-            </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              Our scientific team studies active compound releases, developing advanced multi-component topical gels and high-bioavailability softgels. We run accelerated stability chambers matching zone IVB requirements.
-            </p>
-            <div className="grid grid-cols-2 gap-4 text-xs font-semibold text-primary">
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg">
-                <Database size={16} className="text-medical" /> Bio-equivalence Testing
-              </div>
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg">
-                <Activity size={16} className="text-medical" /> Lipophilic Emulsions
-              </div>
-            </div>
-            <div>
-              <NavLink to="/research-development" className="inline-flex items-center text-sm font-bold text-medical hover:underline gap-1">
-                Explore R&D Pipeline <ArrowRight size={16} />
-              </NavLink>
-            </div>
+      <section className="relative h-[70vh] bg-[#08324F] overflow-hidden">
+
+        {/* Right-side image — ~30% width, fading smoothly into the navy */}
+        <div
+          className="absolute right-0 top-0 h-full w-full md:w-[34%]"
+          style={{
+            maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
+          }}
+        >
+          <img
+            src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/medicinebg.webp"
+            alt="Formulation research"
+            className="w-full h-full object-cover"
+            style={{ filter: "grayscale(0.5) brightness(0.7) contrast(1.05)" }}
+          />
+          {/* navy tint so the photo reads as part of the same surface, not a pasted-in photo */}
+          <div className="absolute inset-0 bg-[#08324F] mix-blend-color opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#08324F] via-transparent to-[#08324F]/50" />
+        </div>
+
+        {/* Giant faint watermark for depth */}
+        <span className="absolute -left-6 bottom-0 font-serif font-black text-white/[0.04] text-[26vw] leading-none select-none pointer-events-none">
+          R&amp;D
+        </span>
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 max-w-xl">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-medical">
+            Research &amp; Discovery
+          </span>
+
+          <h2 className="font-serif font-bold text-white leading-[1.05] text-4xl md:text-6xl mt-5">
+            Solid Oral &amp;<br />
+            <span className="text-medical">Topical Dispersions</span>
+          </h2>
+
+          <p className="text-slate-400 text-sm mt-6">
+            Zone IVB-stable. Bio-equivalence tested.
+          </p>
+
+          <div className="mt-9">
+            <NavLink
+              to="/research-development"
+              className="group inline-flex items-baseline gap-2 text-sm font-bold text-white border-b border-white/30 pb-1 hover:border-medical hover:text-medical transition-colors"
+            >
+              Explore R&amp;D Pipeline
+              <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span>
+            </NavLink>
           </div>
         </div>
       </section>
-
       {/* 7. Quality Assurance Highlights */}
       <section className="py-16 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
