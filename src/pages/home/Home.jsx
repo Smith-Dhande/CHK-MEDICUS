@@ -6,6 +6,144 @@ import { SEO, SectionTitle, AnimatedHeading, PrimaryButton, SecondaryButton, Car
 import { PRODUCTS, CERTIFICATIONS, NEWS } from '../../data/mockData.js';
 
 export default function Home() {
+  const CATEGORIES = [
+    {
+      atc: "ATC J01",
+      name: "Antibiotics",
+      form: "tablets & capsules",
+      description:
+        "High-speed tableting and capsule encapsulation lines running under sterile Class 10,000 environmental parameters.",
+      specs: ["Class 10,000", "WHO-GMP batch"],
+      color: "text-medical",
+    },
+    {
+      atc: "ATC N02",
+      name: "Pain Relief & Analgesics",
+      form: "ointments & gels",
+      description:
+        "Homogenizers and vacuum emulsification lines processing micro-emulsion topical gels with deep skin-penetration profiles.",
+      specs: ["Vacuum emulsified", "Deep penetration"],
+      color: "text-accent",
+    },
+    {
+      atc: "ATC A11",
+      name: "Nutraceuticals",
+      form: "softgels & syrups",
+      description:
+        "Precision encapsulation of highly bioavailable lipophilic softgels, oil suspensions, and liquid supplements.",
+      specs: ["Lipophilic softgel", "Bio-availability"],
+      color: "text-amber-600",
+    },
+    {
+      atc: "ATC A09",
+      name: "General Healthcare",
+      form: "syrups & suspensions",
+      description:
+        "Automated compounding, formulation mixing, and syrup bottle filling lines with strict microbial contamination locks.",
+      specs: ["Batch mixed", "Microbial lock"],
+      color: "text-emerald-600",
+    },
+  ];
+
+  function MonographEntry({ cat, idx }) {
+    const rest = cat.name.slice(1).toUpperCase();
+    const rotations = [
+      "rotate-[-1deg] hover:rotate-0 hover:-translate-y-0.5",
+      "rotate-[0.8deg] hover:rotate-0 hover:-translate-y-0.5",
+      "rotate-[1.2deg] hover:rotate-0 hover:-translate-y-0.5",
+      "rotate-[-0.8deg] hover:rotate-0 hover:-translate-y-0.5"
+    ];
+    const rotation = rotations[idx % rotations.length];
+    
+    // Colorful themes for the sticky notes (darkened slightly for contrast)
+    const themes = [
+      {
+        bg: "bg-emerald-100/40 border-emerald-300/50 shadow-emerald-900/5 hover:shadow-emerald-900/10",
+        tape: "bg-emerald-200/80 border-emerald-300/60 text-emerald-900",
+        dot: "bg-emerald-500",
+      },
+      {
+        bg: "bg-sky-100/40 border-sky-300/50 shadow-sky-900/5 hover:shadow-sky-900/10",
+        tape: "bg-sky-200/80 border-sky-300/60 text-sky-900",
+        dot: "bg-sky-500",
+      },
+      {
+        bg: "bg-amber-100/45 border-amber-300/50 shadow-amber-900/5 hover:shadow-amber-900/10",
+        tape: "bg-amber-200/80 border-amber-300/60 text-amber-950",
+        dot: "bg-amber-500",
+      },
+      {
+        bg: "bg-rose-100/40 border-rose-300/50 shadow-rose-900/5 hover:shadow-rose-900/10",
+        tape: "bg-rose-200/80 border-rose-300/60 text-rose-900",
+        dot: "bg-rose-500",
+      }
+    ];
+    const theme = themes[idx % themes.length];
+    
+    // Spec abbreviations or text to display on labeled tape
+    const tapeLabels = ["LINE A", "LINE B", "LINE C", "LINE D"];
+    const tapeLabel = tapeLabels[idx % tapeLabels.length];
+
+    return (
+      <div 
+        className={`relative border p-3.5 md:p-4 rounded-sm shadow-md hover:shadow-xl transition-all duration-550 flex flex-col justify-between h-full min-h-0 select-none ${theme.bg} ${rotation}`}
+      >
+        {/* Matte Labeled Tape strip holding the card */}
+        <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-4.5 border shadow-[0_1px_1.5px_rgba(0,0,0,0.015)] backdrop-blur-[0.5px] rotate-[-1deg] z-20 flex items-center justify-center ${theme.tape}`}>
+          <span className="font-mono text-[6px] font-bold tracking-widest uppercase">
+            {tapeLabel}
+          </span>
+        </div>
+
+        {/* Technical Header */}
+        <div className="flex items-center justify-between mb-1.5 shrink-0 border-b border-dashed border-slate-300 pb-1">
+          <span className="text-[7.5px] font-mono uppercase tracking-[0.12em] text-slate-500 font-bold">
+            MONOGRAPH SPEC
+          </span>
+          <span className="text-[7.5px] font-mono uppercase tracking-[0.12em] text-slate-500 font-bold">
+            {cat.atc}
+          </span>
+        </div>
+
+        {/* Core Monograph Content (Float-free layout) */}
+        <div className="flex gap-3 flex-grow min-h-0 mt-1.5">
+          {/* Drop Cap Column */}
+          <div className="shrink-0 flex items-center justify-center">
+            <span className={`${cat.color} font-serif font-black text-[2.6rem] md:text-[3.2rem] leading-none`}>
+              {cat.name.charAt(0)}
+            </span>
+          </div>
+          
+          {/* Text Column */}
+          <div className="flex-grow min-w-0 flex flex-col justify-center">
+            <div className="flex items-baseline flex-wrap gap-x-2">
+              <h3 className="font-serif font-bold text-primary tracking-wide text-[12.5px] md:text-[13.5px] lg:text-[14.5px]">
+                {rest}
+              </h3>
+              <span className="italic text-slate-500/80 text-[9.5px] md:text-[10px]">
+                /{cat.form}/
+              </span>
+            </div>
+            <p className="text-slate-650 text-[10.5px] md:text-xs leading-relaxed mt-1 font-normal line-clamp-2">
+              {cat.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Technical Specs Footer */}
+        <div className="mt-2.5 pt-1.5 border-t border-dotted border-slate-300 flex flex-wrap gap-x-3 gap-y-0.5 shrink-0">
+          {cat.specs.map((spec) => (
+            <div key={spec} className="flex items-center gap-1">
+              <span className={`w-0.5 h-0.5 rounded-full ${theme.dot}`} />
+              <span className="text-[7.5px] uppercase tracking-[0.08em] text-slate-500 font-bold font-mono">
+                {spec}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -423,29 +561,31 @@ export default function Home() {
       </section>
 
       {/* 4. Product Categories Preview */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Therapeutic Segments" title="Primary Categories We Manufacture" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { title: 'Antibiotics', desc: 'Bacterial and broad-spectrum agents.', count: 'Tablets & Capsules' },
-              { title: 'Pain Relief & Analgesics', desc: 'NSAIDs, tablets and active pain-gels.', count: 'Topicals & Solids' },
-              { title: 'Nutraceuticals', desc: 'High potency vitamins and minerals.', count: 'Softgels & Syrups' },
-              { title: 'General Healthcare', desc: 'Essential over-the-counter formulations.', count: 'Syrups & Suspensions' }
-            ].map((cat, idx) => (
-              <Card key={idx} className="!p-6 flex flex-col justify-between group cursor-pointer hover:!border-medical/30">
-                <div>
-                  <h3 className="font-serif text-base font-bold text-primary group-hover:text-medical transition-colors mb-2">{cat.title}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">{cat.desc}</p>
-                </div>
-                <span className="block text-[10px] font-bold text-slate-400 mt-4 tracking-wider uppercase">{cat.count}</span>
-              </Card>
+      <section className="relative h-auto md:h-[100dvh] md:min-h-[650px] lg:min-h-[750px] bg-slate-50/40 overflow-hidden flex flex-col justify-between py-12 md:py-0 px-4">
+        {/* Subtle blueprint grid overlay */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] pointer-events-none" />
+
+        {/* 10% Navigation Spacer */}
+        <div className="hidden md:block h-[10vh] shrink-0 w-full" />
+
+        {/* Main Content Area: 80% of remaining space (72vh) */}
+        <div className="h-auto md:h-[72vh] flex flex-col justify-between max-w-6xl mx-auto w-full relative z-10 py-2">
+          <SectionTitle title="Primary Categories We Manufacture" />
+
+          {/* Scientific taped cards grid: gap-6 for separation and rotations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 h-auto md:h-[46vh] my-4">
+            {CATEGORIES.map((cat, idx) => (
+              <MonographEntry key={cat.name} cat={cat} idx={idx} />
             ))}
           </div>
-          <div className="text-center mt-10">
+
+          <div className="text-center shrink-0">
             <PrimaryButton to="/products">View Formulation Catalog</PrimaryButton>
           </div>
         </div>
+
+        {/* 18% Bottom Spacer */}
+        <div className="hidden md:block h-[18vh] shrink-0 w-full" />
       </section>
 
       {/* 5. Manufacturing Excellence Preview */}

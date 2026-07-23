@@ -64,20 +64,17 @@ export const SectionTitle = ({ subtitle, title, alignment = 'center', light = fa
       variants={containerVariants}
     >
       {subtitle && (
-        <span className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 px-3 py-1 rounded-full ${
-          light ? 'bg-white/10 text-accent' : 'bg-primary/6 text-primary'
-        }`}>
+        <span className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 px-3 py-1 rounded-full ${light ? 'bg-white/10 text-accent' : 'bg-primary/6 text-primary'
+          }`}>
           {subtitle}
         </span>
       )}
-      <h2 className={`font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${
-        light ? 'text-white' : 'text-primary'
-      }`}>
+      <h2 className={`font-serif text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight leading-tight ${light ? 'text-white' : 'text-primary'
+        }`}>
         {title}
       </h2>
-      <div className={`h-1 w-20 mt-4 rounded-full ${
-        alignment === 'left' ? 'mr-auto' : alignment === 'right' ? 'ml-auto' : 'mx-auto'
-      } ${light ? 'bg-white/30' : 'bg-primary/20'}`}>
+      <div className={`h-1 w-20 mt-4 rounded-full ${alignment === 'left' ? 'mr-auto' : alignment === 'right' ? 'ml-auto' : 'mx-auto'
+        } ${light ? 'bg-white/30' : 'bg-primary/20'}`}>
         <div className={`h-full w-8 rounded-full ${light ? 'bg-white' : 'bg-medical'}`}></div>
       </div>
     </motion.div>
