@@ -1,0 +1,16 @@
+{
+  "name": "CHK Medicus Care",
+  "short_name": "CHK Medicus",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F9FB",
+  "theme_color": "#08324F",
+  "description": "Premium manufacturer of affordable, high-quality pharmaceutical formulations.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

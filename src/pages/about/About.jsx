@@ -152,7 +152,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Foundational Goals" title="Chapters of Our Legacy" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-12">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-10 lg:pb-0 mt-12">
             {[
               {
                 num: '01',
@@ -181,7 +181,7 @@ export default function About() {
             ].map((chap, i) => (
               <div
                 key={i}
-                className={`bg-white border border-slate-200/60 rounded-xl p-8 relative shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${chap.shadow} flex flex-col justify-between h-[250px] overflow-hidden`}
+                className={`bg-white border border-slate-200/60 rounded-xl p-8 relative shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${chap.shadow} flex flex-col justify-between h-[280px] sm:h-[250px] overflow-hidden shrink-0 w-[290px] lg:w-auto lg:shrink snap-center`}
               >
                 {/* Glowing node inside card */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-slate-100/50 to-transparent -mr-6 -mt-6 rounded-full rotate-45 select-none pointer-events-none" />
@@ -392,9 +392,9 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Executive Directors" title="Board of Management" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-12 md:pb-0 mt-12">
             {LEADERSHIP.map((lead, idx) => (
-              <div key={idx} className="group bg-white border border-slate-200/70 p-5 rounded-xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between h-[470px]">
+              <div key={idx} className="group bg-white border border-slate-200/70 p-5 rounded-xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between h-[470px] shrink-0 w-[290px] md:w-auto md:shrink snap-center">
 
                 {/* ID Badge Header */}
                 <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-3">
@@ -414,6 +414,7 @@ export default function About() {
                   <img
                     src={lead.imageUrl}
                     alt={lead.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                   />
                   {/* Subtle stamp overlay */}

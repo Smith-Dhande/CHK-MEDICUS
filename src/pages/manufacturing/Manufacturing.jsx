@@ -276,7 +276,8 @@ export default function Manufacturing() {
         <div className="absolute right-[5%] bottom-[0%] h-[90%] w-[32%] pointer-events-none select-none z-10 hidden lg:block">
           <img
             src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottel1.png"
-            alt=""
+            alt="Pharmaceutical medicine bottle model"
+            loading="lazy"
             className="w-full h-full object-contain rotate-12 opacity-80"
           />
         </div>

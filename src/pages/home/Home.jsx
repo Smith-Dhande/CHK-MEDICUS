@@ -219,7 +219,7 @@ export default function Home() {
           muted
           loop
           playsInline
-          poster="https://ik.imagekit.io/clickinv/CHK-MEDICUS/HerobgVDO.mp4"
+          poster="https://ik.imagekit.io/clickinv/CHK-MEDICUS/medicinebg.webp"
         >
           <source src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/HerobgVDO.mp4" type="video/mp4" />
         </video>
@@ -439,10 +439,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <SectionTitle subtitle="Core Pillars" title="Pillars of CHK Medicus Care" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0">
 
             {/* Card 1 — Scientific Rigor (red/yellow swoosh, mirrors CHKMOX-375) */}
-            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500 shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
                 {/* diagonal swoosh */}
                 <div className="absolute -top-12 -left-20 w-72 h-72 rotate-[-38deg] pointer-events-none">
@@ -499,7 +499,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 — GMP Compliance (blue/slate swoosh, mirrors CHKMOX-625) */}
-            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500 shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
                 <div className="absolute -top-12 -left-20 w-72 h-72 rotate-[-38deg] pointer-events-none">
                   <div className="w-full h-9 bg-slate-400" />
@@ -555,7 +555,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 — Affordable Innovation (maroon wave, mirrors Pantacus-DSR) */}
-            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500">
+            <div className="group flex border border-slate-300 rounded-sm bg-white h-[400px] overflow-hidden shadow-[0_8px_24px_rgba(8,50,79,0.06)] hover:shadow-[0_16px_36px_rgba(8,50,79,0.12)] hover:-translate-y-1 transition-all duration-500 shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               <div className="flex-1 relative flex flex-col p-6 overflow-hidden">
                 <svg className="absolute bottom-0 left-0 w-full h-20 pointer-events-none" viewBox="0 0 300 70" preserveAspectRatio="none">
                   <path d="M0,35 C60,15 100,55 150,35 C200,15 250,55 300,30 L300,70 L0,70 Z" fill="#7f1d1d" />
@@ -695,8 +695,9 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=75&w=600&fm=webp&fit=crop"
                   alt="Cleanroom manufacturing machinery"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   style={{ filter: "grayscale(0.2) contrast(1.05)" }}
                 />
@@ -761,6 +762,7 @@ export default function Home() {
           <img
             src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/medicinebg.webp"
             alt="Formulation research"
+            loading="lazy"
             className="w-full h-full object-cover"
             style={{ filter: "grayscale(0.5) brightness(0.7) contrast(1.05)" }}
           />
@@ -805,7 +807,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Zero Defects Policy" title="Quality Assurance Standards" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 mt-4">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-x-6 md:gap-y-10 md:pb-0 mt-4">
             {[
               {
                 label: "Raw Material Verification",
@@ -832,7 +834,7 @@ export default function Home() {
                 color: "sky",
               },
             ].map((qa, idx) => (
-              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300`}>
+              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300 shrink-0 w-[260px] md:w-auto md:shrink snap-center`}>
                 {/* washi tape */}
                 <div
                   className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`}
@@ -1028,7 +1030,7 @@ export default function Home() {
       <section className="py-20 px-4 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Compliance Certificates" title="Accredited Standards" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0">
             {CERTIFICATIONS.map((cert, idx) => {
               const boxColors = [
                 "border-l-emerald-500",
@@ -1039,11 +1041,11 @@ export default function Home() {
               const boxColor = boxColors[idx % boxColors.length];
 
               return (
-                <Card
-                  key={cert.id}
-                  delay={idx * 0.05}
-                  className={`!p-6 !bg-white border border-slate-200/50 border-l-4 ${boxColor} transition-all duration-300 rounded-lg flex flex-col justify-between h-full`}
-                >
+                <div key={cert.id} className="shrink-0 w-[260px] md:w-auto md:shrink snap-center flex">
+                  <Card
+                    delay={idx * 0.05}
+                    className={`!p-6 !bg-white border border-slate-200/50 border-l-4 ${boxColor} transition-all duration-300 rounded-lg flex flex-col justify-between h-full w-full`}
+                  >
                   <div>
                     <div className="flex items-center justify-between mb-3.5">
                       <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-sm">
@@ -1067,7 +1069,8 @@ export default function Home() {
                   >
                     Download Certificate PDF →
                   </NavLink>
-                </Card>
+                  </Card>
+                </div>
               );
             })}
           </div>
@@ -1078,9 +1081,9 @@ export default function Home() {
       <section className="py-20 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Featured Formulations" title="High-Demand Products" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0">
             {/* Box Card 1: CHKMOX-375 */}
-            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative">
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               {/* Hover overlay for Tech Specs */}
               <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
                 <NavLink
@@ -1132,7 +1135,7 @@ export default function Home() {
             </div>
 
             {/* Box Card 2: CHKMOX-625 */}
-            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative">
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               {/* Hover overlay for Tech Specs */}
               <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
                 <NavLink
@@ -1187,7 +1190,7 @@ export default function Home() {
             </div>
 
             {/* Box Card 3: Cefokus-200 */}
-            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative p-6">
+            <div className="overflow-hidden flex flex-col justify-between border border-slate-200/80 shadow-[0_8px_30px_rgba(8,50,79,0.04)] rounded-2xl h-[380px] bg-white group hover:shadow-[0_20px_45px_rgba(8,50,79,0.12)] hover:-translate-y-2 transition-all duration-500 relative p-6 shrink-0 w-[290px] md:w-auto md:shrink snap-center">
               {/* Hover overlay for Tech Specs */}
               <div className="absolute inset-0 bg-[#08324f]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 rounded-2xl">
                 <NavLink
@@ -1258,11 +1261,12 @@ export default function Home() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Newsroom" title="Scientific Bulletins" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0">
             {NEWS.map((art) => (
-              <Card key={art.id} className="!p-0 overflow-hidden flex flex-col justify-between">
+              <div key={art.id} className="shrink-0 w-[290px] md:w-auto md:shrink snap-center flex">
+                <Card className="!p-0 overflow-hidden flex flex-col justify-between w-full">
                 <div className="h-40 w-full overflow-hidden relative">
-                  <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
+                  <img src={art.imageUrl} alt={art.title} loading="lazy" className="w-full h-full object-cover" />
                   <span className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-primary text-[9px] font-bold px-2 py-0.5 rounded">
                     {art.category}
                   </span>
@@ -1278,6 +1282,7 @@ export default function Home() {
                   </NavLink>
                 </div>
               </Card>
+              </div>
             ))}
           </div>
         </div>

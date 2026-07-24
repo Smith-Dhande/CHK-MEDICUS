@@ -62,7 +62,7 @@ export default function ProductDetails() {
           {/* Product Image Column */}
           <div className="lg:col-span-5 space-y-4">
             <div className="w-full h-80 bg-slate-100 rounded-xl overflow-hidden shadow-inner border border-slate-200">
-              <img src={product.imageUrl} alt={product.brandName} className="w-full h-full object-cover" />
+              <img src={product.imageUrl} alt={product.brandName} fetchpriority="high" loading="eager" className="w-full h-full object-cover" />
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -217,11 +217,12 @@ export default function ProductDetails() {
         <section className="py-16 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <h3 className="font-serif text-xl font-bold text-primary mb-8 text-center">Related Therapeutic Formulations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0">
               {relatedProducts.map((rel) => (
-                <Card key={rel.id} className="overflow-hidden flex flex-col justify-between !p-0">
+                <div key={rel.id} className="shrink-0 w-[280px] md:w-auto md:shrink snap-center flex">
+                  <Card className="overflow-hidden flex flex-col justify-between !p-0 w-full">
                   <div className="h-40 w-full overflow-hidden">
-                    <img src={rel.imageUrl} alt={rel.brandName} className="w-full h-full object-cover" />
+                    <img src={rel.imageUrl} alt={rel.brandName} loading="lazy" className="w-full h-full object-cover" />
                   </div>
                   <div className="p-6 space-y-2">
                     <h4 className="font-serif text-base font-bold text-primary">{rel.brandName}</h4>
@@ -236,6 +237,7 @@ export default function ProductDetails() {
                     </button>
                   </div>
                 </Card>
+                </div>
               ))}
             </div>
           </div>

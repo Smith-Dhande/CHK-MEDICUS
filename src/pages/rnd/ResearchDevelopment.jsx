@@ -75,7 +75,8 @@ export default function ResearchDevelopment() {
         <div className="absolute left-[8%] bottom-[0%] h-[90%] w-[32%] pointer-events-none select-none z-30 hidden lg:block">
           <img
             src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottel1.png"
-            alt=""
+            alt="Pharmaceutical medicine bottle"
+            loading="lazy"
             className="w-full h-full object-contain rotate-[-12deg]"
           />
         </div>
@@ -107,7 +108,7 @@ export default function ResearchDevelopment() {
         <div className="max-w-6xl mx-auto">
           <SectionTitle subtitle="F&amp;D Fields" title="Areas of Formulation Science" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0 mt-12">
             {[
               {
                 title: 'Solubility Enhancement',
@@ -142,7 +143,7 @@ export default function ResearchDevelopment() {
             ].map((field, idx) => (
               <div
                 key={idx}
-                className="relative bg-white border border-slate-300 rounded-b-[40px] rounded-t-sm p-6 pt-8 pb-14 flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group"
+                className="relative bg-white border border-slate-300 rounded-b-[40px] rounded-t-sm p-6 pt-8 pb-14 flex flex-col justify-between h-[360px] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group shrink-0 w-[290px] md:w-auto md:shrink snap-center"
               >
                 {/* Volumetric measurement tick marks on left margin */}
                 <div className="absolute left-3.5 top-12 bottom-20 w-4 flex flex-col justify-between text-[7px] font-mono text-slate-400 select-none pointer-events-none z-10 border-r border-slate-200 pr-1">

@@ -92,7 +92,7 @@ export default function Products() {
                 <Card key={prod.id} className="overflow-hidden flex flex-col justify-between !p-0">
                   {/* Top section: image */}
                   <div className="h-48 w-full bg-slate-100 overflow-hidden relative">
-                    <img src={prod.imageUrl} alt={prod.brandName} className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-300" />
+                    <img src={prod.imageUrl} alt={prod.brandName} loading="lazy" className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-300" />
                     <span className="absolute top-3 right-3 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                       {prod.dosageForm}
                     </span>

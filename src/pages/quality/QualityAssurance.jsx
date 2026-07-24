@@ -104,7 +104,7 @@ export default function QualityAssurance() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Instrumentation Laboratory" title="Analytical Testing Equipment" />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-8 md:pb-0 mt-8">
             {[
               { 
                 title: 'High Performance Liquid Chromatography (HPLC)', 
@@ -124,7 +124,7 @@ export default function QualityAssurance() {
             ].map((lab, idx) => (
               <div 
                 key={idx} 
-                className="bg-white p-8 border border-slate-200 rounded-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                className="bg-white p-8 border border-slate-200 rounded-sm hover:shadow-md transition-shadow flex flex-col justify-between shrink-0 w-[290px] md:w-auto md:shrink snap-center"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2">

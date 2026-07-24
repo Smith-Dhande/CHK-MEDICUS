@@ -42,7 +42,10 @@ export default function Footer() {
           <NavLink to="/" className="flex items-center group w-fit">
             <img
               src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/NavLogo.png?updatedAt=1784730190233"
-              alt="CHK Medicus"
+              alt="CHK Medicus Logo"
+              width="168"
+              height="44"
+              loading="lazy"
               className="h-11 w-auto object-contain bg-white p-1 rounded transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
                 e.target.style.display = 'none';

@@ -90,7 +90,11 @@ export default function Header() {
           <NavLink to="/" className="flex items-center group">
             <img
               src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/NavLogo.png?updatedAt=1784730190233"
-              alt="CHK Medicus"
+              alt="CHK Medicus Logo"
+              width="168"
+              height="44"
+              fetchpriority="high"
+              loading="eager"
               className="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => {
                 e.target.style.display = 'none';

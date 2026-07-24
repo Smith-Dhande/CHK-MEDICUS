@@ -13,14 +13,15 @@ export default function Layout({ children }) {
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    // Simulate minor route transition load
-    setLoading(true);
+  }, [pathname]);
+
+  // Initial mount load overlay trigger
+  useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 450);
+    }, 300); // brief initial entrance fade-out
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, []);
 
   // Monitor scroll for Back-to-Top visibility
   useEffect(() => {
@@ -94,7 +95,13 @@ export default function Layout({ children }) {
           aria-label="Contact on WhatsApp"
           whileHover={{ y: -2 }}
         >
-          <i className="fa-brands fa-whatsapp text-2xl"></i>
+          <svg
+            className="h-6 w-6 fill-current text-white"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M12.031 2a9.967 9.967 0 0 0-8.634 14.975L2 22l5.175-1.357A9.953 9.953 0 0 0 12.032 22c5.513 0 10-4.487 10-10s-4.487-10-10-10zm5.825 14.075c-.275.775-1.35 1.5-2.225 1.7-.6.15-1.375.275-3.95-.775-3.3-1.35-5.4-4.725-5.575-4.95-.15-.225-1.425-1.9-1.425-3.625 0-1.725.9-2.575 1.225-2.925.325-.35.7-.425.95-.425.25 0 .5 0 .725.025.25.025.575-.1.9 0.675.325.775 1.125 2.75 1.225 2.95.1.2.175.425.025.725-.15.3-.225.45-.45.725-.225.275-.475.6-.675.8-.2.225-.425.475-.175.9.25.425 1.1 1.8 2.375 2.925 1.625 1.45 3-1.3 3.325-1.9-.3-.575-.6-.725-.75-.425-.15-.3-.15-.55-.075-.725.075-.175.425-.35.85-.775.425-.425.725-.1.85.125.125.225.25.5.375.775l.1.2z" />
+          </svg>
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-bold py-1 px-2.5 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
             WhatsApp Inquiry
           </span>

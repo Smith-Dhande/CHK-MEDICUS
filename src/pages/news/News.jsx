@@ -94,7 +94,7 @@ export default function News() {
               filteredArticles.map((art) => (
                 <article key={art.id} className="border-b border-slate-100 pb-10 space-y-4">
                   <div className="h-64 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
-                    <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
+                    <img src={art.imageUrl} alt={art.title} loading="lazy" className="w-full h-full object-cover" />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider">

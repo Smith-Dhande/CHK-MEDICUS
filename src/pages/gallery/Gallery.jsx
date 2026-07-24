@@ -246,6 +246,7 @@ export default function Gallery() {
                     <img
                       src={photo.url}
                       alt={photo.title}
+                      loading="lazy"
                       className="w-full h-full object-cover grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -326,6 +327,7 @@ export default function Gallery() {
                 <img
                   src={filteredPhotos[lightboxIndex].url}
                   alt={filteredPhotos[lightboxIndex].title}
+                  loading="lazy"
                   className="max-w-full max-h-[60vh] object-contain rounded-sm"
                 />
               </div>

@@ -30,7 +30,7 @@ export const PRODUCTS = [
       'WHO-GMP certified manufacturing process ensuring purity and efficacy'
     ],
     storage: 'Store in a cool, dry place. Protect from direct light and moisture. Keep below 25°C.',
-    imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   },
   {
@@ -50,7 +50,7 @@ export const PRODUCTS = [
       'Double-tested raw materials ensure consistent dissolution rate'
     ],
     storage: 'Store below 30°C. Protect from moisture and light.',
-    imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   },
   {
@@ -70,7 +70,7 @@ export const PRODUCTS = [
       'Cooling sensation of menthol combined with the anti-inflammatory power of Diclofenac'
     ],
     storage: 'Store below 25°C. Do not freeze. Tighten cap securely after use.',
-    imageUrl: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   },
   {
@@ -90,7 +90,7 @@ export const PRODUCTS = [
       'Premium liquid-filled softgel technology for enhanced intestinal absorption'
     ],
     storage: 'Store in a dry place. Protect from heat, light, and moisture. Keep below 25°C.',
-    imageUrl: 'https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1550572017-edd951b55104?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   },
   {
@@ -110,7 +110,7 @@ export const PRODUCTS = [
       'Sourced from certified USFDA-approved API manufacturers'
     ],
     storage: 'Store in cool and dry place. Keep out of reach of children.',
-    imageUrl: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   },
   {
@@ -130,7 +130,7 @@ export const PRODUCTS = [
       'Stabilized liquid medium preventing degradation of active vitamins'
     ],
     storage: 'Store in cool, dark place. Shake well before use.',
-    imageUrl: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=75&w=400&fm=webp&fit=crop',
     pdfUrl: '#'
   }
 ];
@@ -207,19 +207,19 @@ export const LEADERSHIP = [
     name: 'Dr. C. H. Kulkarni',
     role: 'Co-Founder & Chairman',
     bio: 'Over 28 years of core experience in pharmaceutical operations and healthcare strategy. Committed to bridging the gap between affordable drugs and global quality parameters.',
-    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=75&w=300&fm=webp&fit=crop'
   },
   {
     name: 'Mr. Shivam Sharma',
     role: 'Managing Director & Operations Head',
     bio: 'An expert in manufacturing logistics and supply chain optimization. Oversees the Amravati facility operations ensuring high capacity utilization under strict safety benchmarks.',
-    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=75&w=300&fm=webp&fit=crop'
   },
   {
     name: 'Mrs. Amruta Sain',
     role: 'Director - Quality & Regulatory Affairs',
     bio: 'Holds a Masters in Pharmacy and coordinates with CDSCO and state regulators to maintain compliance. Drives the quality assurance frameworks at CHK Medicus.',
-    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=75&w=300&fm=webp&fit=crop'
   }
 ];
 
@@ -232,7 +232,7 @@ export const NEWS = [
     date: 'June 15, 2026',
     summary: 'A new high-shear granulator and fluid bed dryer system has been successfully integrated at our Amravati plant, doubling the manufacturing speed.',
     content: 'We are thrilled to announce that CHK Medicus Care Private Limited has officially operationalized its automated powder processing and granulation section. Designed in compliance with cleanroom Class D specifications, the line leverages automated double-cone blending to ensure uniform active ingredient distribution. This development will scale our tablet output capacity to 2 million units per shift, fulfilling the surge in regional pharmaceutical demand.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=75&w=600&fm=webp&fit=crop'
   },
   {
     id: 'quality-compliance-gmp',
@@ -242,7 +242,7 @@ export const NEWS = [
     date: 'May 04, 2026',
     summary: 'The audit evaluated cleanroom sterility, raw material validation protocols, and batch record documentation.',
     content: 'Our core commitment to quality is validated by external certifications. During a comprehensive 3-day surveillance audit, state drug inspectors and independent auditors reviewed our documentation archives, QA processes, and plant safety systems. The audit concluded with zero major observations, reinforcing our credentials as a trusted partner for contract manufacturing.',
-    imageUrl: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=800&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=75&w=600&fm=webp&fit=crop'
   },
   {
     id: 'supplements-market-growth',
@@ -252,7 +252,7 @@ export const NEWS = [
     date: 'April 22, 2026',
     summary: 'Understanding the clinical demand for liquid-filled soft gelatin capsule systems in modern dietary therapeutics.',
     content: 'Preventive medicine has taken center stage in post-pandemic healthcare. CHK Medicus Research and Development team is currently developing specialized lipid-carrier systems to improve the bioavailability of lipophilic vitamins. Our softgel capsule development project aims to deliver stable, high-potency formulations that ensure uniform intestinal release and higher serum absorption rates.',
-    imageUrl: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=75&w=600&fm=webp&fit=crop'
   }
 ];
 
