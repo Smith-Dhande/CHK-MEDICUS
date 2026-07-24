@@ -75,19 +75,9 @@ export default function Layout({ children }) {
       {/* Spacer to push content down because navbar is fixed (omitted on Home route for transparent background overlay) */}
       {pathname !== '/' && <div className="h-[76px] lg:h-[116px]"></div>}
 
-      {/* Main Pages Container with Motion Page transitions */}
+      {/* Main Pages Container */}
       <main className="flex-grow">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={pathname}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
+        {children}
       </main>
 
       {/* Global Corporate Footer */}

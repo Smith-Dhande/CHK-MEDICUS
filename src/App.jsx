@@ -2,16 +2,17 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
 
+import Manufacturing from './pages/manufacturing/Manufacturing.jsx';
+import ResearchDevelopment from './pages/rnd/ResearchDevelopment.jsx';
+import Gallery from './pages/gallery/Gallery.jsx';
+
 // Lazy loading all page components for code-splitting and optimization
 const Home = lazy(() => import('./pages/home/Home.jsx'));
 const About = lazy(() => import('./pages/about/About.jsx'));
 const Products = lazy(() => import('./pages/products/Products.jsx'));
 const ProductDetails = lazy(() => import('./pages/products/ProductDetails.jsx'));
-const Manufacturing = lazy(() => import('./pages/manufacturing/Manufacturing.jsx'));
 const QualityAssurance = lazy(() => import('./pages/quality/QualityAssurance.jsx'));
-const ResearchDevelopment = lazy(() => import('./pages/rnd/ResearchDevelopment.jsx'));
 const Certifications = lazy(() => import('./pages/certifications/Certifications.jsx'));
-const Gallery = lazy(() => import('./pages/gallery/Gallery.jsx'));
 const News = lazy(() => import('./pages/news/News.jsx'));
 const Careers = lazy(() => import('./pages/careers/Careers.jsx'));
 const Contact = lazy(() => import('./pages/contact/Contact.jsx'));
