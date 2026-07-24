@@ -6,11 +6,11 @@ export default function Manufacturing() {
   const [currSlide, setCurrSlide] = useState(0);
 
   const machData = [
-    { 
+    {
       num: '01',
-      name: 'Double Cone Blender', 
+      name: 'Double Cone Blender',
       capacity: '500 Kg capacity',
-      source: 'Cadmach India', 
+      source: 'Cadmach India',
       func: 'Used for uniform solid dry formulation mixing before compressing batches.',
       metric: '1800 RPM • SS316',
       cardBg: 'bg-[#ecf5ee] border-emerald-300/60',
@@ -19,11 +19,11 @@ export default function Manufacturing() {
       textColor: 'text-[#1e3f20]',
       subTextColor: 'text-emerald-700'
     },
-    { 
+    {
       num: '02',
-      name: 'Rotary Tablet Press', 
+      name: 'Rotary Tablet Press',
       capacity: '27 Station Output',
-      source: 'Korsch AG Compliant', 
+      source: 'Korsch AG Compliant',
       func: 'High-speed solid tableting with automated compression dynamics.',
       metric: '120k/HR • D-TOOLING',
       cardBg: 'bg-[#fcf3eb] border-orange-300/50',
@@ -32,11 +32,11 @@ export default function Manufacturing() {
       textColor: 'text-[#4d280e]',
       subTextColor: 'text-orange-700'
     },
-    { 
+    {
       num: '03',
-      name: 'Volumetric Syrup Filler', 
+      name: 'Volumetric Syrup Filler',
       capacity: '6 Head Rotary',
-      source: 'Pam-Pac Systems', 
+      source: 'Pam-Pac Systems',
       func: 'Automatic filling and sealed induction closures for oral liquids.',
       metric: 'VOLUMETRIC FILLING',
       cardBg: 'bg-[#fef9e7] border-yellow-300/50',
@@ -45,11 +45,11 @@ export default function Manufacturing() {
       textColor: 'text-[#423305]',
       subTextColor: 'text-amber-700'
     },
-    { 
+    {
       num: '04',
-      name: 'Jacketed Homogenizer', 
+      name: 'Jacketed Homogenizer',
       capacity: 'Ointment Emulsion',
-      source: 'LMT Processing', 
+      source: 'LMT Processing',
       func: 'High-viscosity dispersion for stable pain-gels and topical creams.',
       metric: 'TEMP REGULATED',
       cardBg: 'bg-[#f0f3ff] border-indigo-300/50',
@@ -58,11 +58,11 @@ export default function Manufacturing() {
       textColor: 'text-[#1c2966]',
       subTextColor: 'text-indigo-700'
     },
-    { 
+    {
       num: '05',
-      name: 'Laminated Tube Filler', 
+      name: 'Laminated Tube Filler',
       capacity: 'Pneumatic System',
-      source: 'Pneumatic Pack', 
+      source: 'Pneumatic Pack',
       func: 'Integrated tube feeding, filling, sealing, and ultrasonic crimping.',
       metric: 'ULTRASONIC SEAL',
       cardBg: 'bg-[#fdf2f8] border-pink-300/50',
@@ -87,7 +87,7 @@ export default function Manufacturing() {
         <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-accent/5 rounded-full blur-[130px] pointer-events-none" />
         {/* Technical background blueprint line */}
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/90">
@@ -101,7 +101,7 @@ export default function Manufacturing() {
               World-Class <br />
               <span className="text-medical">Manufacturing Plant</span>
             </h1>
-            
+
             <p className="text-slate-305 text-sm md:text-base leading-relaxed max-w-2xl font-light">
               Our state-of-the-art formulations facility in Amravati, Maharashtra, is custom-engineered for absolute environmental sterility, positive pressure airlocks, and high-speed batch output integrity.
             </p>
@@ -117,7 +117,7 @@ export default function Manufacturing() {
                 <span className="text-[9px] font-mono text-slate-400 font-bold tracking-widest uppercase">PLANT SPECIFICATIONS</span>
                 <span className="text-[8px] font-mono text-emerald-400 font-bold uppercase tracking-wider bg-emerald-950/40 border border-emerald-900/50 px-2 py-0.5 rounded-full">ACTIVE SECURE</span>
               </div>
-              
+
               <ul className="space-y-4">
                 {[
                   { label: "Building Area", value: "Schedule M Compliant" },
@@ -136,6 +136,137 @@ export default function Manufacturing() {
         </div>
       </section>
 
+
+
+      {/* Section 2: Dosage Line Compartments */}
+      <section className="py-24 bg-slate-50 px-6 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle subtitle="Line Segments" title="Formulation Dosage Sections" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
+            {[
+              {
+                title: 'Oral Solids (Tablets)',
+                capacity: '5.0M',
+                unit: 'Units / Month',
+                desc: 'High-speed automated rotary press lines, film coaters, and blister packing systems.',
+                bg: 'bg-[#ecf5ee] border-[#d8ecd9]',
+                textColor: 'text-[#1e3f20]',
+                borderColor: 'border-t-[#10b981]'
+              },
+              {
+                title: 'Oral Solids (Capsules)',
+                capacity: '3.0M',
+                unit: 'Units / Month',
+                desc: 'Semi-automatic powder auger-filling machines and blister/strip packaging lines.',
+                bg: 'bg-[#f0f9ff] border-[#e0f2fe]',
+                textColor: 'text-[#0369a1]',
+                borderColor: 'border-t-[#0ea5e9]'
+              },
+              {
+                title: 'Oral Liquids (Syrups)',
+                capacity: '1.2M',
+                unit: 'Bottles / Month',
+                desc: 'Continuous blending vats, online filtering systems, and volumetric liquid filling heads.',
+                bg: 'bg-[#fef9e7] border-[#fbf1cc]',
+                textColor: 'text-[#713f12]',
+                borderColor: 'border-t-[#d97706]'
+              },
+              {
+                title: 'Topicals (Gels & Creams)',
+                capacity: '0.8M',
+                unit: 'Tubes / Month',
+                desc: 'Jacketed compounding vessels, homogenizers, and automatic tube filling lines.',
+                bg: 'bg-[#fff1f2] border-[#ffe4e6]',
+                textColor: 'text-[#9f1239]',
+                borderColor: 'border-t-[#f43f5e]'
+              }
+            ].map((line, idx) => (
+              <div key={idx} className="relative group cursor-default">
+                {/* Tilted backing document sheet behind */}
+                <div
+                  className={`absolute inset-0 bg-white border border-slate-205 rounded-sm ${idx % 2 === 0 ? 'rotate-[-5deg]' : 'rotate-[4deg]'} group-hover:rotate-[1deg] transition-all duration-300 -z-10 shadow-sm`}
+                  style={{
+                    boxShadow: "0 10px 20px -5px rgba(0,0,0,0.01)"
+                  }}
+                />
+
+                <div
+                  className={`border-t-4 ${line.borderColor} border-x border-b rounded-sm p-5 flex flex-col justify-between h-full min-h-[220px] ${line.bg} ${line.textColor} shadow-md transition-all duration-300 group-hover:-translate-y-0.5`}
+                >
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-sm font-bold">{line.title}</h3>
+                    <p className="opacity-80 text-[11px] leading-relaxed font-normal">{line.desc}</p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-current/10">
+                    <span className="block text-[8px] font-mono uppercase tracking-widest opacity-60">Monthly Output Capacity</span>
+                    <div className="flex items-baseline gap-1 mt-0.5">
+                      <span className="text-2xl font-serif font-bold">{line.capacity}</span>
+                      <span className="text-[9px] uppercase tracking-wider opacity-70 font-bold">{line.unit}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Safety & Utilities */}
+      <section className="py-24 px-6 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle subtitle="Operational Infrastructure" title="Environmental &amp; Utility Systems" />
+
+          {/* Engineering console panel */}
+          <div className="relative mt-8 group">
+            {/* Tilted blueprint sheet behind */}
+            <div className="absolute inset-0 bg-[#fffdf8] border border-[#e3ded0] rounded-sm rotate-[1deg] group-hover:rotate-[0.5deg] transition-transform duration-300 -z-10 shadow-sm" />
+
+            <div className="border border-slate-300 rounded-sm overflow-hidden flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-250 bg-white shadow-lg">
+              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Wind size={16} className="text-sky-600" />
+                  <span className="text-[9px] font-mono uppercase text-sky-600 font-bold tracking-widest block">
+                    Utility Loop A
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-primary">Class D HVAC Loops</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Dedicated Air Handling Units (AHUs) filter incoming air using pre-filters, micro-filters, and terminal HEPA filters. Temperature is locked between 20-22°C with humidity control, keeping active powder batches stable.
+                </p>
+              </div>
+
+              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Droplets size={16} className="text-amber-600" />
+                  <span className="text-[9px] font-mono uppercase text-amber-600 font-bold tracking-widest block">
+                    Utility Loop B
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-primary">USP Purified Water</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Raw source water passes through de-mineralization, de-chlorination, reverse osmosis (RO) membranes, and multi-effect distillation setups to produce sterile water with zero particulate levels.
+                </p>
+              </div>
+
+              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Trash2 size={16} className="text-emerald-600" />
+                  <span className="text-[9px] font-mono uppercase text-emerald-600 font-bold tracking-widest block">
+                    Utility Loop C
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-primary">Zero Discharge Loops</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Our facility operates with double-stage neutralizers and reverse filtration loops, ensuring all industrial liquid outputs are fully treated and recycled locally, complying with environmental MPCB directives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section 1: Plant Architecture & Environmental Monitor Console */}
       <section className="py-24 px-6 bg-[#08324F] border-b border-slate-900 relative overflow-hidden flex items-center">
         {/* Left black to right transparent gradient overlay */}
@@ -143,9 +274,9 @@ export default function Manufacturing() {
 
         {/* Absolute positioned massive medicine bottle image */}
         <div className="absolute right-[5%] bottom-[0%] h-[90%] w-[32%] pointer-events-none select-none z-10 hidden lg:block">
-          <img 
+          <img
             src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/bottel1.png"
-            alt="" 
+            alt=""
             className="w-full h-full object-contain rotate-12 opacity-80"
           />
         </div>
@@ -187,7 +318,7 @@ export default function Manufacturing() {
                   ACTIVE
                 </span>
               </div>
-              
+
               <div className="space-y-4">
                 {[
                   { label: "Class 10,000 Cleanrooms", desc: "Ambient particle locks active.", value: "99.8% PASS" },
@@ -208,137 +339,9 @@ export default function Manufacturing() {
         </div>
       </section>
 
-      {/* Section 2: Dosage Line Compartments */}
-      <section className="py-24 bg-slate-50 px-6 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Line Segments" title="Formulation Dosage Sections" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
-            {[
-              { 
-                title: 'Oral Solids (Tablets)', 
-                capacity: '5.0M', 
-                unit: 'Units / Month', 
-                desc: 'High-speed automated rotary press lines, film coaters, and blister packing systems.',
-                bg: 'bg-[#ecf5ee] border-[#d8ecd9]',
-                textColor: 'text-[#1e3f20]',
-                borderColor: 'border-t-[#10b981]'
-              },
-              { 
-                title: 'Oral Solids (Capsules)', 
-                capacity: '3.0M', 
-                unit: 'Units / Month', 
-                desc: 'Semi-automatic powder auger-filling machines and blister/strip packaging lines.',
-                bg: 'bg-[#f0f9ff] border-[#e0f2fe]',
-                textColor: 'text-[#0369a1]',
-                borderColor: 'border-t-[#0ea5e9]'
-              },
-              { 
-                title: 'Oral Liquids (Syrups)', 
-                capacity: '1.2M', 
-                unit: 'Bottles / Month', 
-                desc: 'Continuous blending vats, online filtering systems, and volumetric liquid filling heads.',
-                bg: 'bg-[#fef9e7] border-[#fbf1cc]',
-                textColor: 'text-[#713f12]',
-                borderColor: 'border-t-[#d97706]'
-              },
-              { 
-                title: 'Topicals (Gels & Creams)', 
-                capacity: '0.8M', 
-                unit: 'Tubes / Month', 
-                desc: 'Jacketed compounding vessels, homogenizers, and automatic tube filling lines.',
-                bg: 'bg-[#fff1f2] border-[#ffe4e6]',
-                textColor: 'text-[#9f1239]',
-                borderColor: 'border-t-[#f43f5e]'
-              }
-            ].map((line, idx) => (
-              <div key={idx} className="relative group cursor-default">
-                {/* Tilted backing document sheet behind */}
-                <div 
-                  className={`absolute inset-0 bg-white border border-slate-205 rounded-sm ${idx % 2 === 0 ? 'rotate-[-5deg]' : 'rotate-[4deg]'} group-hover:rotate-[1deg] transition-all duration-300 -z-10 shadow-sm`}
-                  style={{
-                    boxShadow: "0 10px 20px -5px rgba(0,0,0,0.01)"
-                  }}
-                />
-
-                <div 
-                  className={`border-t-4 ${line.borderColor} border-x border-b rounded-sm p-5 flex flex-col justify-between h-full min-h-[220px] ${line.bg} ${line.textColor} shadow-md transition-all duration-300 group-hover:-translate-y-0.5`}
-                >
-                  <div className="space-y-2">
-                    <h3 className="font-serif text-sm font-bold">{line.title}</h3>
-                    <p className="opacity-80 text-[11px] leading-relaxed font-normal">{line.desc}</p>
-                  </div>
-                  
-                  <div className="mt-4 pt-3 border-t border-current/10">
-                    <span className="block text-[8px] font-mono uppercase tracking-widest opacity-60">Monthly Output Capacity</span>
-                    <div className="flex items-baseline gap-1 mt-0.5">
-                      <span className="text-2xl font-serif font-bold">{line.capacity}</span>
-                      <span className="text-[9px] uppercase tracking-wider opacity-70 font-bold">{line.unit}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Safety & Utilities */}
-      <section className="py-24 px-6 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Operational Infrastructure" title="Environmental &amp; Utility Systems" />
-          
-          {/* Engineering console panel */}
-          <div className="relative mt-8 group">
-            {/* Tilted blueprint sheet behind */}
-            <div className="absolute inset-0 bg-[#fffdf8] border border-[#e3ded0] rounded-sm rotate-[1deg] group-hover:rotate-[0.5deg] transition-transform duration-300 -z-10 shadow-sm" />
-
-            <div className="border border-slate-300 rounded-sm overflow-hidden flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-250 bg-white shadow-lg">
-              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
-                <div className="flex items-center gap-2">
-                  <Wind size={16} className="text-sky-600" />
-                  <span className="text-[9px] font-mono uppercase text-sky-600 font-bold tracking-widest block">
-                    Utility Loop A
-                  </span>
-                </div>
-                <h3 className="font-serif text-lg font-bold text-primary">Class D HVAC Loops</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Dedicated Air Handling Units (AHUs) filter incoming air using pre-filters, micro-filters, and terminal HEPA filters. Temperature is locked between 20-22°C with humidity control, keeping active powder batches stable.
-                </p>
-              </div>
-              
-              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
-                <div className="flex items-center gap-2">
-                  <Droplets size={16} className="text-amber-600" />
-                  <span className="text-[9px] font-mono uppercase text-amber-600 font-bold tracking-widest block">
-                    Utility Loop B
-                  </span>
-                </div>
-                <h3 className="font-serif text-lg font-bold text-primary">USP Purified Water</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Raw source water passes through de-mineralization, de-chlorination, reverse osmosis (RO) membranes, and multi-effect distillation setups to produce sterile water with zero particulate levels.
-                </p>
-              </div>
-
-              <div className="p-8 flex-1 space-y-4 hover:bg-slate-50/50 transition-colors">
-                <div className="flex items-center gap-2">
-                  <Trash2 size={16} className="text-emerald-600" />
-                  <span className="text-[9px] font-mono uppercase text-emerald-600 font-bold tracking-widest block">
-                    Utility Loop C
-                  </span>
-                </div>
-                <h3 className="font-serif text-lg font-bold text-primary">Zero Discharge Loops</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Our facility operates with double-stage neutralizers and reverse filtration loops, ensuring all industrial liquid outputs are fully treated and recycled locally, complying with environmental MPCB directives.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Section 4: Machinery Catalog Ledger (Notebook Paper Carousel with Lucide Icons) */}
-      <section 
+      <section
         className="py-24 bg-[#fcfbfa] px-6 border-t border-slate-200 overflow-hidden relative"
         style={{
           backgroundImage: "linear-gradient(rgba(2, 132, 199, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.035) 1px, transparent 1px)",
@@ -371,7 +374,7 @@ export default function Manufacturing() {
               Browse through our primary manufacturing assets, calibrated for high-volume WHO-GMP compliant batch production.
             </p>
           </div>
-          
+
           {/* Stacked Ruled Notebook Sheets Carousel */}
           <div className="relative w-full max-w-3xl mx-auto min-h-[270px] flex items-center justify-center">
             {/* Stacked paper sheets behind */}
@@ -379,7 +382,7 @@ export default function Manufacturing() {
             <div className={`absolute inset-0 ${machData[currSlide].backBg2} border border-slate-350 -rotate-[3.5deg] -translate-x-2 translate-y-1 z-0 shadow-sm rounded-sm transition-all duration-500`} />
 
             {/* Main Notebook Paper Sheet */}
-            <div 
+            <div
               className={`relative w-full border ${machData[currSlide].cardBg} rounded-sm z-10 transition-all min-h-[270px] flex flex-col justify-between`}
               style={{
                 backgroundImage: "repeating-linear-gradient(transparent, transparent 31px, rgba(0,0,0,0.03) 32px)",
@@ -434,7 +437,7 @@ export default function Manufacturing() {
                           className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currSlide === index
                             ? "w-8 bg-medical"
                             : "w-2 bg-slate-350 hover:bg-slate-400"
-                          }`}
+                            }`}
                           aria-label={`Go to slide ${index + 1}`}
                         />
                       ))}

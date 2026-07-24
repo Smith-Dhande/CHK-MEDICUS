@@ -207,90 +207,180 @@ export default function About() {
         </div>
       </section>
 
-      {/* Section 3: Technical Timeline (Milestone Journey - Specimen sheets style) */}
+      {/* Section 3: Technical Timeline (Milestone Journey - horizontal path) */}
       <section
-        className="py-24 bg-white px-6 border-b border-slate-100 relative overflow-hidden"
+        className="h-screen w-full flex flex-col bg-white overflow-hidden relative border-b border-slate-100"
         style={{
-          backgroundImage: "linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px)",
-          backgroundSize: "20px 20px"
+          backgroundImage:
+            "linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
         }}
       >
-        {/* Concentric rings watermark */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-sky-400/[0.03] rounded-full pointer-events-none select-none z-0" />
+        {/* Reserved space for fixed/global navbar (10% of viewport).
+      Remove this spacer if your Navbar is already position:fixed and
+      the page content is expected to sit under it. */}
+        <div className="h-[10vh] shrink-0" aria-hidden="true" />
 
-        <div className="max-w-4xl mx-auto relative z-10">
-          <SectionTitle subtitle="Chronology" title="Our Milestone Journey" />
+        {/* Concentric ring watermark */}
+        <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-sky-400/[0.03] rounded-full pointer-events-none select-none z-0" />
 
-          {/* Vertical Timeline Line */}
-          <div className="mt-16 relative pl-6 md:pl-12 border-l-2 border-slate-200 space-y-12">
+        {/* Remaining 90vh */}
+        <div className="flex-1 min-h-0 flex flex-col px-6 md:px-12 py-4 relative z-10">
+          {/* Compact title */}
+          <div className="shrink-0 mb-2">
+            <SectionTitle subtitle="Chronology" title="Our Milestone Journey" />
+          </div>
+
+          {/* PATH ROW — the ascending road */}
+          <div className="shrink-0 h-[26vh] md:h-[28vh] relative">
+            <svg
+              viewBox="0 0 1200 200"
+              preserveAspectRatio="none"
+              className="w-full h-full overflow-visible"
+            >
+              <defs>
+                <linearGradient id="journeyPath" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#10b981" />
+                  <stop offset="35%" stopColor="#f97316" />
+                  <stop offset="65%" stopColor="#f59e0b" />
+                  <stop offset="85%" stopColor="#6366f1" />
+                  <stop offset="100%" stopColor="#ec4899" />
+                </linearGradient>
+              </defs>
+
+              {/* Completed stretch: stage 1 -> stage 4 */}
+              <path
+                d="M100,150 C180,160 245,95 330,115 S480,155 560,130 S715,55 800,80"
+                fill="none"
+                stroke="url(#journeyPath)"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+              {/* Road ahead: stage 4 -> stage 5 (dashed = not yet traveled) */}
+              <path
+                d="M800,80 C880,60 940,20 1000,45"
+                fill="none"
+                stroke="#ec4899"
+                strokeWidth="3"
+                strokeDasharray="7 8"
+                strokeLinecap="round"
+                opacity="0.7"
+              />
+
+              {/* Rocket marker at the future/final node */}
+              <g transform="translate(1000,45) rotate(-35)">
+                <path
+                  d="M0,-11 C6,-6 6,4 0,11 C-6,4 -6,-6 0,-11 Z"
+                  fill="#ec4899"
+                />
+                <circle cx="0" cy="-1" r="2.2" fill="white" />
+              </g>
+            </svg>
+
+            {/* Milestone dots, positioned exactly on the path's coordinates */}
+            {[
+              { x: 8.33, y: 75, color: "#10b981" },
+              { x: 27.5, y: 57.5, color: "#f97316" },
+              { x: 46.67, y: 65, color: "#f59e0b" },
+              { x: 66.67, y: 40, color: "#6366f1" },
+              { x: 83.33, y: 22.5, color: "#ec4899" },
+            ].map((n, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full border-4 border-white shadow-[0_0_10px_rgba(0,0,0,0.12)]"
+                style={{
+                  left: `${n.x}%`,
+                  top: `${n.y}%`,
+                  width: 16,
+                  height: 16,
+                  backgroundColor: n.color,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            ))}
+
+            {/* Connector stems from each node down into the card row */}
+            {[8.33, 27.5, 46.67, 66.67, 83.33].map((x, i) => (
+              <div
+                key={i}
+                className="absolute bottom-0 border-l border-dashed border-slate-300"
+                style={{ left: `${x}%`, height: "35%" }}
+              />
+            ))}
+          </div>
+
+          {/* CARD ROW — fills remaining height, never overflows */}
+          <div className="flex-1 min-h-0 grid grid-cols-5 gap-3 md:gap-5 pt-4">
             {[
               {
-                year: '2024',
-                title: 'Foundation in Amravati',
-                description: 'CHK Medicus Care Private Limited was incorporated in Amravati, Maharashtra, with the goal of manufacturing affordable premium healthcare formulations.',
-                color: 'bg-emerald-500',
-                tag: 'STAGE 01',
-                rotate: 'rotate-[-0.5deg] hover:rotate-0 hover:shadow-emerald-100/50',
-                cardBg: 'hover:border-emerald-200/85 bg-emerald-50/[0.02]'
+                year: "2024",
+                title: "Foundation in Amravati",
+                description:
+                  "Incorporated in Amravati, Maharashtra, to manufacture affordable premium healthcare formulations.",
+                color: "#10b981",
+                border: "hover:border-emerald-200/85",
+                tag: "STAGE 01",
               },
               {
-                year: '2024-2025',
-                title: 'State-of-the-Art Plant Setup',
-                description: 'Completed construction of our ultra-clean manufacturing facility featuring separate lines for tablets, capsules, liquids, and ointments.',
-                color: 'bg-orange-500',
-                tag: 'STAGE 02',
-                rotate: 'rotate-[0.5deg] hover:rotate-0 hover:shadow-orange-100/50',
-                cardBg: 'hover:border-orange-200/85 bg-orange-50/[0.02]'
+                year: "2024–25",
+                title: "State-of-the-Art Plant Setup",
+                description:
+                  "Completed our ultra-clean facility with separate lines for tablets, capsules, liquids and ointments.",
+                color: "#f97316",
+                border: "hover:border-orange-200/85",
+                tag: "STAGE 02",
               },
               {
-                year: '2025',
-                title: 'WHO-GMP & ISO Certifications',
-                description: 'Obtained strict quality accreditations ensuring that our products and processes comply with global pharmaceutical standards.',
-                color: 'bg-amber-500',
-                tag: 'STAGE 03',
-                rotate: 'rotate-[-0.5deg] hover:rotate-0 hover:shadow-amber-100/50',
-                cardBg: 'hover:border-amber-200/85 bg-amber-50/[0.02]'
+                year: "2025",
+                title: "WHO-GMP & ISO Certified",
+                description:
+                  "Strict quality accreditations ensuring compliance with global pharmaceutical standards.",
+                color: "#f59e0b",
+                border: "hover:border-amber-200/85",
+                tag: "STAGE 03",
               },
               {
-                year: '2025-2026',
-                title: 'National Distribution Launch',
-                description: 'Opened ethical and PCD marketing channels across multiple states in India, serving over 500+ distributors.',
-                color: 'bg-indigo-500',
-                tag: 'STAGE 04',
-                rotate: 'rotate-[0.5deg] hover:rotate-0 hover:shadow-indigo-100/50',
-                cardBg: 'hover:border-indigo-200/85 bg-indigo-50/[0.02]'
+                year: "2025–26",
+                title: "National Distribution",
+                description:
+                  "Ethical and PCD channels opened across states, serving 500+ distributors nationwide.",
+                color: "#6366f1",
+                border: "hover:border-indigo-200/85",
+                tag: "STAGE 04",
               },
               {
-                year: 'Future',
-                title: 'Global Export & Advanced R&D',
-                description: 'Expanding formulations to international markets and establishing an advanced formulation development center in Amravati.',
-                color: 'bg-pink-500',
-                tag: 'STAGE 05',
-                rotate: 'rotate-[-0.5deg] hover:rotate-0 hover:shadow-pink-100/50',
-                cardBg: 'hover:border-pink-200/85 bg-pink-50/[0.02]'
-              }
-            ].map((time, idx) => (
-              <div key={idx} className="relative group">
-                {/* Timeline node dot */}
-                <div className={`absolute -left-[35px] top-1.5 w-[18px] h-[18px] rounded-full border-4 border-white shadow-[0_0_10px_rgba(0,0,0,0.1)] transition-colors duration-300 ${time.color}`} />
-
-                <div className={`border border-slate-200 bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 ${time.rotate} max-w-3xl ${time.cardBg}`}>
-                  <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-2 mb-3">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-primary bg-slate-50 border border-slate-100 px-2 py-0.5 rounded">{time.year}</span>
-                    </div>
-                    <span className="text-[8.5px] font-mono text-slate-400 uppercase tracking-widest font-bold">
-                      {time.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-base md:text-lg font-bold text-primary group-hover:text-medical transition-colors duration-300">
-                    {time.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-normal mt-2">
-                    {time.description}
-                  </p>
+                year: "Future",
+                title: "Global Export & R&D",
+                description:
+                  "Expanding into international markets and building an advanced formulation R&D center.",
+                color: "#ec4899",
+                border: "hover:border-pink-200/85",
+                tag: "STAGE 05",
+              },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className={`min-h-0 flex flex-col border border-slate-200 bg-white rounded-lg p-3 md:p-4 shadow-sm hover:shadow-lg transition-all duration-300 ${s.border}`}
+              >
+                <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-1.5 mb-1.5 shrink-0">
+                  <span
+                    className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-50 border border-slate-100"
+                    style={{ color: s.color }}
+                  >
+                    {s.year}
+                  </span>
+                  <span className="text-[7px] font-mono text-slate-400 uppercase tracking-widest font-bold hidden md:inline">
+                    {s.tag}
+                  </span>
                 </div>
+
+                <h3 className="font-serif text-[12px] md:text-sm font-bold text-primary leading-snug line-clamp-2 shrink-0">
+                  {s.title}
+                </h3>
+
+                <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed mt-1.5 line-clamp-3 hidden sm:block overflow-hidden">
+                  {s.description}
+                </p>
               </div>
             ))}
           </div>
