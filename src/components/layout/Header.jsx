@@ -63,11 +63,9 @@ export default function Header() {
         <div className="max-w-7xl mx-auto h-full flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-medical" />
               Amravati, Maharashtra, India
             </span>
             <span className="flex items-center gap-1.5">
-              <Mail size={13} className="text-accent" />
               info@chkmedicus.com
             </span>
           </div>
@@ -150,17 +148,13 @@ export default function Header() {
                         >
                           <div className="grid gap-2 text-left">
                             {link.items.map((subItem) => {
-                              const Icon = subItem.icon;
                               return (
                                 <NavLink
                                   key={subItem.name}
                                   to={subItem.path}
-                                  className={({ isActive }) => `flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors ${isActive ? 'bg-slate-50/80 border-l-2 border-medical' : ''
+                                  className={({ isActive }) => `flex items-start p-3 rounded-lg hover:bg-slate-50 transition-colors ${isActive ? 'bg-slate-50/80 border-l-2 border-medical' : ''
                                     }`}
                                 >
-                                  <div className="p-2 rounded bg-medical/5 text-medical">
-                                    <Icon size={18} />
-                                  </div>
                                   <div>
                                     <div className="text-xs font-semibold text-primary">{subItem.name}</div>
                                     <div className="text-[10px] text-slate-500 mt-0.5">{subItem.desc}</div>

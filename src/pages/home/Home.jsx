@@ -326,7 +326,7 @@ export default function Home() {
               </div>
 
               <h2 className="font-serif text-2xl md:text-3xl xl:text-4xl font-bold text-primary leading-tight">
-                Committed to <span className="text-transparent text-5xl bg-clip-text bg-gradient-to-r from-medical to-accent">Safe, Affordable</span><br></br> &amp; Innovative Care
+                Committed to <span className="text-medical text-3xl md:text-4xl xl:text-5xl">Safe, Affordable</span><br></br> &amp; Innovative Care
               </h2>
 
               <p className="text-slate-600 text-[11px] md:text-xs xl:text-sm leading-relaxed">

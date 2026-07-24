@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SEO } from '../../components/shared/UI.jsx';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const GALLERY_PHOTOS = [
   { id: 1, category: 'factory', title: 'Solid Oral Compression Line', url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop' },
@@ -31,13 +32,12 @@ export default function Gallery() {
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
-    setLightboxIndex(null); // Safely close or reset lightbox index to avoid bounds exception
+    setLightboxIndex(null);
   };
 
-  // Preset comprehensive unique styles for polaroid card boards to ensure a fully custom look per item
   const itemStyles = [
     {
-      cardBg: 'bg-[#ecf5ee] border-emerald-300/60',
+      cardBg: 'bg-[#ecf5ee] border-emerald-350',
       textColor: 'text-[#1e3f20]',
       tape: <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-5 bg-emerald-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[-2deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[-2deg] translate-y-1 hover:rotate-0 hover:shadow-emerald-100',
@@ -46,7 +46,7 @@ export default function Gallery() {
       aspect: 'aspect-[4/3]'
     },
     {
-      cardBg: 'bg-[#fcf3eb] border-orange-300/50',
+      cardBg: 'bg-[#fcf3eb] border-orange-350',
       textColor: 'text-[#4d280e]',
       tape: <div className="absolute -top-3 left-2.5 w-12 h-5 bg-orange-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[-35deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[3.5deg] -translate-y-1 hover:rotate-0 hover:shadow-orange-100',
@@ -55,7 +55,7 @@ export default function Gallery() {
       aspect: 'aspect-square'
     },
     {
-      cardBg: 'bg-[#fef9e7] border-yellow-300/50',
+      cardBg: 'bg-[#fef9e7] border-yellow-350',
       textColor: 'text-[#423305]',
       tape: <div className="absolute -top-3 right-2.5 w-12 h-5 bg-yellow-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[35deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[-1.5deg] translate-y-2 hover:rotate-0 hover:shadow-yellow-100',
@@ -64,7 +64,7 @@ export default function Gallery() {
       aspect: 'aspect-[3/4]'
     },
     {
-      cardBg: 'bg-[#f0f3ff] border-indigo-300/50',
+      cardBg: 'bg-[#f0f3ff] border-indigo-350',
       textColor: 'text-[#1c2966]',
       tape: (
         <>
@@ -78,7 +78,7 @@ export default function Gallery() {
       aspect: 'aspect-[4/3]'
     },
     {
-      cardBg: 'bg-[#fdf2f8] border-pink-300/50',
+      cardBg: 'bg-[#fdf2f8] border-pink-355',
       textColor: 'text-[#581c3f]',
       tape: <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-14 h-5 bg-pink-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[1.5deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[-3deg] translate-y-0.5 hover:rotate-0 hover:shadow-pink-100',
@@ -87,7 +87,7 @@ export default function Gallery() {
       aspect: 'aspect-square'
     },
     {
-      cardBg: 'bg-[#f0f9ff] border-sky-300/50',
+      cardBg: 'bg-[#f0f9ff] border-sky-350',
       textColor: 'text-[#0369a1]',
       tape: <div className="absolute -top-3 left-3 w-12 h-5 bg-sky-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[-25deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[2deg] translate-y-1.5 hover:rotate-0 hover:shadow-blue-100',
@@ -96,7 +96,7 @@ export default function Gallery() {
       aspect: 'aspect-[3/4]'
     },
     {
-      cardBg: 'bg-[#ecf5ee] border-emerald-300/60',
+      cardBg: 'bg-[#ecf5ee] border-emerald-355',
       textColor: 'text-[#1e3f20]',
       tape: <div className="absolute -top-3 right-3 w-12 h-5 bg-emerald-100/60 backdrop-blur-xs border-l border-r border-dashed border-black/10 rotate-[25deg] select-none pointer-events-none z-10 shadow-xs" />,
       rotCard: 'rotate-[-2.5deg] -translate-y-1.5 hover:rotate-0 hover:shadow-emerald-100',
@@ -105,7 +105,7 @@ export default function Gallery() {
       aspect: 'aspect-[4/3]'
     },
     {
-      cardBg: 'bg-[#fcf3eb] border-orange-300/50',
+      cardBg: 'bg-[#fcf3eb] border-orange-355',
       textColor: 'text-[#4d280e]',
       tape: (
         <>
@@ -127,32 +127,56 @@ export default function Gallery() {
         description="Take a visual tour inside our manufacturing plant, analytical testing laboratories, and corporate offices in Amravati."
       />
 
-      {/* Header Banner: Document Folder Registry (Deep Navy Themed) */}
-      <section className="relative pt-28 pb-16 px-6 bg-[#08324F] border-b border-slate-900 overflow-hidden">
+      {/* Header Banner: Premium Immersive Clinical Split */}
+      <section className="relative pt-36 pb-24 px-6 bg-gradient-to-b from-[#0a2e46] via-[#082236] to-[#04121e] overflow-hidden flex items-center min-h-[60vh]">
+        {/* Ambient glows */}
+        <div className="absolute top-1/4 left-1/3 w-80 h-80 bg-medical/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-[130px] pointer-events-none" />
         {/* Technical background blueprint line */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.08] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-l from-black via-black/40 to-transparent pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-8 space-y-6">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/90">
+              <span className="w-1.5 h-1.5 rounded-full bg-medical animate-pulse" />
+              <span className="text-[9px] font-mono tracking-wider uppercase font-bold text-medical">CHK-VISUAL-ARCHIVE</span>
+              <span className="text-white/20">|</span>
+              <span className="font-mono text-[9px] text-slate-400 font-bold uppercase tracking-wide">Plant Catalog</span>
+            </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-6">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400">
-              Document Type: Plant Catalog
-            </span>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400">
-              Ref: CHK-VISUAL-ARCHIVE
-            </span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
+              Facility &amp; <br />
+              <span className="text-medical">Operations Gallery</span>
+            </h1>
+            
+            <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-light">
+              Browse through our visual records documenting sterile manufacturing zones, quality assurance test cabinets, laboratories, and corporate environments.
+            </p>
           </div>
 
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-bold text-medical uppercase tracking-wider block">
-              Visual Tour
-            </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-white">
-              Facility &amp; Operations Gallery
-            </h1>
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-normal">
-              Browse through our visual records documenting sterile manufacturing zones, quality assurance test cabinets, and laboratory spaces.
-            </p>
+          {/* Floating glassmorphic specs card */}
+          <div className="lg:col-span-4 relative group">
+            {/* Tilted blueprint sheet behind */}
+            <div className="absolute inset-0 bg-white/[0.02] border border-white/5 rounded-sm rotate-[3deg] group-hover:rotate-[1deg] transition-transform duration-300 -z-10" />
+
+            <div className="bg-[#051c2c]/75 backdrop-blur-md border border-white/10 p-6 rounded-sm shadow-2xl relative">
+              <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
+                <span className="text-[9px] font-mono text-slate-400 font-bold tracking-widest uppercase">CATALOG STATS</span>
+              </div>
+              
+              <ul className="space-y-3">
+                {[
+                  { label: "Total Visual Records", value: "8 Specimen Slides" },
+                  { label: "Categories", value: "Cleanroom, R&D, Packs, Office" },
+                  { label: "Quality Audit", value: "Fully documented" }
+                ].map((spec, i) => (
+                  <li key={i} className="flex justify-between items-end text-xs font-mono py-1 border-b border-dashed border-white/5 last:border-0 pb-1.5 last:pb-0">
+                    <span className="text-slate-400">{spec.label}</span>
+                    <span className="text-white font-bold">{spec.value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -194,7 +218,6 @@ export default function Gallery() {
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16 items-start">
             {filteredPhotos.map((photo, idx) => {
-              // Extract the item style based on the unique index loop
               const style = itemStyles[idx % itemStyles.length];
               return (
                 <motion.div
@@ -215,16 +238,19 @@ export default function Gallery() {
                     }}
                   />
 
-                  {/* Polaroid Washi Tape placement (Unique per card) */}
+                  {/* Polaroid Washi Tape placement */}
                   {style.tape}
 
-                  {/* Photo Frame (With unique aspect ratio) */}
-                  <div className={`bg-slate-100 overflow-hidden border border-[#eae6d8] rounded-sm relative ${style.aspect}`}>
+                  {/* Photo Frame */}
+                  <div className={`bg-slate-105 overflow-hidden border border-[#eae6d8] rounded-sm relative ${style.aspect}`}>
                     <img
                       src={photo.url}
                       alt={photo.title}
                       className="w-full h-full object-cover grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <Maximize2 size={20} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-md" />
+                    </div>
                   </div>
 
                   {/* Label Details */}
@@ -258,30 +284,54 @@ export default function Gallery() {
             className="fixed inset-0 z-50 bg-[#1c1917]/95 flex items-center justify-center p-4 cursor-zoom-out"
             onClick={() => setLightboxIndex(null)}
           >
-            {/* Close action */}
+            {/* Close button with Lucide icon */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute top-6 right-6 px-4 py-2 border border-white/10 rounded-sm bg-white/5 hover:bg-white/10 text-white font-mono text-[10px] font-bold uppercase tracking-widest cursor-pointer"
+              className="absolute top-6 right-6 h-10 w-10 border border-white/10 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
               aria-label="Close Lightbox"
             >
-              Close Slide [ESC]
+              <X size={20} />
+            </button>
+
+            {/* Prev button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev === 0 ? filteredPhotos.length - 1 : prev - 1));
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white flex items-center justify-center cursor-pointer shadow-md hover:scale-105 active:scale-95 transition-all"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            {/* Next button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev === filteredPhotos.length - 1 ? 0 : prev + 1));
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white flex items-center justify-center cursor-pointer shadow-md hover:scale-105 active:scale-95 transition-all"
+              aria-label="Next image"
+            >
+              <ChevronRight size={24} />
             </button>
 
             <div
-              className="max-w-4xl max-h-[85vh] bg-[#fffdf8] p-4 border border-[#e8e3d3] rounded-sm relative shadow-2xl flex flex-col justify-between"
+              className="max-w-4xl max-h-[85vh] bg-[#fffdf8] p-4 border border-[#e8e3d3] rounded-sm relative shadow-2xl flex flex-col justify-between cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Microscope slide crop */}
-              <div className="overflow-hidden border border-slate-200 rounded-sm bg-slate-900">
+              <div className="overflow-hidden border border-slate-200 rounded-sm bg-slate-900 flex justify-center items-center">
                 <img
                   src={filteredPhotos[lightboxIndex].url}
                   alt={filteredPhotos[lightboxIndex].title}
-                  className="max-w-full max-h-[65vh] object-contain rounded-sm"
+                  className="max-w-full max-h-[60vh] object-contain rounded-sm"
                 />
               </div>
 
               {/* Specimen catalog label */}
-              <div className="pt-4 border-t border-dashed border-[#e8e3d3] flex justify-between items-center text-left">
+              <div className="pt-4 border-t border-dashed border-[#e8e3d3] flex justify-between items-center text-left mt-3">
                 <div>
                   <span className="text-[9px] font-mono font-bold text-medical uppercase tracking-widest">
                     Specimen Category: {filteredPhotos[lightboxIndex].category}
