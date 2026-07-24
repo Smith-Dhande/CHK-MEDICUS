@@ -10,7 +10,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-primary text-white font-sans mt-auto">
+    <footer className="w-full bg-primary text-white font-sans mt-auto pb-16 lg:pb-0">
       {/* Newsletter / CTA Pre-Footer */}
       {/* <div className="border-b border-white/10 py-12 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
@@ -36,7 +36,7 @@ export default function Footer() {
       </div> */}
 
       {/* Main Footer Links */}
-      <div className="py-16 px-4 lg:px-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="py-12 md:py-16 px-6 lg:px-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
         {/* Info Column */}
         <div className="space-y-4">
           <NavLink to="/" className="flex items-center group w-fit">

@@ -77,7 +77,7 @@ export default function Layout({ children }) {
       {pathname !== '/' && <div className="h-[76px] lg:h-[116px]"></div>}
 
       {/* Main Pages Container */}
-      <main className="flex-grow">
+      <main className="flex-grow pb-16 lg:pb-0">
         {children}
       </main>
 
@@ -85,7 +85,7 @@ export default function Layout({ children }) {
       <Footer />
 
       {/* Floating Action Elements */}
-      <div className="fixed bottom-6 right-6 flex flex-col items-center space-y-3 z-40">
+      <div className="fixed bottom-22 lg:bottom-6 right-6 flex flex-col items-center space-y-3 z-40">
         {/* WhatsApp Floating Button */}
         <motion.a
           href="https://wa.me/917122345678" // Replace with corporate WhatsApp

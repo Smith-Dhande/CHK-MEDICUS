@@ -134,7 +134,7 @@ export default function Home() {
 
     return (
       <div
-        className={`relative border p-3.5 md:p-4 rounded-sm shadow-md hover:shadow-xl transition-all duration-550 flex flex-col justify-between h-full min-h-0 select-none ${theme.bg} ${rotation}`}
+        className={`relative border p-3.5 md:p-4 rounded-sm shadow-md hover:shadow-xl transition-all duration-550 flex flex-col justify-between h-full w-full min-h-0 select-none ${theme.bg} ${rotation}`}
       >
         {/* Matte Labeled Tape strip holding the card */}
         <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-4.5 border shadow-[0_1px_1.5px_rgba(0,0,0,0.015)] backdrop-blur-[0.5px] rotate-[-1deg] z-20 flex items-center justify-center ${theme.tape}`}>
@@ -625,10 +625,19 @@ export default function Home() {
         <div className="h-auto md:h-[72vh] flex flex-col justify-between max-w-6xl mx-auto w-full relative z-10 py-2">
           <SectionTitle title="Primary Categories We Manufacture" />
 
-          {/* Scientific taped cards grid: gap-6 for separation and rotations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 h-auto md:h-[46vh] my-4">
+          {/* Desktop view (Original 2x2 layout) */}
+          <div className="hidden md:grid grid-cols-2 gap-8 h-auto lg:h-[46vh] my-4">
             {CATEGORIES.map((cat, idx) => (
               <MonographEntry key={cat.name} cat={cat} idx={idx} />
+            ))}
+          </div>
+
+          {/* Mobile view (Horizontal swipe carousel) */}
+          <div className="md:hidden flex overflow-x-auto pb-6 gap-6 scrollbar-none snap-x snap-mandatory my-4">
+            {CATEGORIES.map((cat, idx) => (
+              <div key={cat.name} className="shrink-0 w-[290px] snap-center flex">
+                <MonographEntry cat={cat} idx={idx} />
+              </div>
             ))}
           </div>
 
@@ -717,8 +726,8 @@ export default function Home() {
           </div>
 
           {/* Lower: facility nameplate */}
-          <div className="border-t border-l border-slate-200">
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
+          <div className="border-t border-l border-slate-200 overflow-hidden">
+            <div className="flex overflow-x-auto pb-4 gap-0 scrollbar-thin snap-x snap-mandatory sm:grid sm:grid-cols-4 lg:grid-cols-7">
               {[
                 { value: "Class 10,000", label: "Particulate control" },
                 { value: "HVAC", label: "Positive-pressure airlocks" },
@@ -730,7 +739,7 @@ export default function Home() {
               ].map((spec) => (
                 <div
                   key={spec.label}
-                  className="border-r border-b border-slate-200 px-4 py-4 md:py-5"
+                  className="border-r border-b border-slate-200 px-4 py-4 md:py-5 shrink-0 w-[140px] sm:w-auto sm:shrink snap-center bg-white"
                 >
                   <div className="font-serif font-bold text-primary text-sm md:text-base leading-tight">
                     {spec.value}
@@ -749,7 +758,7 @@ export default function Home() {
       </section>
 
       {/* 6. Research & Innovation Preview */}
-      <section className="relative h-[70vh] bg-[#08324F] overflow-hidden">
+      <section className="relative min-h-[580px] lg:h-screen bg-[#08324F] overflow-hidden flex items-center">
 
         {/* Right-side image — 50% width, fading smoothly into the navy */}
         <div
@@ -777,28 +786,50 @@ export default function Home() {
         </span>
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 max-w-xl">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-medical">
-            Research &amp; Discovery
-          </span>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col justify-center">
+          <div className="max-w-xl space-y-6">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-medical">
+              Research &amp; Discovery
+            </span>
 
-          <h2 className="font-serif font-bold text-white leading-[1.05] text-4xl md:text-6xl mt-5">
-            Solid Oral &amp;<br />
-            <span className="text-medical">Topical Dispersions</span>
-          </h2>
+            <h2 className="font-serif font-bold text-white leading-[1.05] text-4xl md:text-6xl">
+              Solid Oral &amp;<br />
+              <span className="text-medical drop-shadow-[0_0_20px_rgba(0,255,209,0.25)]">Topical Dispersions</span>
+            </h2>
 
-          <p className="text-slate-400 text-sm mt-6">
-            Zone IVB-stable. Bio-equivalence tested.
-          </p>
+            <p className="text-slate-300 text-sm max-w-md leading-relaxed">
+              CHK Medicus R&D is at the forefront of chemical formulation testing, developing bio-equivalent, Zone IVB-stable solid oral tablets and deep-penetrating topical dispersion gels.
+            </p>
 
-          <div className="mt-9">
-            <NavLink
-              to="/research-development"
-              className="group inline-flex items-baseline gap-2 text-sm font-bold text-white border-b border-white/30 pb-1 hover:border-medical hover:text-medical transition-colors"
-            >
-              Explore R&amp;D Pipeline
-              <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span>
-            </NavLink>
+            {/* Scientific Highlights Grid */}
+            <div className="grid grid-cols-2 gap-4 max-w-md pt-6 border-t border-white/10">
+              <div className="space-y-1">
+                <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Bioavailability</span>
+                <span className="block text-sm md:text-base font-sans font-bold text-white">+45% Absorption</span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Vector Carrier</span>
+                <span className="block text-sm md:text-base font-sans font-bold text-white">Lipid Dispersion</span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Climate Stability</span>
+                <span className="block text-sm md:text-base font-sans font-bold text-white">Zone IVB Certified</span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Regulatory Standard</span>
+                <span className="block text-sm md:text-base font-sans font-bold text-white">WHO-GMP Compliant</span>
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <NavLink
+                to="/research-development"
+                className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-xs font-bold uppercase tracking-wider text-white hover:text-white hover:border-medical hover:bg-white/10 transition-all active:scale-95"
+              >
+                Explore R&amp;D Pipeline
+                <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span>
+              </NavLink>
+            </div>
           </div>
         </div>
       </section>
@@ -807,7 +838,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Zero Defects Policy" title="Quality Assurance Standards" />
 
-          <div className="flex overflow-x-auto pb-6 gap-6 scrollbar-thin snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-x-6 md:gap-y-10 md:pb-0 mt-4">
+          {/* Desktop view (Original rotated grid layout) */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {[
               {
                 label: "Raw Material Verification",
@@ -834,18 +866,53 @@ export default function Home() {
                 color: "sky",
               },
             ].map((qa, idx) => (
-              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300 shrink-0 w-[260px] md:w-auto md:shrink snap-center`}>
+              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300`}>
                 {/* washi tape */}
-                <div
-                  className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`}
-                />
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`} />
+                <div className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
+                  <span className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}>
+                    Stage 0{idx + 1}
+                  </span>
+                  <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-                <div
-                  className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}
-                >
-                  <span
-                    className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}
-                  >
+          {/* Mobile view (Horizontal swipe carousel) */}
+          <div className="md:hidden flex overflow-x-auto pb-6 gap-6 scrollbar-none snap-x snap-mandatory mt-4">
+            {[
+              {
+                label: "Raw Material Verification",
+                desc: "100% assay analysis of active pharmaceutical ingredients (APIs).",
+                tilt: "-rotate-2",
+                color: "rose",
+              },
+              {
+                label: "In-Process Controls",
+                desc: "Hourly tablet thickness, hardness, and dissolution tests.",
+                tilt: "rotate-1",
+                color: "amber",
+              },
+              {
+                label: "Sterility Assurance",
+                desc: "Systematic particulate counters operating across Class 100 laminars.",
+                tilt: "-rotate-1",
+                color: "emerald",
+              },
+              {
+                label: "BMR Retention",
+                desc: "Traceable batch records preserved digitally for up to 5 years.",
+                tilt: "rotate-2",
+                color: "sky",
+              },
+            ].map((qa, idx) => (
+              <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300 shrink-0 w-[260px] snap-center`}>
+                {/* washi tape */}
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`} />
+                <div className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
+                  <span className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}>
                     Stage 0{idx + 1}
                   </span>
                   <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>

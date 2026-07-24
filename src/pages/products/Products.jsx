@@ -87,11 +87,11 @@ export default function Products() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
               {filteredProducts.map((prod) => (
                 <Card key={prod.id} className="overflow-hidden flex flex-col justify-between !p-0">
                   {/* Top section: image */}
-                  <div className="h-48 w-full bg-slate-100 overflow-hidden relative">
+                  <div className="h-28 md:h-48 w-full bg-slate-100 overflow-hidden relative">
                     <img src={prod.imageUrl} alt={prod.brandName} loading="lazy" className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-300" />
                     <span className="absolute top-3 right-3 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                       {prod.dosageForm}
@@ -102,35 +102,35 @@ export default function Products() {
                   </div>
 
                   {/* Body details */}
-                  <div className="p-6 flex-grow space-y-3">
+                  <div className="p-3 md:p-6 flex-grow space-y-2 md:space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-[9px] font-bold tracking-widest text-slate-400 uppercase">
                         {prod.category.replace('-', ' ')}
                       </span>
                       <span className="text-[10px] font-bold text-medical">{prod.strength}</span>
                     </div>
-                    <h3 className="font-serif text-lg font-bold text-primary group-hover:text-medical transition-colors">
+                    <h3 className="font-serif text-xs md:text-lg font-bold text-primary group-hover:text-medical transition-colors leading-tight line-clamp-1 md:line-clamp-none">
                       {prod.brandName}
                     </h3>
-                    <div className="text-[10px] font-medium text-slate-500 bg-slate-50 py-1 px-2.5 rounded border border-slate-100 truncate italic">
+                    <div className="text-[8px] md:text-[10px] font-medium text-slate-500 bg-slate-50 py-1 px-2 rounded border border-slate-100 truncate italic">
                       {prod.genericName}
                     </div>
-                    <p className="text-slate-600 text-xs line-clamp-3 leading-relaxed">
+                    <p className="text-slate-600 text-[10px] md:text-xs line-clamp-2 md:line-clamp-3 leading-relaxed">
                       {prod.description}
                     </p>
                   </div>
 
                   {/* Actions footer */}
-                  <div className="p-6 pt-0 border-t border-slate-50 flex gap-2">
+                  <div className="p-3 md:p-6 pt-0 border-t border-slate-50 flex flex-col sm:flex-row gap-1.5 md:gap-2">
                     <NavLink
                       to={`/products/${prod.slug}`}
-                      className="flex-grow py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center text-xs font-bold text-primary rounded-lg transition-colors flex items-center justify-center gap-1"
+                      className="w-full sm:flex-grow py-1.5 md:py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center text-[10px] md:text-xs font-bold text-primary rounded-md md:rounded-lg transition-colors flex items-center justify-center gap-1"
                     >
                       <Info size={14} /> Spec Sheet
                     </NavLink>
                     <NavLink
                       to="/contact"
-                      className="px-4 py-2.5 bg-medical hover:bg-medical-hover text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center cursor-pointer"
+                      className="w-full sm:w-auto sm:px-4 py-1.5 md:py-2 bg-medical hover:bg-medical-hover text-white text-[10px] md:text-xs font-bold rounded-md md:rounded-lg transition-colors flex items-center justify-center cursor-pointer"
                       title="Enquire about this product"
                     >
                       Enquiry

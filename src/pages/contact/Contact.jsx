@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, Building2, Landmark, Check } from 'lucide-react';
 import { SEO, SectionTitle } from '../../components/shared/UI.jsx';
 
 export default function Contact() {
   const [activeForm, setActiveForm] = useState('general');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const submitTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
     e.target.reset();
-    setTimeout(() => setFormSubmitted(false), 5000);
+    submitTimerRef.current = setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   return (

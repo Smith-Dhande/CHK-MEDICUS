@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, FileText, Send, ShieldAlert, Package, Layers, Info } from 'lucide-react';
 import { SEO, Card } from '../../components/shared/UI.jsx';
@@ -9,6 +9,13 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', qty: '', remarks: '' });
   const [submitted, setSubmitted] = useState(false);
+  const submitTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    };
+  }, []);
 
   // Retrieve current product based on slug
   const product = useMemo(() => {
@@ -38,7 +45,7 @@ export default function ProductDetails() {
     e.preventDefault();
     setSubmitted(true);
     setFormData({ name: '', email: '', qty: '', remarks: '' });
-    setTimeout(() => setSubmitted(false), 5000);
+    submitTimerRef.current = setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 // SEO Meta Component using React Helmet
-export const SEO = ({ title, description, canonicalPath = '', schemaData }) => {
+export const SEO = React.memo(({ title, description, canonicalPath = '', schemaData }) => {
   const defaultTitle = 'CHK Medicus Care | Pharmaceutical Manufacturing & Healthcare';
   const fullTitle = title ? `${title} | CHK Medicus Care` : defaultTitle;
   const defaultDesc = 'CHK Medicus Care Private Limited (Est. 2024, Amravati, Maharashtra) is a premium manufacturer of affordable, high-quality pharmaceutical formulations including antibiotics, analgesics, softgels, syrups, and topical gels.';
@@ -40,10 +40,10 @@ export const SEO = ({ title, description, canonicalPath = '', schemaData }) => {
       )}
     </Helmet>
   );
-};
+});
 
 // Reusable Section Header with animated titles & subtitles
-export const SectionTitle = ({ subtitle, title, alignment = 'center', light = false }) => {
+export const SectionTitle = React.memo(({ subtitle, title, alignment = 'center', light = false }) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -79,10 +79,10 @@ export const SectionTitle = ({ subtitle, title, alignment = 'center', light = fa
       </div>
     </motion.div>
   );
-};
+});
 
 // Premium Animated Heading for Hero Section
-export const AnimatedHeading = ({ children, className = '' }) => {
+export const AnimatedHeading = React.memo(({ children, className = '' }) => {
   return (
     <motion.h1
       className={`font-serif leading-tight tracking-tight ${className}`}
@@ -93,10 +93,10 @@ export const AnimatedHeading = ({ children, className = '' }) => {
       {children}
     </motion.h1>
   );
-};
+});
 
 // Primary Animated Button
-export const PrimaryButton = ({ children, onClick, to, className = '', ...props }) => {
+export const PrimaryButton = React.memo(({ children, onClick, to, className = '', ...props }) => {
   const Component = to ? 'a' : 'button';
   const baseClasses = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-sans font-semibold text-sm transition-all duration-300 shadow-md bg-medical text-white hover:bg-medical-hover hover:shadow-lg active:scale-95 cursor-pointer';
 
@@ -107,10 +107,10 @@ export const PrimaryButton = ({ children, onClick, to, className = '', ...props 
       </Component>
     </motion.div>
   );
-};
+});
 
 // Secondary Animated Button
-export const SecondaryButton = ({ children, onClick, to, className = '', ...props }) => {
+export const SecondaryButton = React.memo(({ children, onClick, to, className = '', ...props }) => {
   const Component = to ? 'a' : 'button';
   const baseClasses = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-sans font-semibold text-sm transition-all duration-300 bg-white text-primary border border-primary/20 hover:border-medical hover:bg-slate-50 hover:shadow-sm active:scale-95 cursor-pointer';
 
@@ -121,10 +121,10 @@ export const SecondaryButton = ({ children, onClick, to, className = '', ...prop
       </Component>
     </motion.div>
   );
-};
+});
 
 // Hover Animated Card Container
-export const Card = ({ children, className = '', delay = 0 }) => {
+export const Card = React.memo(({ children, className = '', delay = 0 }) => {
   return (
     <motion.div
       className={`bg-white rounded-xl border border-slate-100 p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:border-medical/20 ${className}`}
@@ -137,10 +137,10 @@ export const Card = ({ children, className = '', delay = 0 }) => {
       {children}
     </motion.div>
   );
-};
+});
 
 // Counter / Stat display component
-export const StatItem = ({ number, label, suffix = '', delay = 0 }) => {
+export const StatItem = React.memo(({ number, label, suffix = '', delay = 0 }) => {
   return (
     <motion.div
       className="text-center p-6 bg-slate-50/50 rounded-xl border border-slate-100 hover:border-medical/10 transition-colors"
@@ -157,4 +157,4 @@ export const StatItem = ({ number, label, suffix = '', delay = 0 }) => {
       </div>
     </motion.div>
   );
-};
+});

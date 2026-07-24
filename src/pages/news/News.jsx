@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Search, Mail, ArrowRight, BookOpen } from 'lucide-react';
 import { SEO, SectionTitle, Card } from '../../components/shared/UI.jsx';
 import { NEWS } from '../../data/mockData.js';
@@ -7,6 +7,13 @@ export default function News() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  const subscribeTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (subscribeTimerRef.current) clearTimeout(subscribeTimerRef.current);
+    };
+  }, []);
 
   const categories = ['all', 'Manufacturing', 'Quality', 'Research'];
 
@@ -27,7 +34,7 @@ export default function News() {
     e.preventDefault();
     setNewsletterSubscribed(true);
     e.target.reset();
-    setTimeout(() => setNewsletterSubscribed(false), 5000);
+    subscribeTimerRef.current = setTimeout(() => setNewsletterSubscribed(false), 5000);
   };
 
   return (

@@ -134,7 +134,7 @@ export default function Gallery() {
         <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-[130px] pointer-events-none" />
         {/* Technical background blueprint line */}
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-8 space-y-6">
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/90">
@@ -148,7 +148,7 @@ export default function Gallery() {
               Facility &amp; <br />
               <span className="text-medical">Operations Gallery</span>
             </h1>
-            
+
             <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-light">
               Browse through our visual records documenting sterile manufacturing zones, quality assurance test cabinets, laboratories, and corporate environments.
             </p>
@@ -163,7 +163,7 @@ export default function Gallery() {
               <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
                 <span className="text-[9px] font-mono text-slate-400 font-bold tracking-widest uppercase">CATALOG STATS</span>
               </div>
-              
+
               <ul className="space-y-3">
                 {[
                   { label: "Total Visual Records", value: "8 Specimen Slides" },

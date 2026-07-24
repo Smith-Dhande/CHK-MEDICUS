@@ -276,6 +276,35 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Mobile Bottom Navigation Bar (Instagram Style) */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 h-16 flex items-center justify-around px-2 shadow-[0_-4px_12px_rgba(8,50,79,0.06)] lg:hidden">
+        {[
+          { name: 'Home', path: '/', icon: HeartPulse },
+          { name: 'Products', path: '/products', icon: Activity },
+          { name: 'Facility', path: '/manufacturing', icon: Building },
+          { name: 'Careers', path: '/careers', icon: Award },
+          { name: 'Contact', path: '/contact', icon: Phone }
+        ].map((tab) => {
+          const Icon = tab.icon;
+          // check active path
+          const isActive = location.pathname === tab.path;
+          return (
+            <NavLink
+              key={tab.name}
+              to={tab.path}
+              className={`flex flex-col items-center justify-center flex-1 h-full py-1.5 transition-colors ${
+                isActive ? 'text-medical' : 'text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              <Icon size={18} className={isActive ? 'stroke-[2.5px] scale-105 text-medical' : 'stroke-[2px] text-slate-500'} />
+              <span className={`text-[9px] font-sans font-bold mt-1 tracking-wide ${isActive ? 'text-medical font-bold' : 'text-slate-500'}`}>
+                {tab.name}
+              </span>
+            </NavLink>
+          );
+        })}
+      </nav>
     </>
   );
 }

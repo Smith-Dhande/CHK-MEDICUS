@@ -208,184 +208,239 @@ export default function About() {
       </section>
 
       {/* Section 3: Technical Timeline (Milestone Journey - horizontal path) */}
-      <section
-        className="h-screen w-full flex flex-col bg-white overflow-hidden relative border-b border-slate-100"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
-        }}
-      >
-        {/* Reserved space for fixed/global navbar (10% of viewport).
-      Remove this spacer if your Navbar is already position:fixed and
-      the page content is expected to sit under it. */}
-        <div className="h-[10vh] shrink-0" aria-hidden="true" />
+      {/* Section 3: Technical Timeline (Milestone Journey) */}
+      {(() => {
+        const milestones = [
+          {
+            year: "2024",
+            title: "Foundation in Amravati",
+            description:
+              "Incorporated in Amravati, Maharashtra, to manufacture affordable premium healthcare formulations.",
+            color: "#10b981",
+            border: "hover:border-emerald-200/85",
+            tag: "STAGE 01",
+            x: 8.33,
+            y: 75
+          },
+          {
+            year: "2024–25",
+            title: "State-of-the-Art Plant Setup",
+            description:
+              "Completed our ultra-clean facility with separate lines for tablets, capsules, liquids and ointments.",
+            color: "#f97316",
+            border: "hover:border-orange-200/85",
+            tag: "STAGE 02",
+            x: 27.5,
+            y: 57.5
+          },
+          {
+            year: "2025",
+            title: "WHO-GMP & ISO Certified",
+            description:
+              "Strict quality accreditations ensuring compliance with global pharmaceutical standards.",
+            color: "#f59e0b",
+            border: "hover:border-amber-200/85",
+            tag: "STAGE 03",
+            x: 46.67,
+            y: 65
+          },
+          {
+            year: "2025–26",
+            title: "National Distribution",
+            description:
+              "Ethical and PCD channels opened across states, serving 500+ distributors nationwide.",
+            color: "#6366f1",
+            border: "hover:border-indigo-200/85",
+            tag: "STAGE 04",
+            x: 66.67,
+            y: 40
+          },
+          {
+            year: "Future",
+            title: "Global Export & R&D",
+            description:
+              "Expanding into international markets and building an advanced formulation R&D center.",
+            color: "#ec4899",
+            border: "hover:border-pink-200/85",
+            tag: "STAGE 05",
+            x: 83.33,
+            y: 22.5
+          }
+        ];
 
-        {/* Concentric ring watermark */}
-        <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-sky-400/[0.03] rounded-full pointer-events-none select-none z-0" />
+        return (
+          <section
+            className="min-h-screen lg:h-screen w-full flex flex-col bg-white overflow-y-auto lg:overflow-hidden relative border-b border-slate-100 py-12 lg:py-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+            }}
+          >
+            {/* Reserved space for global navbar on desktop */}
+            <div className="hidden lg:block h-[10vh] shrink-0" aria-hidden="true" />
+            <div className="block lg:hidden h-[60px] shrink-0" aria-hidden="true" />
 
-        {/* Remaining 90vh */}
-        <div className="flex-1 min-h-0 flex flex-col px-6 md:px-12 py-4 relative z-10">
-          {/* Compact title */}
-          <div className="shrink-0 mb-2">
-            <SectionTitle subtitle="Chronology" title="Our Milestone Journey" />
-          </div>
+            {/* Concentric ring watermark */}
+            <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-sky-400/[0.03] rounded-full pointer-events-none select-none z-0" />
 
-          {/* PATH ROW — the ascending road */}
-          <div className="shrink-0 h-[26vh] md:h-[28vh] relative">
-            <svg
-              viewBox="0 0 1200 200"
-              preserveAspectRatio="none"
-              className="w-full h-full overflow-visible"
-            >
-              <defs>
-                <linearGradient id="journeyPath" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#10b981" />
-                  <stop offset="35%" stopColor="#f97316" />
-                  <stop offset="65%" stopColor="#f59e0b" />
-                  <stop offset="85%" stopColor="#6366f1" />
-                  <stop offset="100%" stopColor="#ec4899" />
-                </linearGradient>
-              </defs>
+            {/* Content Area */}
+            <div className="flex-1 min-h-0 flex flex-col px-6 md:px-12 py-4 relative z-10 w-full max-w-7xl mx-auto">
+              {/* Compact title */}
+              <div className="shrink-0 mb-6 lg:mb-2">
+                <SectionTitle subtitle="Chronology" title="Our Milestone Journey" />
+              </div>
 
-              {/* Completed stretch: stage 1 -> stage 4 */}
-              <path
-                d="M100,150 C180,160 245,95 330,115 S480,155 560,130 S715,55 800,80"
-                fill="none"
-                stroke="url(#journeyPath)"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-              {/* Road ahead: stage 4 -> stage 5 (dashed = not yet traveled) */}
-              <path
-                d="M800,80 C880,60 940,20 1000,45"
-                fill="none"
-                stroke="#ec4899"
-                strokeWidth="3"
-                strokeDasharray="7 8"
-                strokeLinecap="round"
-                opacity="0.7"
-              />
-
-              {/* Rocket marker at the future/final node */}
-              <g transform="translate(1000,45) rotate(-35)">
-                <path
-                  d="M0,-11 C6,-6 6,4 0,11 C-6,4 -6,-6 0,-11 Z"
-                  fill="#ec4899"
-                />
-                <circle cx="0" cy="-1" r="2.2" fill="white" />
-              </g>
-            </svg>
-
-            {/* Milestone dots, positioned exactly on the path's coordinates */}
-            {[
-              { x: 8.33, y: 75, color: "#10b981" },
-              { x: 27.5, y: 57.5, color: "#f97316" },
-              { x: 46.67, y: 65, color: "#f59e0b" },
-              { x: 66.67, y: 40, color: "#6366f1" },
-              { x: 83.33, y: 22.5, color: "#ec4899" },
-            ].map((n, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full border-4 border-white shadow-[0_0_10px_rgba(0,0,0,0.12)]"
-                style={{
-                  left: `${n.x}%`,
-                  top: `${n.y}%`,
-                  width: 16,
-                  height: 16,
-                  backgroundColor: n.color,
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
-            ))}
-
-            {/* Connector stems from each node down into the card row */}
-            {[8.33, 27.5, 46.67, 66.67, 83.33].map((x, i) => (
-              <div
-                key={i}
-                className="absolute bottom-0 border-l border-dashed border-slate-300"
-                style={{ left: `${x}%`, height: "35%" }}
-              />
-            ))}
-          </div>
-
-          {/* CARD ROW — fills remaining height, never overflows */}
-          <div className="flex-1 min-h-0 grid grid-cols-5 gap-3 md:gap-5 pt-4">
-            {[
-              {
-                year: "2024",
-                title: "Foundation in Amravati",
-                description:
-                  "Incorporated in Amravati, Maharashtra, to manufacture affordable premium healthcare formulations.",
-                color: "#10b981",
-                border: "hover:border-emerald-200/85",
-                tag: "STAGE 01",
-              },
-              {
-                year: "2024–25",
-                title: "State-of-the-Art Plant Setup",
-                description:
-                  "Completed our ultra-clean facility with separate lines for tablets, capsules, liquids and ointments.",
-                color: "#f97316",
-                border: "hover:border-orange-200/85",
-                tag: "STAGE 02",
-              },
-              {
-                year: "2025",
-                title: "WHO-GMP & ISO Certified",
-                description:
-                  "Strict quality accreditations ensuring compliance with global pharmaceutical standards.",
-                color: "#f59e0b",
-                border: "hover:border-amber-200/85",
-                tag: "STAGE 03",
-              },
-              {
-                year: "2025–26",
-                title: "National Distribution",
-                description:
-                  "Ethical and PCD channels opened across states, serving 500+ distributors nationwide.",
-                color: "#6366f1",
-                border: "hover:border-indigo-200/85",
-                tag: "STAGE 04",
-              },
-              {
-                year: "Future",
-                title: "Global Export & R&D",
-                description:
-                  "Expanding into international markets and building an advanced formulation R&D center.",
-                color: "#ec4899",
-                border: "hover:border-pink-200/85",
-                tag: "STAGE 05",
-              },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className={`min-h-0 flex flex-col border border-slate-200 bg-white rounded-lg p-3 md:p-4 shadow-sm hover:shadow-lg transition-all duration-300 ${s.border}`}
-              >
-                <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-1.5 mb-1.5 shrink-0">
-                  <span
-                    className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-50 border border-slate-100"
-                    style={{ color: s.color }}
+              {/* Desktop View Timeline */}
+              <div className="hidden md:flex flex-col flex-1 min-h-0 w-full">
+                {/* PATH ROW — the ascending road */}
+                <div className="shrink-0 h-[26vh] md:h-[28vh] relative">
+                  <svg
+                    viewBox="0 0 1200 200"
+                    preserveAspectRatio="none"
+                    className="w-full h-full overflow-visible"
                   >
-                    {s.year}
-                  </span>
-                  <span className="text-[7px] font-mono text-slate-400 uppercase tracking-widest font-bold hidden md:inline">
-                    {s.tag}
-                  </span>
+                    <defs>
+                      <linearGradient id="journeyPath" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#10b981" />
+                        <stop offset="35%" stopColor="#f97316" />
+                        <stop offset="65%" stopColor="#f59e0b" />
+                        <stop offset="85%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#ec4899" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Completed stretch: stage 1 -> stage 4 */}
+                    <path
+                      d="M100,150 C180,160 245,95 330,115 S480,155 560,130 S715,55 800,80"
+                      fill="none"
+                      stroke="url(#journeyPath)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    {/* Road ahead: stage 4 -> stage 5 */}
+                    <path
+                      d="M800,80 C880,60 940,20 1000,45"
+                      fill="none"
+                      stroke="#ec4899"
+                      strokeWidth="3"
+                      strokeDasharray="7 8"
+                      strokeLinecap="round"
+                      opacity="0.7"
+                    />
+
+                    {/* Rocket marker */}
+                    <g transform="translate(1000,45) rotate(-35)">
+                      <path
+                        d="M0,-11 C6,-6 6,4 0,11 C-6,4 -6,-6 0,-11 Z"
+                        fill="#ec4899"
+                      />
+                      <circle cx="0" cy="-1" r="2.2" fill="white" />
+                    </g>
+                  </svg>
+
+                  {/* Milestone dots */}
+                  {milestones.map((n, i) => (
+                    <div
+                      key={i}
+                      className="absolute rounded-full border-4 border-white shadow-[0_0_10px_rgba(0,0,0,0.12)]"
+                      style={{
+                        left: `${n.x}%`,
+                        top: `${n.y}%`,
+                        width: 16,
+                        height: 16,
+                        backgroundColor: n.color,
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    />
+                  ))}
+
+                  {/* Connector stems */}
+                  {milestones.map((n, i) => (
+                    <div
+                      key={i}
+                      className="absolute bottom-0 border-l border-dashed border-slate-300"
+                      style={{ left: `${n.x}%`, height: "35%" }}
+                    />
+                  ))}
                 </div>
 
-                <h3 className="font-serif text-[12px] md:text-sm font-bold text-primary leading-snug line-clamp-2 shrink-0">
-                  {s.title}
-                </h3>
+                {/* CARD ROW */}
+                <div className="flex-grow min-h-0 grid grid-cols-5 gap-3 md:gap-5 pt-4">
+                  {milestones.map((s, i) => (
+                    <div
+                      key={i}
+                      className={`min-h-0 flex flex-col border border-slate-200 bg-white rounded-lg p-3 md:p-4 shadow-sm hover:shadow-lg transition-all duration-300 ${s.border}`}
+                    >
+                      <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-1.5 mb-1.5 shrink-0">
+                        <span
+                          className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-50 border border-slate-100"
+                          style={{ color: s.color }}
+                        >
+                          {s.year}
+                        </span>
+                        <span className="text-[7px] font-mono text-slate-400 uppercase tracking-widest font-bold hidden md:inline">
+                          {s.tag}
+                        </span>
+                      </div>
 
-                <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed mt-1.5 line-clamp-3 hidden sm:block overflow-hidden">
-                  {s.description}
-                </p>
+                      <h3 className="font-serif text-[12px] md:text-sm font-bold text-primary leading-snug line-clamp-2 shrink-0">
+                        {s.title}
+                      </h3>
+
+                      <p className="text-slate-500 text-[10px] md:text-xs leading-relaxed mt-1.5 line-clamp-3 hidden sm:block overflow-hidden">
+                        {s.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              {/* Mobile View Timeline (Vertical Layout) */}
+              <div className="block md:hidden relative pl-6 space-y-6 mt-4 w-full">
+                {/* Vertical connecting gradient line */}
+                <div className="absolute left-[7px] top-2 bottom-6 w-[2px] bg-gradient-to-b from-[#10b981] via-[#f59e0b] to-[#ec4899] z-0" />
+
+                {milestones.map((s, i) => (
+                  <div key={i} className="relative flex flex-col gap-2 z-10">
+                    {/* Milestone dot */}
+                    <div
+                      className="absolute -left-[24px] top-2.5 rounded-full border-4 border-white shadow-md"
+                      style={{
+                        width: 14,
+                        height: 14,
+                        backgroundColor: s.color,
+                        transform: "translateX(-50%)",
+                      }}
+                    />
+                    {/* Content Card */}
+                    <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm space-y-2 ml-2">
+                      <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-1.5">
+                        <span
+                          className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-slate-50 border border-slate-100"
+                          style={{ color: s.color }}
+                        >
+                          {s.year}
+                        </span>
+                        <span className="text-[8px] font-mono text-slate-400 uppercase tracking-widest font-bold">
+                          {s.tag}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-sm font-bold text-primary">
+                        {s.title}
+                      </h3>
+                      <p className="text-slate-500 text-[11px] leading-relaxed font-light">
+                        {s.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Section 4: Leadership Dossiers (Clinical Scientist ID Badges) */}
       <section className="py-24 px-6 bg-slate-50 border-b border-slate-200">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SEO, SectionTitle } from '../../components/shared/UI.jsx';
 import { JOBS } from '../../data/mockData.js';
@@ -8,13 +8,20 @@ export default function Careers() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', cvUrl: '', coverLetter: '' });
   const [showApplyModal, setShowApplyModal] = useState(false);
+  const submitTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (submitTimerRef.current) clearTimeout(submitTimerRef.current);
+    };
+  }, []);
 
   const selectedJob = JOBS.find(j => j.id === selectedJobId) || JOBS[0];
 
   const handleApply = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => {
+    submitTimerRef.current = setTimeout(() => {
       setSubmitted(false);
       setShowApplyModal(false);
       setFormData({ name: '', email: '', phone: '', cvUrl: '', coverLetter: '' });
