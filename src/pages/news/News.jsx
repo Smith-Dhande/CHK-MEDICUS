@@ -66,6 +66,7 @@ export default function News() {
             </span>
             <input
               type="text"
+              aria-label="Search news articles"
               placeholder="Search news articles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -147,6 +148,7 @@ export default function News() {
                     <input
                       type="email"
                       required
+                      aria-label="Newsletter email address"
                       placeholder="Email address"
                       className="w-full p-2.5 bg-white border border-slate-200 rounded outline-none focus:border-medical"
                     />

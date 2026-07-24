@@ -16,6 +16,9 @@ export default defineConfig({
             if (id.includes('framer-motion')) {
               return 'vendor-framer';
             }
+            if (id.includes('lucide-react') || id.includes('lucide')) {
+              return 'vendor-lucide';
+            }
             return 'vendor';
           }
         }

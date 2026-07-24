@@ -420,8 +420,9 @@ export default function Careers() {
                   <form onSubmit={handleApply} className="space-y-5 text-xs">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">Full Name</label>
+                        <label htmlFor="careers-name" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">Full Name</label>
                         <input
+                          id="careers-name"
                           type="text"
                           required
                           value={formData.name}
@@ -431,8 +432,9 @@ export default function Careers() {
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">Email Address</label>
+                        <label htmlFor="careers-email" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">Email Address</label>
                         <input
+                          id="careers-email"
                           type="email"
                           required
                           value={formData.email}
@@ -445,8 +447,9 @@ export default function Careers() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">Contact Number</label>
+                        <label htmlFor="careers-phone" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">Contact Number</label>
                         <input
+                          id="careers-phone"
                           type="tel"
                           required
                           value={formData.phone}
@@ -456,8 +459,9 @@ export default function Careers() {
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">Resume / CV Link</label>
+                        <label htmlFor="careers-cv" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">Resume / CV Link</label>
                         <input
+                          id="careers-cv"
                           type="url"
                           required
                           value={formData.cvUrl}
@@ -469,8 +473,9 @@ export default function Careers() {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">Cover Note / Key Achievements</label>
+                      <label htmlFor="careers-cover" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">Cover Note / Key Achievements</label>
                       <textarea
+                        id="careers-cover"
                         rows="3"
                         value={formData.coverLetter}
                         onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}

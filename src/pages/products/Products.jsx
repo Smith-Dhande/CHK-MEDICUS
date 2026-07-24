@@ -56,7 +56,8 @@ export default function Products() {
             </span>
             <input
               type="text"
-              placeholder="Search brand, chemical component, or generic..."
+              aria-label="Search active compound formulation"
+              placeholder="Search active compound formulation..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-800 focus:outline-none focus:border-medical focus:ring-1 focus:ring-medical text-xs shadow-sm"

@@ -111,10 +111,11 @@ export default function Contact() {
                       {/* Row 1: Name & Email */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-gen-name" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Your Name
                           </label>
                           <input
+                            id="contact-gen-name"
                             type="text"
                             placeholder="How should we address you?"
                             required
@@ -122,10 +123,11 @@ export default function Contact() {
                           />
                         </div>
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-gen-email" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Email Address
                           </label>
                           <input
+                            id="contact-gen-email"
                             type="email"
                             placeholder="Where should we reach you?"
                             required
@@ -136,10 +138,11 @@ export default function Contact() {
 
                       {/* Row 2: Subject */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        <label htmlFor="contact-gen-subject" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                           Subject
                         </label>
                         <input
+                          id="contact-gen-subject"
                           type="text"
                           placeholder="Formulation questions, career status, etc."
                           required
@@ -149,10 +152,11 @@ export default function Contact() {
 
                       {/* Row 3: Message */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        <label htmlFor="contact-gen-message" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                           Message
                         </label>
                         <textarea
+                          id="contact-gen-message"
                           placeholder="Detail your general query..."
                           required
                           rows="4"
@@ -166,10 +170,11 @@ export default function Contact() {
                       {/* Row 1: Firm Name & DL Number */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-dist-name" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Distributor / Firm Name
                           </label>
                           <input
+                            id="contact-dist-name"
                             type="text"
                             placeholder="Medical Distributors Corp."
                             required
@@ -177,10 +182,11 @@ export default function Contact() {
                           />
                         </div>
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-dist-dl" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Drug License Number
                           </label>
                           <input
+                            id="contact-dist-dl"
                             type="text"
                             placeholder="DL-20-48202 / DL-21-48203"
                             required
@@ -192,10 +198,11 @@ export default function Contact() {
                       {/* Row 2: Email & Phone */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-dist-email" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Contact Email
                           </label>
                           <input
+                            id="contact-dist-email"
                             type="email"
                             placeholder="purchase@firm.com"
                             required
@@ -203,10 +210,11 @@ export default function Contact() {
                           />
                         </div>
                         <div className="flex flex-col gap-1.5">
-                          <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                          <label htmlFor="contact-dist-phone" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                             Phone Number
                           </label>
                           <input
+                            id="contact-dist-phone"
                             type="tel"
                             placeholder="+91 98765 43210"
                             required
@@ -217,10 +225,11 @@ export default function Contact() {
 
                       {/* Row 3: Region */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        <label htmlFor="contact-dist-region" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                           Target Geographic Exclusivity Region
                         </label>
                         <input
+                          id="contact-dist-region"
                           type="text"
                           placeholder="e.g. Pune Division — specify cities or districts"
                           required
@@ -230,10 +239,11 @@ export default function Contact() {
 
                       {/* Row 4: Comments */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        <label htmlFor="contact-dist-comments" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                           Additional Comments / Formulation Requirements
                         </label>
                         <textarea
+                          id="contact-dist-comments"
                           placeholder="List specific products, tableting batches, or gel volume details required..."
                           rows="3"
                           className="w-full pb-2 bg-transparent border-0 border-b border-slate-200 focus:border-primary focus:ring-0 outline-none text-slate-700 text-sm placeholder:text-slate-400 resize-none transition-colors"

@@ -80,54 +80,7 @@ export default function Home() {
       }
     ];
     const theme = themes[idx % themes.length];
-    {
-      [
-        {
-          label: "Raw Material Verification",
-          desc: "100% assay analysis of active pharmaceutical ingredients (APIs).",
-          tilt: "-rotate-2",
-          tape: "bg-rose-400/30 border-rose-400/20",
-          border: "border-rose-400",
-          text: "text-rose-500",
-        },
-        {
-          label: "In-Process Controls",
-          desc: "Hourly tablet thickness, hardness, and dissolution tests.",
-          tilt: "rotate-1",
-          tape: "bg-amber-400/30 border-amber-400/20",
-          border: "border-amber-400",
-          text: "text-amber-500",
-        },
-        {
-          label: "Sterility Assurance",
-          desc: "Systematic particulate counters operating across Class 100 laminars.",
-          tilt: "-rotate-1",
-          tape: "bg-emerald-400/30 border-emerald-400/20",
-          border: "border-emerald-400",
-          text: "text-emerald-500",
-        },
-        {
-          label: "BMR Retention",
-          desc: "Traceable batch records preserved digitally for up to 5 years.",
-          tilt: "rotate-2",
-          tape: "bg-sky-400/30 border-sky-400/20",
-          border: "border-sky-400",
-          text: "text-sky-500",
-        },
-      ].map((qa, idx) => (
-        <div key={idx} className={`relative ${qa.tilt} hover:rotate-0 transition-transform duration-300`}>
-          <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 border shadow-sm ${qa.tape}`} />
 
-          <div className={`bg-white border-t-4 ${qa.border} border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
-            <span className={`text-[10px] font-bold uppercase tracking-widest block mb-2 ${qa.text}`}>
-              Stage 0{idx + 1}
-            </span>
-            <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
-            <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
-          </div>
-        </div>
-      ))
-    }
     // Spec abbreviations or text to display on labeled tape
     const tapeLabels = ["LINE A", "LINE B", "LINE C", "LINE D"];
     const tapeLabel = tapeLabels[idx % tapeLabels.length];
@@ -222,6 +175,7 @@ export default function Home() {
           poster="https://ik.imagekit.io/clickinv/CHK-MEDICUS/medicinebg.webp"
         >
           <source src="https://ik.imagekit.io/clickinv/CHK-MEDICUS/HerobgVDO.mp4" type="video/mp4" />
+          <track kind="captions" src="data:text/vtt,WEBVTT%0A%0A" srclang="en" label="English" default />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-900/30 to-transparent" />
         {/* faint clinical grid backdrop for texture */}
@@ -245,7 +199,7 @@ export default function Home() {
               <br />
               &amp; formulation of
               <br />
-              <span 
+              <span
                 className="text-[#00ffd1] font-serif italic font-extrabold tracking-tight leading-none inline-block mt-2 drop-shadow-[0_0_40px_rgba(0,255,209,0.55)]"
                 style={{ fontSize: 'clamp(3.5rem, 9vw, 5.5rem)' }}
               >
@@ -758,7 +712,7 @@ export default function Home() {
       </section>
 
       {/* 6. Research & Innovation Preview */}
-      <section className="relative min-h-[580px] lg:h-screen bg-[#08324F] overflow-hidden flex items-center">
+      <section className="relative min-h-[450px] lg:h-[60vh] lg:min-h-0 bg-[#08324F] overflow-hidden flex items-center">
 
         {/* Right-side image — 50% width, fading smoothly into the navy */}
         <div
@@ -802,7 +756,7 @@ export default function Home() {
             </p>
 
             {/* Scientific Highlights Grid */}
-            <div className="grid grid-cols-2 gap-4 max-w-md pt-6 border-t border-white/10">
+            {/* <div className="grid grid-cols-2 gap-4 max-w-md pt-6 border-t border-white/10">
               <div className="space-y-1">
                 <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Bioavailability</span>
                 <span className="block text-sm md:text-base font-sans font-bold text-white">+45% Absorption</span>
@@ -819,7 +773,7 @@ export default function Home() {
                 <span className="block text-[9px] font-mono text-medical uppercase tracking-wider font-semibold">Regulatory Standard</span>
                 <span className="block text-sm md:text-base font-sans font-bold text-white">WHO-GMP Compliant</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="pt-4">
               <NavLink
@@ -870,11 +824,11 @@ export default function Home() {
                 {/* washi tape */}
                 <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`} />
                 <div className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
-                  <span className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}>
+                  <span className={`text-[10px] font-bold ${qa.color === 'rose' ? 'text-rose-600' : qa.color === 'amber' ? 'text-amber-700' : qa.color === 'emerald' ? 'text-emerald-600' : 'text-sky-600'} uppercase tracking-widest block mb-2`}>
                     Stage 0{idx + 1}
                   </span>
                   <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+                  <p className="text-slate-600 text-xs leading-relaxed">{qa.desc}</p>
                 </div>
               </div>
             ))}
@@ -912,11 +866,11 @@ export default function Home() {
                 {/* washi tape */}
                 <div className={`absolute -top-3 left-1/2 -translate-x-1/2 -rotate-6 w-14 h-5 bg-${qa.color}-400/30 border border-${qa.color}-400/20 shadow-sm`} />
                 <div className={`bg-white border-t-4 border-${qa.color}-400 border-x border-b border-slate-100 p-6 shadow-md hover:shadow-xl transition-shadow duration-300`}>
-                  <span className={`text-[10px] font-bold text-${qa.color}-500 uppercase tracking-widest block mb-2`}>
+                  <span className={`text-[10px] font-bold ${qa.color === 'rose' ? 'text-rose-600' : qa.color === 'amber' ? 'text-amber-700' : qa.color === 'emerald' ? 'text-emerald-600' : 'text-sky-600'} uppercase tracking-widest block mb-2`}>
                     Stage 0{idx + 1}
                   </span>
                   <h3 className="font-bold text-primary text-sm mb-2">{qa.label}</h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">{qa.desc}</p>
+                  <p className="text-slate-600 text-xs leading-relaxed">{qa.desc}</p>
                 </div>
               </div>
             ))}
@@ -1028,10 +982,11 @@ export default function Home() {
                 {/* Row 1: Name & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    <label htmlFor="home-contact-name" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                       Name
                     </label>
                     <input
+                      id="home-contact-name"
                       type="text"
                       placeholder="How should we address you?"
                       required
@@ -1039,10 +994,11 @@ export default function Home() {
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    <label htmlFor="home-contact-email" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                       Email
                     </label>
                     <input
+                      id="home-contact-email"
                       type="email"
                       placeholder="Where should we reach you?"
                       required
@@ -1053,10 +1009,11 @@ export default function Home() {
 
                 {/* Row 2: Phone Number */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                  <label htmlFor="home-contact-phone" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                     Phone Number
                   </label>
                   <input
+                    id="home-contact-phone"
                     type="tel"
                     placeholder="A number to connect over"
                     required
@@ -1066,10 +1023,11 @@ export default function Home() {
 
                 {/* Row 3: Message */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                  <label htmlFor="home-contact-message" className="font-mono text-[9px] font-bold text-slate-400 uppercase tracking-widest cursor-pointer">
                     Message
                   </label>
                   <textarea
+                    id="home-contact-message"
                     placeholder="What's the vision? We're listening..."
                     required
                     rows="4"
@@ -1113,29 +1071,29 @@ export default function Home() {
                     delay={idx * 0.05}
                     className={`!p-6 !bg-white border border-slate-200/50 border-l-4 ${boxColor} transition-all duration-300 rounded-lg flex flex-col justify-between h-full w-full`}
                   >
-                  <div>
-                    <div className="flex items-center justify-between mb-3.5">
-                      <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-sm">
-                        REG: {cert.code}
-                      </span>
-                      <span className="text-[8px] font-mono uppercase text-medical font-bold tracking-wider">
-                        ACTIVE
-                      </span>
+                    <div>
+                      <div className="flex items-center justify-between mb-3.5">
+                        <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded-sm">
+                          REG: {cert.code}
+                        </span>
+                        <span className="text-[8px] font-mono uppercase text-medical font-bold tracking-wider">
+                          ACTIVE
+                        </span>
+                      </div>
+                      <h3 className="font-serif font-bold text-primary text-sm mb-1.5 leading-snug">
+                        {cert.title}
+                      </h3>
+                      <p className="text-slate-500 text-[11px] leading-relaxed mb-4">
+                        Issued by: {cert.issuer}
+                      </p>
                     </div>
-                    <h3 className="font-serif font-bold text-primary text-sm mb-1.5 leading-snug">
-                      {cert.title}
-                    </h3>
-                    <p className="text-slate-500 text-[11px] leading-relaxed mb-4">
-                      Issued by: {cert.issuer}
-                    </p>
-                  </div>
 
-                  <NavLink
-                    to="/certifications"
-                    className="inline-flex items-center gap-1 text-[10px] text-medical font-bold hover:underline mt-2 pt-2.5 border-t border-dashed border-slate-200"
-                  >
-                    Download Certificate PDF →
-                  </NavLink>
+                    <NavLink
+                      to="/certifications"
+                      className="inline-flex items-center gap-1 text-[10px] text-medical font-bold hover:underline mt-2 pt-2.5 border-t border-dashed border-slate-200"
+                    >
+                      Download Certificate PDF →
+                    </NavLink>
                   </Card>
                 </div>
               );
@@ -1332,23 +1290,23 @@ export default function Home() {
             {NEWS.map((art) => (
               <div key={art.id} className="shrink-0 w-[290px] md:w-auto md:shrink snap-center flex">
                 <Card className="!p-0 overflow-hidden flex flex-col justify-between w-full">
-                <div className="h-40 w-full overflow-hidden relative">
-                  <img src={art.imageUrl} alt={art.title} loading="lazy" className="w-full h-full object-cover" />
-                  <span className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-primary text-[9px] font-bold px-2 py-0.5 rounded">
-                    {art.category}
-                  </span>
-                </div>
-                <div className="p-6 space-y-3">
-                  <span className="block text-[10px] text-slate-400">{art.date}</span>
-                  <h3 className="font-serif text-base font-bold text-primary leading-snug line-clamp-2">{art.title}</h3>
-                  <p className="text-slate-500 text-xs line-clamp-2">{art.summary}</p>
-                </div>
-                <div className="p-6 pt-0">
-                  <NavLink to="/news" className="text-[11px] text-medical font-bold hover:underline inline-flex items-center gap-1">
-                    Read Publication <ArrowRight size={12} />
-                  </NavLink>
-                </div>
-              </Card>
+                  <div className="h-40 w-full overflow-hidden relative">
+                    <img src={art.imageUrl} alt={art.title} loading="lazy" className="w-full h-full object-cover" />
+                    <span className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-primary text-[9px] font-bold px-2 py-0.5 rounded">
+                      {art.category}
+                    </span>
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <span className="block text-[10px] text-slate-400">{art.date}</span>
+                    <h3 className="font-serif text-base font-bold text-primary leading-snug line-clamp-2">{art.title}</h3>
+                    <p className="text-slate-500 text-xs line-clamp-2">{art.summary}</p>
+                  </div>
+                  <div className="p-6 pt-0">
+                    <NavLink to="/news" className="text-[11px] text-medical font-bold hover:underline inline-flex items-center gap-1">
+                      Read Publication <ArrowRight size={12} />
+                    </NavLink>
+                  </div>
+                </Card>
               </div>
             ))}
           </div>

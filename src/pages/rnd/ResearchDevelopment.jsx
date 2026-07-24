@@ -224,13 +224,13 @@ export default function ResearchDevelopment() {
               <div className="bg-[#121212] p-3 rounded-sm flex-grow flex flex-col justify-between border-[8px] border-[#282828] shadow-inner h-full">
 
                 {/* Silver Faceplate panel */}
-                <div className="bg-[#cbd5e1] rounded-xs p-3 flex-grow flex gap-4 border border-slate-400 shadow-inner h-full">
+                <div className="bg-[#cbd5e1] rounded-xs p-3 flex-grow flex gap-4 border border-slate-300 shadow-inner h-full">
 
                   {/* Left Column: Thermal Printer module */}
                   <div className="w-1/3 bg-stone-900 border border-stone-950 p-2.5 rounded-xs flex flex-col justify-between shadow-inner h-full">
                     <div className="space-y-1">
                       <div className="h-[2.5px] bg-stone-950 w-full" />
-                      <span className="text-[7px] font-mono text-slate-500 uppercase tracking-widest block text-center font-bold">
+                      <span className="text-[7px] font-mono text-slate-300 uppercase tracking-widest block text-center font-bold">
                         PRINTER
                       </span>
                     </div>
@@ -244,14 +244,14 @@ export default function ResearchDevelopment() {
 
                     <div className="flex justify-between items-center px-1">
                       <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_4px_#10b981]" />
-                      <span className="text-[6.5px] font-mono text-slate-500 font-bold">FEED</span>
+                      <span className="text-[6.5px] font-mono text-slate-300 font-bold">FEED</span>
                     </div>
                   </div>
 
                   {/* Center Column: Red Digital LED Displays */}
                   <div className="flex-grow flex flex-col justify-between h-full bg-[#f1f5f9] border border-slate-300 p-2.5 rounded-xs shadow-sm relative">
                     <div className="text-center border-b border-slate-300 pb-1 mb-2">
-                      <span className="text-[8.5px] font-mono font-bold text-slate-500 tracking-wider">
+                      <span className="text-[8.5px] font-mono font-bold text-slate-700 tracking-wider">
                         CHK Medicus / Stability
                       </span>
                     </div>
@@ -261,7 +261,7 @@ export default function ResearchDevelopment() {
                       <div className="bg-[#1c1917] p-2 rounded-xs border border-stone-950 space-y-0.5 shadow-md">
                         <div className="flex justify-between items-center text-[7px] font-mono text-rose-505 font-bold uppercase tracking-wider">
                           <span className="text-rose-500">ACCEL / UNIT 01</span>
-                          <span className="text-slate-400">LEVEL</span>
+                          <span className="text-slate-700">LEVEL</span>
                         </div>
                         <div className="flex justify-between items-baseline font-mono text-[#ef4444] text-[17px] font-extrabold tracking-widest leading-none">
                           <span className="animate-pulse">40°C</span>
@@ -273,7 +273,7 @@ export default function ResearchDevelopment() {
                       <div className="bg-[#1c1917] p-1.5 rounded-xs border border-stone-950 space-y-0.5 shadow-md">
                         <div className="flex justify-between items-center text-[6px] font-mono text-sky-405 font-bold uppercase tracking-wider">
                           <span className="text-sky-400">LTERM / UNIT 02</span>
-                          <span className="text-slate-400">LEVEL</span>
+                          <span className="text-slate-700">LEVEL</span>
                         </div>
                         <div className="flex justify-between items-baseline font-mono text-sky-400 text-[17px] font-extrabold tracking-widest leading-none">
                           <span className="animate-pulse">30°C</span>
@@ -283,7 +283,7 @@ export default function ResearchDevelopment() {
                     </div>
 
                     <div className="mt-1 text-right">
-                      <span className="text-[7.5px] font-mono text-slate-400 block font-bold">
+                      <span className="text-[7.5px] font-mono text-slate-700 block font-bold">
                         SYSTEM RUNNING
                       </span>
                     </div>
@@ -292,15 +292,24 @@ export default function ResearchDevelopment() {
                   {/* Right Column: Vertical Keypad controls */}
                   <div className="w-11 bg-stone-900 border border-stone-950 p-2 flex flex-col justify-between items-center rounded-xs h-full">
                     <div className="space-y-2 w-full flex flex-col items-center">
-                      <button className="h-6 w-7 rounded-xs bg-stone-800 border border-stone-700 text-slate-400 text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-stone-700">
+                      <button 
+                        aria-label="Increase simulation frequency" 
+                        className="relative h-6 w-7 rounded-xs bg-stone-800 border border-stone-700 text-slate-400 text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-stone-700 before:absolute before:-inset-2 before:content-['']"
+                      >
                         ▲
                       </button>
-                      <button className="h-6 w-7 rounded-xs bg-stone-800 border border-stone-700 text-slate-400 text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-stone-700">
+                      <button 
+                        aria-label="Decrease simulation frequency" 
+                        className="relative h-6 w-7 rounded-xs bg-stone-800 border border-stone-700 text-slate-400 text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-stone-700 before:absolute before:-inset-2 before:content-['']"
+                      >
                         ▼
                       </button>
                     </div>
 
-                    <button className="h-7.5 w-8.5 rounded-xs bg-[#b91c1c] border border-red-950 text-white text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-red-800 tracking-wider">
+                    <button 
+                      aria-label="Run simulation" 
+                      className="h-7.5 w-8.5 rounded-xs bg-[#b91c1c] border border-red-950 text-white text-[8px] font-bold flex items-center justify-center cursor-pointer hover:bg-red-800 tracking-wider"
+                    >
                       RUN
                     </button>
                   </div>

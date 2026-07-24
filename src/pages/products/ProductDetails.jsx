@@ -163,8 +163,9 @@ export default function ProductDetails() {
                 <form onSubmit={handleEnquiry} className="space-y-4 text-xs">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-slate-600 font-semibold mb-1">Your Full Name</label>
+                      <label htmlFor="enquiry-name" className="block text-slate-600 font-semibold mb-1 cursor-pointer">Your Full Name</label>
                       <input
+                        id="enquiry-name"
                         type="text"
                         required
                         value={formData.name}
@@ -174,8 +175,9 @@ export default function ProductDetails() {
                       />
                     </div>
                     <div>
-                      <label className="block text-slate-600 font-semibold mb-1">Corporate Email Address</label>
+                      <label htmlFor="enquiry-email" className="block text-slate-600 font-semibold mb-1 cursor-pointer">Corporate Email Address</label>
                       <input
+                        id="enquiry-email"
                         type="email"
                         required
                         value={formData.email}
@@ -186,8 +188,9 @@ export default function ProductDetails() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-slate-600 font-semibold mb-1">Target Volume (e.g. 5,000 Packs)</label>
+                    <label htmlFor="enquiry-qty" className="block text-slate-600 font-semibold mb-1 cursor-pointer">Target Volume (e.g. 5,000 Packs)</label>
                     <input
+                      id="enquiry-qty"
                       type="text"
                       required
                       value={formData.qty}
@@ -197,8 +200,9 @@ export default function ProductDetails() {
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-600 font-semibold mb-1">Distributor Region / Remarks</label>
+                    <label htmlFor="enquiry-remarks" className="block text-slate-600 font-semibold mb-1 cursor-pointer">Distributor Region / Remarks</label>
                     <textarea
+                      id="enquiry-remarks"
                       rows="3"
                       value={formData.remarks}
                       onChange={(e) => setFormData({ ...formData, remarks: e.target.value })}

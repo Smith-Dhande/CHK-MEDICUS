@@ -144,14 +144,14 @@ export default function Testimonials() {
                                 className="w-full flex justify-center"
                             >
                                 {/* Desktop View Card */}
-                                <div className="hidden lg:flex relative w-full h-[80vh] items-center justify-center">
+                                <div className="hidden lg:flex relative w-full h-[68vh] items-center justify-center">
                                     {/* Stacked paper sheets behind */}
-                                    <div className="absolute ml-auto w-[78%] h-[72%] bg-white border border-[#e8e3d3] rotate-1.5 translate-x-1.5 translate-y-1.5 z-0 rounded-sm shadow-md" />
-                                    <div className="absolute ml-auto w-[78%] h-[72%] bg-white border border-[#e8e3d3] -rotate-1 -translate-x-1 translate-y-1 z-0 shadow-md rounded-sm" />
+                                    <div className="absolute ml-auto w-[78%] h-[60%] bg-white border border-[#e8e3d3] rotate-1.5 translate-x-1.5 translate-y-1.5 z-0 rounded-sm shadow-md" />
+                                    <div className="absolute ml-auto w-[78%] h-[60%] bg-white border border-[#e8e3d3] -rotate-1 -translate-x-1 translate-y-1 z-0 shadow-md rounded-sm" />
 
                                     {/* Testimonial Card */}
                                     <div
-                                        className="relative ml-auto w-[78%] h-[72%] border border-[#e8e3d3]/80 rounded-sm z-10 transition-all flex flex-col justify-between"
+                                        className="relative ml-auto w-[78%] h-[60%] border border-[#e8e3d3]/80 rounded-sm z-10 transition-all flex flex-col justify-between"
                                         style={{
                                             backgroundColor: "#fffdf8",
                                             backgroundImage: "repeating-linear-gradient(#fffdf8, #fffdf8 31px, #f2edd9 32px)",
@@ -205,20 +205,23 @@ export default function Testimonials() {
                                             </div>
 
                                             <div className="flex items-center justify-between mt-4 pt-3 border-t border-dashed border-slate-200 shrink-0">
-                                                <div className="flex gap-1.5">
+                                                <div className="flex gap-4 items-center">
                                                     {testimonials.map((item, index) => (
                                                         <button
                                                             key={item.id}
                                                             onClick={() => setCurrent(index)}
-                                                            className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-6 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"}`}
-                                                        />
+                                                            className="p-2 -m-2 cursor-pointer flex items-center justify-center"
+                                                            aria-label={`Go to slide ${index + 1}`}
+                                                        >
+                                                            <span className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-6 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"}`} />
+                                                        </button>
                                                     ))}
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <button onClick={prevSlide} className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
+                                                    <button onClick={prevSlide} aria-label="Previous testimonial" className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
                                                         <ChevronLeft size={14} />
                                                     </button>
-                                                    <button onClick={nextSlide} className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
+                                                    <button onClick={nextSlide} aria-label="Next testimonial" className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
                                                         <ChevronRight size={14} />
                                                     </button>
                                                 </div>
@@ -228,7 +231,7 @@ export default function Testimonials() {
                                 </div>
 
                                 {/* Mobile/Tablet View Card */}
-                                <div className="lg:hidden relative w-full h-auto flex items-center justify-center min-h-[500px] px-4">
+                                <div className="lg:hidden relative w-full h-auto flex items-center justify-center min-h-[425px] px-4">
                                     {/* Stacked paper sheets behind */}
                                     <div className="absolute ml-auto w-[90%] md:w-[78%] h-full bg-white border border-[#e8e3d3] rotate-1.5 translate-x-1.5 translate-y-1.5 z-0 rounded-sm shadow-md" />
                                     <div className="absolute ml-auto w-[90%] md:w-[78%] h-full bg-white border border-[#e8e3d3] -rotate-1 -translate-x-1 translate-y-1 z-0 shadow-md rounded-sm" />
@@ -259,7 +262,7 @@ export default function Testimonials() {
                                             className="absolute -left-6 -top-16 h-28 md:-left-16 md:top-auto md:bottom-[-15%] md:h-[130%] object-contain pointer-events-none select-none z-30"
                                         />
 
-                                        <div className="flex flex-col justify-between pl-10 pr-6 py-6 md:pl-[34%] md:pr-12 md:py-10 flex-grow relative z-10 min-h-[460px]">
+                                        <div className="flex flex-col justify-between pl-10 pr-6 py-6 md:pl-[34%] md:pr-12 md:py-10 flex-grow relative z-10 min-h-[390px]">
                                             <div className="flex gap-1 shrink-0">
                                                 {[...Array(testimonials[current].rating)].map((_, index) => (
                                                     <Star key={index} size={14} className="fill-amber-400 text-amber-400" />
@@ -289,20 +292,23 @@ export default function Testimonials() {
                                             </div>
 
                                             <div className="flex items-center justify-between mt-4 pt-3 border-t border-dashed border-slate-200 shrink-0">
-                                                <div className="flex gap-1.5">
+                                                <div className="flex gap-4 items-center">
                                                     {testimonials.map((item, index) => (
                                                         <button
                                                             key={item.id}
                                                             onClick={() => setCurrent(index)}
-                                                            className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-6 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"}`}
-                                                        />
+                                                            className="p-2 -m-2 cursor-pointer flex items-center justify-center"
+                                                            aria-label={`Go to slide ${index + 1}`}
+                                                        >
+                                                            <span className={`h-1.5 rounded-full transition-all duration-300 ${current === index ? "w-6 bg-primary" : "w-1.5 bg-slate-300 hover:bg-slate-400"}`} />
+                                                        </button>
                                                     ))}
                                                 </div>
                                                 <div className="flex gap-2">
-                                                    <button onClick={prevSlide} className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
+                                                    <button onClick={prevSlide} aria-label="Previous testimonial" className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
                                                         <ChevronLeft size={14} />
                                                     </button>
-                                                    <button onClick={nextSlide} className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
+                                                    <button onClick={nextSlide} aria-label="Next testimonial" className="h-8 w-8 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-white">
                                                         <ChevronRight size={14} />
                                                     </button>
                                                 </div>

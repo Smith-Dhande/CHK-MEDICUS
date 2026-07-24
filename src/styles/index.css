@@ -3,8 +3,8 @@
 @theme {
   --color-primary: #08324f; /* Deep clinical blue */
   --color-primary-hover: #06263d;
-  --color-medical: #1f8a55; /* Brand green */
-  --color-medical-hover: #166342;
+  --color-medical: #1b7b4a; /* Brand green */
+  --color-medical-hover: #14573a;
   --color-accent: #2fa0cf; /* Clean medical cyan */
   --color-bg-light: #f3f8fb; /* Soft hospital white */
   --color-glass-border: rgba(255, 255, 255, 0.45);
