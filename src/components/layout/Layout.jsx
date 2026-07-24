@@ -104,7 +104,7 @@ export default function Layout({ children }) {
           aria-label="Contact on WhatsApp"
           whileHover={{ y: -2 }}
         >
-          <MessageCircle size={24} />
+          <i className="fa-brands fa-whatsapp text-2xl"></i>
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-bold py-1 px-2.5 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
             WhatsApp Inquiry
           </span>

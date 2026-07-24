@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, X, Filter } from 'lucide-react';
-import { SEO, SectionTitle } from '../../components/shared/UI.jsx';
+import { SEO } from '../../components/shared/UI.jsx';
 
 const GALLERY_PHOTOS = [
   { id: 1, category: 'factory', title: 'Solid Oral Compression Line', url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop' },
@@ -37,30 +36,45 @@ export default function Gallery() {
         description="Take a visual tour inside our manufacturing plant, analytical testing laboratories, and corporate offices in Amravati."
       />
 
-      {/* Header Banner */}
-      <section className="bg-primary text-white py-16 px-4 bg-grid-pattern relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-hover/50"></div>
-        <div className="max-w-4xl mx-auto text-center space-y-4 relative z-10">
-          <span className="text-xs font-bold text-accent tracking-widest uppercase">Visual Tour</span>
-          <h1 className="font-serif text-3xl md:text-5xl font-bold">Facility & Operations Gallery</h1>
-          <p className="text-white/70 text-xs md:text-sm leading-relaxed max-w-xl mx-auto">
-            Take a visual tour inside our sterile manufacturing areas, high-end laboratory test chambers, and offices.
-          </p>
+      {/* Header Banner: Document Folder Registry */}
+      <section className="relative pt-28 pb-16 px-6 bg-slate-50 border-b border-slate-200 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-60" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex items-center justify-between border-b border-slate-355 pb-2 mb-6">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
+              Document Type: Plant Catalog
+            </span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
+              Ref: CHK-VISUAL-ARCHIVE
+            </span>
+          </div>
+
+          <div className="max-w-3xl space-y-4">
+            <span className="text-xs font-bold text-medical uppercase tracking-wider block">
+              Visual Tour
+            </span>
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary">
+              Facility &amp; Operations Gallery
+            </h1>
+            <p className="text-slate-655 text-sm md:text-base leading-relaxed max-w-2xl">
+              Take a visual tour inside our sterile manufacturing areas, high-end laboratory test chambers, and offices.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Category selector filter */}
-      <section className="py-8 bg-slate-50 border-b border-slate-200 px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-2">
-          <Filter size={14} className="text-slate-400 mr-2" />
+      {/* Tabbed Index Folder Selection (Instead of generic pill buttons) */}
+      <section className="py-6 bg-slate-50 border-b border-slate-200 px-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-2 justify-center">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer border transition-colors ${
+              className={`px-5 py-2 font-mono text-[10px] font-bold uppercase tracking-wider rounded-sm border transition-all cursor-pointer ${
                 selectedCategory === cat.id
-                  ? 'bg-primary text-white border-primary shadow-sm'
-                  : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                  ? 'bg-primary text-white border-primary shadow-md'
+                  : 'bg-white text-slate-550 border-slate-200 hover:bg-slate-100/50'
               }`}
             >
               {cat.name}
@@ -69,10 +83,13 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Modern Masonry/Grid Layout */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Blueprint Catalog Matrix Grid (Doing something crazy!) */}
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        {/* Molecular blueprint line background */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
             {filteredPhotos.map((photo, idx) => (
               <motion.div
                 layout
@@ -81,18 +98,31 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="group relative rounded-xl overflow-hidden bg-slate-100 border border-slate-200 cursor-pointer h-64 shadow-sm hover:shadow-lg transition-all"
+                className="group relative bg-[#fffdfa] border border-slate-300 p-3 pb-4 rounded-sm cursor-pointer shadow-sm hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
                 onClick={() => setLightboxIndex(idx)}
               >
-                <img
-                  src={photo.url}
-                  alt={photo.title}
-                  className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-primary/45 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                  <Eye className="mx-auto mb-2 text-accent" size={24} />
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-accent">{photo.category}</span>
-                  <h3 className="font-serif text-sm font-semibold leading-tight mt-0.5">{photo.title}</h3>
+                {/* Photo frame */}
+                <div className="h-52 bg-slate-100 overflow-hidden border border-slate-200/60 rounded-sm">
+                  <img
+                    src={photo.url}
+                    alt={photo.title}
+                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+
+                {/* Technical Label Footer */}
+                <div className="mt-3.5 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[8px] font-mono uppercase text-medical font-bold tracking-wider">
+                      {photo.category}
+                    </span>
+                    <span className="text-[7.5px] font-mono text-slate-400 font-bold uppercase">
+                      REF-0{photo.id}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-[13px] font-bold text-primary leading-tight font-semibold mt-1">
+                    {photo.title}
+                  </h3>
                 </div>
               </motion.div>
             ))}
@@ -100,39 +130,56 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal (Laboratory Specimen Slide Style) */}
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+            className="fixed inset-0 z-50 bg-[#1c1917]/95 flex items-center justify-center p-4 cursor-zoom-out"
             onClick={() => setLightboxIndex(null)}
           >
+            {/* Close action */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+              className="absolute top-6 right-6 px-4 py-2 border border-white/10 rounded-sm bg-white/5 hover:bg-white/10 text-white font-mono text-[10px] font-bold uppercase tracking-widest cursor-pointer"
               aria-label="Close Lightbox"
             >
-              <X size={24} />
+              Close Slide [ESC]
             </button>
+
             <div
-              className="max-w-4xl max-h-[80vh] bg-white p-2 rounded-xl relative overflow-hidden"
-              onClick={(e) => e.stopPropagation()} // Prevent close on clicking image container
+              className="max-w-4xl max-h-[85vh] bg-[#fffdf8] p-4 border border-[#e8e3d3] rounded-sm relative shadow-2xl flex flex-col justify-between"
+              onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={filteredPhotos[lightboxIndex].url}
-                alt={filteredPhotos[lightboxIndex].title}
-                className="max-w-full max-h-[75vh] object-contain rounded-lg"
-              />
-              <div className="p-3 text-center bg-white">
-                <span className="text-[10px] font-bold text-medical uppercase tracking-widest block">
-                  {filteredPhotos[lightboxIndex].category}
-                </span>
-                <h4 className="font-serif text-base font-bold text-primary mt-1">
-                  {filteredPhotos[lightboxIndex].title}
-                </h4>
+              {/* Microscope slide crop */}
+              <div className="overflow-hidden border border-slate-200 rounded-sm bg-slate-900">
+                <img
+                  src={filteredPhotos[lightboxIndex].url}
+                  alt={filteredPhotos[lightboxIndex].title}
+                  className="max-w-full max-h-[65vh] object-contain rounded-sm"
+                />
+              </div>
+
+              {/* Specimen catalog label */}
+              <div className="pt-4 border-t border-dashed border-[#e8e3d3] flex justify-between items-center text-left">
+                <div>
+                  <span className="text-[9px] font-mono font-bold text-medical uppercase tracking-widest">
+                    Specimen Category: {filteredPhotos[lightboxIndex].category}
+                  </span>
+                  <h4 className="font-serif text-lg font-bold text-primary mt-0.5">
+                    {filteredPhotos[lightboxIndex].title}
+                  </h4>
+                </div>
+                <div className="text-right">
+                  <span className="text-[9px] font-mono text-slate-400 font-bold uppercase block">
+                    SLIDE INDEX NO
+                  </span>
+                  <span className="text-sm font-mono font-bold text-primary">
+                    SL-0{filteredPhotos[lightboxIndex].id}
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>

@@ -104,7 +104,7 @@ export default function Footer() {
 
         {/* Product Segments */}
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-wider text-accent mb-5">Product Segments</h4>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-medical mb-5">Product Segments</h4>
           <ul className="space-y-2.5 text-xs text-white/75">
             <li>
               <NavLink to="/products" className="hover:text-white hover:underline transition-all">Antibiotics formulations</NavLink>
@@ -136,11 +136,11 @@ export default function Footer() {
               </span>
             </li>
             <li className="flex items-center gap-2.5">
-              <Phone size={14} className="text-accent shrink-0" />
+              <Phone size={14} className="text-medical shrink-0" />
               <span>+91 7122 345678</span>
             </li>
             <li className="flex items-center gap-2.5">
-              <Mail size={14} className="text-accent shrink-0" />
+              <Mail size={14} className="text-medical shrink-0" />
               <span>info@chkmedicus.com</span>
             </li>
             <li className="flex items-center gap-2.5 border-t border-white/10 pt-3">
