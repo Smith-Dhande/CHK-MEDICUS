@@ -245,7 +245,12 @@ export default function Home() {
               <br />
               &amp; formulation of
               <br />
-              <span className="text-medical text-7xl inline-block text-[#8FF3B8] text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">healthcare</span>
+              <span 
+                className="text-[#00ffd1] font-serif italic font-extrabold tracking-tight leading-none inline-block mt-2 drop-shadow-[0_0_40px_rgba(0,255,209,0.55)]"
+                style={{ fontSize: 'clamp(3.5rem, 9vw, 5.5rem)' }}
+              >
+                healthcare
+              </span>
             </AnimatedHeading>
 
             <motion.p
@@ -930,7 +935,7 @@ export default function Home() {
           {/* Stacked Paper Container */}
           <div className="relative">
             {/* Draft paper sheet rotated at 12 degrees behind the form */}
-            <div 
+            <div
               className="absolute inset-0 bg-[#fffdf9] border border-slate-200/80 shadow-md rounded-sm rotate-[12deg] scale-[1.01] translate-x-2 translate-y-3 z-0"
               style={{
                 backgroundImage: "repeating-linear-gradient(#fffdf9, #fffdf9 27px, #e8e3d3 28px)",
@@ -1034,8 +1039,8 @@ export default function Home() {
               const boxColor = boxColors[idx % boxColors.length];
 
               return (
-                <Card 
-                  key={cert.id} 
+                <Card
+                  key={cert.id}
                   delay={idx * 0.05}
                   className={`!p-6 !bg-white border border-slate-200/50 border-l-4 ${boxColor} transition-all duration-300 rounded-lg flex flex-col justify-between h-full`}
                 >
@@ -1055,9 +1060,9 @@ export default function Home() {
                       Issued by: {cert.issuer}
                     </p>
                   </div>
-                  
-                  <NavLink 
-                    to="/certifications" 
+
+                  <NavLink
+                    to="/certifications"
                     className="inline-flex items-center gap-1 text-[10px] text-medical font-bold hover:underline mt-2 pt-2.5 border-t border-dashed border-slate-200"
                   >
                     Download Certificate PDF →

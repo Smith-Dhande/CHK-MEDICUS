@@ -4,24 +4,21 @@ import { SEO, SectionTitle } from '../../components/shared/UI.jsx';
 import { JOBS } from '../../data/mockData.js';
 
 export default function Careers() {
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJobId, setSelectedJobId] = useState(JOBS[0]?.id || null);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', cvUrl: '', coverLetter: '' });
+  const [showApplyModal, setShowApplyModal] = useState(false);
+
+  const selectedJob = JOBS.find(j => j.id === selectedJobId) || JOBS[0];
 
   const handleApply = (e) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
-      setSelectedJob(null);
+      setShowApplyModal(false);
       setFormData({ name: '', email: '', phone: '', cvUrl: '', coverLetter: '' });
     }, 3000);
-  };
-
-  const deptColors = {
-    'Quality Control & Assurance': { border: 'border-emerald-400', tag: 'bg-emerald-50 text-emerald-700 border-emerald-100', dot: 'bg-emerald-500', hover: 'hover:border-emerald-200' },
-    'Research & Development': { border: 'border-sky-400', tag: 'bg-sky-50 text-sky-700 border-sky-100', dot: 'bg-sky-500', hover: 'hover:border-sky-200' },
-    'Business Development': { border: 'border-amber-400', tag: 'bg-amber-50 text-amber-700 border-amber-100', dot: 'bg-amber-500', hover: 'hover:border-amber-200' }
   };
 
   return (
@@ -31,7 +28,7 @@ export default function Careers() {
         description="Join the team at CHK Medicus Care Private Limited. Explore active job openings in Quality Control, F&D Research, and Business Development at Amravati."
       />
 
-      {/* Hero Banner — dark clinical style */}
+      {/* Hero Banner — dark clinical style with interactive passcard */}
       <section className="bg-gradient-to-b from-[#04121e] via-[#082236] to-[#0a2e46] text-white py-24 px-6 relative overflow-hidden min-h-[55vh] flex items-center">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-medical/8 rounded-full blur-[140px] pointer-events-none" />
@@ -39,175 +36,299 @@ export default function Careers() {
 
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/90">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/95">
               <span className="w-1.5 h-1.5 rounded-full bg-medical animate-pulse" />
               <span className="text-[9px] font-mono tracking-wider uppercase font-bold text-medical">CHK-CAREERS</span>
               <span className="text-white/20">|</span>
-              <span className="font-mono text-[9px] text-slate-400 font-bold uppercase tracking-wide">Talent Desk</span>
+              <span className="font-mono text-[9px] text-slate-400 font-bold uppercase tracking-wide">Recruitment File</span>
             </div>
 
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-              Build Your <br />
-              <span className="text-medical">Career With Us</span>
+              Join the <br />
+              <span className="text-[#00ffd1] font-serif italic drop-shadow-[0_0_30px_rgba(0,255,209,0.35)]">Scientific Cohort</span>
             </h1>
 
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-light">
-              Join a team where scientific precision meets pharmaceutical innovation. We offer a safety-first culture with continuous professional growth inside WHO-GMP certified facilities.
+            <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl font-light">
+              CHK Medicus is expanding its formulation, analytics, and commercial operations. We invite researchers, quality controllers, and business development leaders to apply.
             </p>
+
+            <div className="pt-4 flex flex-wrap gap-x-8 gap-y-2 text-[10px] font-mono text-slate-400 tracking-wider">
+              <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-medical" /> REGULATED CLEANROOMS</span>
+              <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-medical" /> ETHICAL PRACTICES</span>
+              <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-medical" /> AMRAVATI FACILITY</span>
+            </div>
           </div>
 
-          {/* Glassmorphic stats card */}
+          {/* Fancy Clinical Passcard badge */}
           <div className="lg:col-span-5 relative group">
-            <div className="absolute inset-0 bg-white/[0.02] border border-white/5 rounded-sm rotate-[3deg] group-hover:rotate-[1deg] transition-transform duration-300 -z-10" />
+            {/* Ambient glow behind badge */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-medical to-accent rounded-sm blur opacity-25" />
 
-            <div className="bg-[#051c2c]/75 backdrop-blur-md border border-white/10 p-6 rounded-sm shadow-2xl relative">
-              <div className="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
-                <span className="text-[9px] font-mono text-slate-400 font-bold tracking-widest uppercase">TALENT ACQUISITION</span>
-                <span className="text-[8px] font-mono text-emerald-400 font-bold uppercase tracking-wider bg-emerald-950/40 border border-emerald-900/50 px-2 py-0.5 rounded-full">HIRING</span>
+            <div className="relative bg-[#051c2c]/85 border border-white/10 p-6 rounded-sm shadow-2xl space-y-4">
+              {/* Badge Header */}
+              <div className="flex justify-between items-center border-b border-white/15 pb-3">
+                <span className="text-[8px] font-mono text-slate-400 font-bold uppercase tracking-widest">COHORT ACCESS ID</span>
+                <span className="text-[7.5px] font-mono text-emerald-400 font-bold bg-emerald-950/40 border border-emerald-900/50 px-2 py-0.5 rounded">SYSTEM OK</span>
               </div>
 
-              <ul className="space-y-4">
-                {[
-                  { label: "Active Openings", value: `${JOBS.length} Positions` },
-                  { label: "Work Location", value: "Amravati, MH" },
-                  { label: "Facility Standard", value: "WHO-GMP Certified" },
-                  { label: "Benefits Package", value: "Medical + Training" }
-                ].map((item, i) => (
-                  <li key={i} className="flex justify-between items-center border-b border-white/5 last:border-0 pb-3 last:pb-0">
-                    <span className="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">{item.label}</span>
-                    <span className="text-[10px] font-mono text-medical font-bold">{item.value}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Grid details */}
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <div className="space-y-1">
+                  <span className="block text-[8px] font-mono text-slate-500 uppercase font-bold">DIRECTORY FILE</span>
+                  <span className="block text-[11px] font-mono text-white font-bold">MEDICUS-2024-C</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="block text-[8px] font-mono text-slate-500 uppercase font-bold">ISSUED BY</span>
+                  <span className="block text-[11px] font-mono text-white font-bold">QUALITY ASSURANCE</span>
+                </div>
+              </div>
+
+              {/* Barcode line */}
+              <div className="border-t border-white/10 pt-4 flex flex-col gap-2">
+                <div className="h-6 w-full opacity-35" style={{ backgroundImage: "repeating-linear-gradient(90deg, #fff, #fff 1px, transparent 1px, transparent 4px, #fff 4px, #fff 6px, transparent 6px, transparent 8px)" }} />
+                <div className="flex justify-between text-[7px] font-mono text-slate-500 tracking-wider">
+                  <span>BATCH: 02-CAREERS</span>
+                  <span>CHK MEDICUS CARE PVT LTD</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Culture & Values — Editorial Horizontal Strip */}
+      {/* Section 2: Laboratory Workspace Guidelines (Culture — no cards) */}
       <section className="py-16 px-6 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Life at Medicus" title="Why Work With Us" />
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-slate-200 border border-slate-200 rounded-sm overflow-hidden">
+          {/* Simple typography-focused row with vertical divider lines */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
             {[
               {
                 num: '01',
                 title: 'Training & Development',
-                text: 'Regular seminars covering cleanroom GMP guidelines, data integrity audits, and advanced HPLC chromatography operations.',
-                accent: 'text-emerald-600',
-                bg: 'bg-white'
+                text: 'Regular seminars covering cleanroom GMP guidelines, data integrity audits, and advanced HPLC chromatography operations.'
               },
               {
                 num: '02',
                 title: 'Modern Infrastructure',
-                text: 'Work with calibrated, advanced tools, fully automated batch mixing suites, and digital records systems.',
-                accent: 'text-sky-600',
-                bg: 'bg-white'
+                text: 'Work with calibrated, advanced tools, fully automated batch mixing suites, and digital records systems.'
               },
               {
                 num: '03',
                 title: 'Safety & Wellness',
-                text: 'Complete health safety shielding, HEPA airflow containment, clean transit locks, and comprehensive medical insurance benefits.',
-                accent: 'text-amber-600',
-                bg: 'bg-white'
+                text: 'Complete health safety shielding, HEPA airflow containment, clean transit locks, and comprehensive medical insurance benefits.'
               }
             ].map((item, i) => (
-              <div key={i} className={`${item.bg} p-8 md:p-10 space-y-4 hover:bg-slate-50/50 transition-colors duration-300 group`}>
-                <div className="flex items-baseline gap-3">
-                  <span className={`font-mono text-3xl font-black ${item.accent} opacity-20 group-hover:opacity-40 transition-opacity`}>{item.num}</span>
+              <div key={i} className="py-8 md:py-0 md:px-8 first:pl-0 last:pr-0 space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-2xl font-bold text-slate-400">{item.num}</span>
                   <h3 className="font-serif text-base md:text-lg font-bold text-primary">{item.title}</h3>
                 </div>
-                <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-normal">{item.text}</p>
+                <p className="text-slate-500 text-xs md:text-sm leading-relaxed font-light">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Open Positions — Tilted Document Sheet Cards */}
-      <section
-        className="py-20 px-6 bg-slate-50 border-b border-slate-200 relative overflow-hidden"
+      {/* Section 3: Job Registry Dossier */}
+      <section 
+        className="py-20 px-6 bg-slate-55 border-b border-slate-200 relative overflow-hidden animate-[fadeIn_0.5s_ease-out]"
         style={{
           backgroundImage: "linear-gradient(rgba(2, 132, 199, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.02) 1px, transparent 1px)",
           backgroundSize: "20px 20px"
         }}
       >
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-[80%] mx-auto relative z-10">
           <SectionTitle subtitle="Active Openings" title="Explore Career Opportunities" />
 
-          <div className="mt-12 space-y-10">
-            {JOBS.map((job, idx) => {
-              const colors = deptColors[job.department] || deptColors['Business Development'];
-              const tilt = idx % 2 === 0 ? 'rotate-[-0.4deg]' : 'rotate-[0.4deg]';
+          {/* Unified Registry Dossier Box */}
+          <div className="mt-12 bg-white border border-slate-200 rounded-sm shadow-md overflow-hidden min-h-[480px]">
+            {/* Dossier Header */}
+            <div className="bg-slate-50/70 border-b border-slate-200 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+              <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+                CLINICAL ROLE REGISTRY
+              </span>
+              <span className="text-[8.5px] font-mono text-slate-500 font-bold uppercase">
+                CHK MEDICUS COHORT FILE: 2024
+              </span>
+            </div>
 
-              return (
-                <div key={job.id} className="relative group">
-                  {/* Tilted backing sheet */}
-                  <div className={`absolute inset-0 bg-white border border-slate-200 rounded-sm ${tilt} group-hover:rotate-0 transition-transform duration-300 -z-10 shadow-sm`} />
-
-                  <div className={`bg-white border border-slate-200 ${colors.hover} rounded-sm p-7 md:p-9 shadow-md hover:shadow-lg transition-all duration-300`}>
-                    {/* Top row: department tag + location */}
-                    <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-3 mb-5">
-                      <div className="flex items-center gap-3">
-                        <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
-                        <span className={`px-2.5 py-1 rounded-full border text-[10px] font-mono font-bold ${colors.tag}`}>
+            {/* Split Panel for Desktop (lg only) */}
+            <div className="hidden lg:grid grid-cols-12 min-h-[440px]">
+              {/* Left Panel: Role List */}
+              <div className="col-span-4 border-r border-slate-200 divide-y divide-slate-100">
+                {JOBS.map((job) => {
+                  const isActive = job.id === selectedJobId;
+                  return (
+                    <button
+                      key={job.id}
+                      onClick={() => setSelectedJobId(job.id)}
+                      className={`w-full text-left p-5 transition-all cursor-pointer relative ${
+                        isActive 
+                          ? 'bg-slate-50/50' 
+                          : 'hover:bg-slate-50/30'
+                      }`}
+                    >
+                      {/* Active indicator bar */}
+                      {isActive && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-medical" />
+                      )}
+                      
+                      <div className="space-y-1.5">
+                        <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
                           {job.department}
                         </span>
+                        <h4 className="font-serif text-sm font-bold text-primary">
+                          {job.title}
+                        </h4>
+                        <span className="inline-block text-[9px] font-mono text-slate-500 uppercase">
+                          Exp: {job.experience}
+                        </span>
                       </div>
-                      <span className="text-[8px] font-mono text-slate-400 uppercase tracking-widest font-bold hidden sm:inline">
-                        REF: CHK-{job.id.toUpperCase().slice(0, 6)}-{String(idx + 1).padStart(2, '0')}
-                      </span>
-                    </div>
+                    </button>
+                  );
+                })}
+              </div>
 
-                    {/* Content body */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                      <div className="space-y-3 flex-1">
-                        <h3 className="font-serif text-lg md:text-xl font-bold text-primary leading-tight">{job.title}</h3>
+              {/* Right Panel: Role Details */}
+              <div className="col-span-8 p-8 relative flex flex-col justify-between">
+                <div className="space-y-6">
+                  {/* Category Stamp */}
+                  <div className="flex items-center justify-between border-b border-dashed border-slate-200 pb-3">
+                    <span className="text-[9px] font-mono font-bold text-medical bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded uppercase">
+                      {selectedJob.department}
+                    </span>
+                    <span className="text-[8px] font-mono text-slate-400 uppercase tracking-widest font-bold">
+                      REF: CHK-{selectedJob.id.toUpperCase().slice(0, 6)}
+                    </span>
+                  </div>
 
-                        <div className="flex flex-wrap gap-x-6 gap-y-1 text-[11px] text-slate-500 font-mono font-bold uppercase tracking-wider">
-                          <span>Exp: {job.experience}</span>
-                          <span className="text-slate-300">|</span>
-                          <span>Loc: {job.location}</span>
-                        </div>
-
-                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-normal max-w-2xl">{job.description}</p>
-
-                        {/* Requirements */}
-                        <div className="pt-3">
-                          <span className="block text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-2">Primary Requirements</span>
-                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-500">
-                            {job.requirements.map((req, rIdx) => (
-                              <li key={rIdx} className="flex items-start gap-2">
-                                <span className={`w-1.5 h-1.5 rounded-full ${colors.dot} shrink-0 mt-1.5`} />
-                                <span className="leading-relaxed">{req}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      {/* Apply button */}
-                      <button
-                        onClick={() => setSelectedJob(job)}
-                        className="inline-flex items-center gap-2 px-7 py-3 bg-[#1c1917] hover:bg-[#292524] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300 shadow-md cursor-pointer shrink-0 active:scale-95"
-                      >
-                        Apply Now
-                      </button>
-                    </div>
-
-                    {/* Bottom mono stamp */}
-                    <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <div
-                        className="h-5 w-28 opacity-25"
-                        style={{ backgroundImage: "repeating-linear-gradient(90deg, #0f172a, #0f172a 1px, transparent 1px, transparent 3px, #0f172a 3px, #0f172a 4px, transparent 4px, transparent 7px)" }}
-                      />
-                      <span className="text-[7px] font-mono text-slate-400 font-bold uppercase tracking-widest">CHK MEDICUS CARE PVT. LTD.</span>
+                  {/* Title & Stats */}
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-xl font-bold text-primary">{selectedJob.title}</h3>
+                    <div className="flex gap-4 text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                      <span>Experience: {selectedJob.experience}</span>
+                      <span>|</span>
+                      <span>Location: {selectedJob.location}</span>
                     </div>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-light">
+                    {selectedJob.description}
+                  </p>
+
+                  {/* Requirements sublist */}
+                  <div className="space-y-2">
+                    <span className="block text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+                      Key Qualifications
+                    </span>
+                    <ul className="space-y-2 text-xs text-slate-500">
+                      {selectedJob.requirements.map((req, rIdx) => (
+                        <li key={rIdx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-medical shrink-0 mt-1.5" />
+                          <span className="leading-relaxed font-light">{req}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              );
-            })}
+
+                {/* Apply Button & Stamp */}
+                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between">
+                  <div 
+                    className="h-5 w-28 opacity-25" 
+                    style={{ backgroundImage: "repeating-linear-gradient(90deg, #0f172a, #0f172a 1px, transparent 1px, transparent 3px, #0f172a 3px, #0f172a 4px, transparent 4px, transparent 7px)" }}
+                  />
+                  
+                  <button
+                    onClick={() => setShowApplyModal(true)}
+                    className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1c1917] hover:bg-[#292524] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300 shadow-md cursor-pointer"
+                  >
+                    Submit Application File
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Accordion Layout (lg hidden, fits responsive viewport) */}
+            <div className="block lg:hidden divide-y divide-slate-150">
+              {JOBS.map((job) => {
+                const isExpanded = job.id === selectedJobId;
+                return (
+                  <div key={job.id} className="w-full">
+                    {/* Trigger */}
+                    <button
+                      onClick={() => setSelectedJobId(job.id === selectedJobId ? null : job.id)}
+                      className={`w-full text-left p-5 flex justify-between items-center transition-colors cursor-pointer ${
+                        isExpanded ? 'bg-slate-50/50' : 'hover:bg-slate-50/30'
+                      }`}
+                    >
+                      <div className="space-y-1">
+                        <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
+                          {job.department}
+                        </span>
+                        <h4 className="font-serif text-sm font-bold text-primary">
+                          {job.title}
+                        </h4>
+                      </div>
+                      <span className="text-slate-400 text-xs font-mono">
+                        {isExpanded ? '—' : '+'}
+                      </span>
+                    </button>
+
+                    {/* Collapsible Panel */}
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden bg-slate-50/[0.15]"
+                        >
+                          <div className="p-5 border-t border-slate-100 space-y-4">
+                            <div className="flex gap-4 text-[9px] font-mono text-slate-500 uppercase tracking-wider">
+                              <span>Experience: {job.experience}</span>
+                              <span>|</span>
+                              <span>Location: {job.location}</span>
+                            </div>
+                            
+                            <p className="text-slate-600 text-xs leading-relaxed font-light">
+                              {job.description}
+                            </p>
+
+                            <div className="space-y-1.5">
+                              <span className="block text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+                                Requirements
+                              </span>
+                              <ul className="space-y-1.5 text-xs text-slate-500">
+                                {job.requirements.map((req, rIdx) => (
+                                  <li key={rIdx} className="flex items-start gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-medical shrink-0 mt-1.5" />
+                                    <span className="leading-relaxed font-light">{req}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            <div className="pt-3">
+                              <button
+                                onClick={() => setShowApplyModal(true)}
+                                className="w-full py-3 bg-[#1c1917] hover:bg-[#292524] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300 shadow-md cursor-pointer text-center"
+                              >
+                                Apply for Role
+                              </button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -255,7 +376,7 @@ export default function Careers() {
 
       {/* Application Modal */}
       <AnimatePresence>
-        {selectedJob && (
+        {showApplyModal && selectedJob && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -270,7 +391,7 @@ export default function Careers() {
             >
               {/* Close button */}
               <button
-                onClick={() => setSelectedJob(null)}
+                onClick={() => setShowApplyModal(false)}
                 className="absolute top-4 right-4 w-7 h-7 rounded-full border border-slate-200 hover:bg-slate-50 text-slate-400 hover:text-slate-600 flex items-center justify-center cursor-pointer transition-colors text-xs font-bold"
                 aria-label="Close form"
               >
