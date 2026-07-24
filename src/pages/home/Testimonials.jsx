@@ -192,7 +192,7 @@ export default function Testimonials() {
                                     <img
                                         src={testimonials[current].image}
                                         alt=""
-                                        className="absolute -left-16 bottom-[-15%] h-[130%] object-contain pointer-events-none select-none z-20"
+                                        className="absolute -left-16 bottom-[-15%] h-[130%] object-contain pointer-events-none select-none z-30"
                                     />
 
                                     {/* =======================================
